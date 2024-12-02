@@ -53,8 +53,8 @@ Route::get('/faq}', function () {
 ################## CONNEXION ##################
 
 # Page de profil
-Route::get('/profile/{id}', function ($id) {
-    return view('profile', ['id' => $id]);
+Route::get('/profile', function () {
+    return view('profile');
 });
 
 # Page de connexion
