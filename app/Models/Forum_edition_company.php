@@ -6,5 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Forum_edition_company extends Model
 {
-    //
+    protected $primaryKey = 'forum_edition_company_id';
+
+    protected $fillable = [
+        'forum_id',
+        'company_id',
+    ];
+
+    /**
+     * Relation avec le modèle Company
+     */
+    public function company() {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    /**
+     * Récupère toutes les lignes pour un forum_id donné avec les noms des companies associées
+     */
+    public static function getCompaniesForForumById($forum_id) {
+        return self::where('forum_id', $forum_id)->with('company:name')->get();
+    }
 }

@@ -1,33 +1,33 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileController; # truc de laravel
+
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CvController;
+use App\Http\Controllers\ExhibitorController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ForumEditionController;
+use App\Http\Controllers\HomeController;
+
 use Illuminate\Support\Facades\Route;
 
 ################## ACCUEIL ##################
 
 # Page d'accueil
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'getHomeInformations']);
 
 ################# EXPOSANTS #################
 
 # Page listant les entreprises présentes
-Route::get('/exposants', function () {
-    return view('exhibitors');
-});
+Route::get('/exposants', [CompanyController::class, 'getAllCompanies']);
 
 # Page d'une entreprise
-Route::get('/entreprise/{id}', function ($id) {
-    return view('company', ['id' => $id]);
-});
+Route::get('/entreprise/{id}', [CompanyController::class, 'getCompanyById']);
 
 ############### ÉDITIONS FORUM ###############
 
 # Page d'une édition de forum
-Route::get('/editionsprecedentes/{annee}', function ($annee) {
-    return view('forum_edition', ['annee' => $annee]);
-});
+Route::get('/editions-forum/{annee}', [ForumEditionController::class, 'getForumEditionByYear']);
 
 ################### OFFRES ###################
 
@@ -39,16 +39,12 @@ Route::get('/offres', function () {
 ##################### CV #####################
 
 # Page listant toutes les CV des étudiants
-Route::get('/cvs', function () {
-    return view('cvs');
-});
+Route::get('/cvs', [CvController::class, 'getAllCvs']);
 
 ##################### FAQ #####################
 
 # Page de foire aux questions
-Route::get('/faq', function () {
-    return view('faq');
-});
+Route::get('/faq', [FaqController::class, 'getAllFaq']);
 
 ################## CONNEXION ##################
 
