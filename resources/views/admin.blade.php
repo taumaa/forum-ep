@@ -1,15 +1,12 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'Admin') <!-- Définir un titre spécifique -->
 
-<body>
+@section('content')
     <h1>Page admin</h1>
-</body>
+    <p>Ceci est le contenu de la page admin.</p>
+@endsection
 
-@include('components.footer')
-
-</html>
 
 
 

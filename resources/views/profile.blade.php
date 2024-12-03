@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'profil') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>Page profil (etudiant/entreprise/admin)</h1>
-</body>
-
-@include('components.footer')
-
-</html>
+@section('content')
+    <h1>Page profil</h1>
+    <p>Ceci est le contenu de la page profil etudiant/entreprise/admin.</p>
+@endsection

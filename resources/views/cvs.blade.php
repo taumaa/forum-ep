@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'cvs') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>Page ou l'on voit tt les CVs</h1>
-</body>
-
-@include('components.footer')
-
-</html>
+@section('content')
+    <h1>Page des cvs</h1>
+    <p>liste de tt les cvs.</p>
+@endsection

@@ -1,3 +1,77 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding : 1%;
+}
+
+.light-blue {
+    background-color : #4263a3;
+    color : white;
+}
+
+.dark-blue {
+    background-color : #132c85;
+    color : black;
+
+}
+
+.light-pink {
+    background-color : #FFCCED;
+    color : black;
+}
+
+#pratical-informations .dark-pink {  /*applique le rose seulement pour la rubrique infos pratiques de la page d'accueil*/
+    background-color :  #bd1080;
+    color : black;
+    margin : 0.5% 2% 0.5% 2%;
+    padding : 1%;
+    width : 25%;
+    height: 1%;
+    text-align: center;
+    color : white;
+}
+
+/* .dark-pink {  
+    background-color :  #bd1080;
+    color : black;
+} */ /*applique le rose seulement pour une autre rubrique*/
+
+.gray {
+    background-color :  #f0f0f0;
+    color : black;
+}
+
+.white {
+    background-color :  white;
+    color : black;
+
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+p{
+    font-size: 1.3rem;
+}
+
+img{
+    position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}

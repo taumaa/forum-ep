@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'connexion') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>Page de connexion</h1>
-</body>
-
-@include('components.footer')
-
-</html>
+@section('content')
+    <h1>Page connexion</h1>
+    <p>Ceci est le contenu de la page connexion.</p>
+@endsection

@@ -1,13 +1,10 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'entreprise') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>Page d'une entreprise (infos sur l'entreprise et ses offres)</h1>
-</body>
+@section('content')
+    <h1>Page entreprise</h1>
+    <p>infois de l'entreprise et des offres de stages</p>
+@endsection
 
-@include('components.footer')
-
-</html>
 

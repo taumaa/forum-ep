@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'inscription') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>Page de connexion</h1>
-</body>
-
-@include('components.footer')
-
-</html>
+@section('content')
+    <h1>Page inscription</h1>
+    <p>formulaire d'inscription.</p>
+@endsection

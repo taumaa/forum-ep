@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'offres') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>Page des offres</h1>
-</body>
-
-@include('components.footer')
-
-</html>
+@section('content')
+    <h1>Page offres</h1>
+    <p>listes des offres de stage de tt les entreprises.</p>
+@endsection
