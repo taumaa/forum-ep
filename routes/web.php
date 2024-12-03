@@ -13,26 +13,26 @@ Route::get('/', function () {
 ################# EXPOSANTS #################
 
 # Page listant les entreprises présentes
-Route::get('/exhibitors', function () {
+Route::get('/exposants', function () {
     return view('exhibitors');
 });
 
 # Page d'une entreprise
-Route::get('/company/{id}', function ($id) {
+Route::get('/entreprise/{id}', function ($id) {
     return view('company', ['id' => $id]);
 });
 
 ############### ÉDITIONS FORUM ###############
 
 # Page d'une édition de forum
-Route::get('/forum_edition/{id}', function ($id) {
+Route::get('/editionsprecedentes/{id}', function ($id) {
     return view('forum_edition', ['id' => $id]);
 });
 
 ################### OFFRES ###################
 
 # Page listant toutes les offres de stage
-Route::get('/offers', function () {
+Route::get('/offres', function () {
     return view('offers');
 });
 
@@ -46,29 +46,29 @@ Route::get('/cvs', function () {
 ##################### FAQ #####################
 
 # Page de foire aux questions
-Route::get('/faq}', function () {
+Route::get('/faq', function () {
     return view('faq');
 });
 
 ################## CONNEXION ##################
 
 # Page de profil
-Route::get('/profile', function () {
+Route::get('/profil', function () {
     return view('profile');
 });
 
 # Page de connexion
-Route::get('/login', function () {
+Route::get('/connexion', function () {
     return view('login');
 });
 
 # Page d'inscription pour les étudiants
-Route::get('/signin', function () {
+Route::get('/inscription', function () {
     return view('signin');
 });
 
 # Page de demande de devis
-Route::get('/quote', function () {
+Route::get('/devis', function () {
     return view('quote');
 });
 
