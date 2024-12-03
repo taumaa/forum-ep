@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
     @include('components.head') <!-- Inclusion du fichier head -->
     <title>@yield('title', 'Titre par défaut')</title>
