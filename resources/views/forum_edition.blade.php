@@ -1,6 +1,12 @@
-EDITION PRECEDENTE
-<br>
+<!DOCTYPE html>
 
+@include('components.head')
 @include('components.header')
 
-page détaillant une édition du forum
+<body>
+    <h1>Editions des anciens forum</h1>
+</body>
+
+@include('components.footer')
+
+</html>

@@ -25,8 +25,8 @@ Route::get('/entreprise/{id}', function ($id) {
 ############### ÉDITIONS FORUM ###############
 
 # Page d'une édition de forum
-Route::get('/editionsprecedentes/{id}', function ($id) {
-    return view('forum_edition', ['id' => $id]);
+Route::get('/editionsprecedentes/{annee}', function ($annee) {
+    return view('forum_edition', ['annee' => $annee]);
 });
 
 ################### OFFRES ###################

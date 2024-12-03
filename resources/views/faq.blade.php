@@ -1,6 +1,12 @@
-FAQ 
+<!DOCTYPE html>
 
+@include('components.head')
 @include('components.header')
 
-<br>
-page de faq
+<body>
+    <h1>FAQ</h1>
+</body>
+
+@include('components.footer')
+
+</html>

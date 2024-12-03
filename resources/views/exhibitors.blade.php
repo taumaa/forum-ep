@@ -1,7 +1,12 @@
-EXPOSANTS
+<!DOCTYPE html>
 
+@include('components.head')
 @include('components.header')
 
+<body>
+    <h1>Listes de tt les entreprises</h1>
+</body>
 
-<br>
-liste de toutes les entreprises
+@include('components.footer')
+
+</html>
