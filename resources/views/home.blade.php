@@ -1,12 +1,9 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'Accueil') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>accueil (logo ESIEE)</h1>
-</body>
-
-@include('components.footer')
-
-</html>
+@section('content')
+    <h1>Page accueil</h1>
+    <p>Ceci est le contenu de la page accueil.</p>
+    
+@endsection

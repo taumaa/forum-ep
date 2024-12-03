@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'faq') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>FAQ</h1>
-</body>
-
-@include('components.footer')
-
-</html>
+@section('content')
+    <h1>Page faq</h1>
+    <p>Ceci est le contenu de la faq.</p>
+@endsection

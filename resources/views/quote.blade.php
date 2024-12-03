@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+@extends('layouts.main')
 
-@include('components.head')
-@include('components.header')
+@section('title', 'devis') <!-- Définir un titre spécifique -->
 
-<body>
-    <h1>Page de demande de devis</h1>
-</body>
-
-@include('components.footer')
-
-</html>
+@section('content')
+    <h1>Page demande de devis</h1>
+    <p>formulaire avec les demande de devis qui s'envoie a l'admnistration.</p>
+@endsection
