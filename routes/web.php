@@ -9,6 +9,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ForumEditionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\QuoteController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -63,9 +64,7 @@ Route::get('/inscription', function () {
 });
 
 # Page de demande de devis
-Route::get('/devis', function () {
-    return view('quote');
-});
+Route::get('/devis', [QuoteController::class, 'goToQuote']);
 
 ################### ADMIN ####################
 

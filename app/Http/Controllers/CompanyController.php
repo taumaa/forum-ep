@@ -12,6 +12,8 @@ class CompanyController extends Controller
      */
     public function getCompanyById($id) {
         $company = Company::getCompanyById($id);
-        return view('company', ['company' => $company]);
+        if ($company) 
+            return view('company', ['company' => $company]);
+        return view('404');
     }
 }

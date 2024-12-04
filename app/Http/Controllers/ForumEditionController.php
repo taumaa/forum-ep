@@ -13,11 +13,15 @@ class ForumEditionController extends Controller
      */
     public function getForumEditionByYear($year) {
         $forum_edition = Forum_edition::getForumByYear($year);
-        $companies = Forum_edition_company::getCompaniesForForumById($forum_edition->forum_id); 
-    
-        return view('forum_edition', [
-            'forum_edition' => $forum_edition,
-            'companies' => $companies
-        ]);
+
+        if ($forum_edition) {
+            $companies = Forum_edition_company::getCompaniesForForumById($forum_edition->forum_id); 
+        
+            return view('forum_edition', [
+                'forum_edition' => $forum_edition,
+                'companies' => $companies
+            ]);
+        }
+        return view('404');
     }
 }
