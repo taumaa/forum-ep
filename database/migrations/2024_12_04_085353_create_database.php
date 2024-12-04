@@ -87,7 +87,7 @@ return new class extends Migration
             $table->unsignedInteger('internship_offer_id');
             $table->unsignedInteger('school_level_id');
 
-            $table->foreign('internship_offer_ids')->references('internship_offer_id')->on('internship_offer')->onDelete('cascade');
+            $table->foreign('internship_offer_id')->references('internship_offer_id')->on('internship_offer')->onDelete('cascade');
             $table->foreign('school_level_id')->references('school_level_id')->on('school_level')->onDelete('cascade');
         });
 
