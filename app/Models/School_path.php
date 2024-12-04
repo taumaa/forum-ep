@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class School_path extends Model
 {
     protected $primaryKey = 'school_path_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'school_path_label',

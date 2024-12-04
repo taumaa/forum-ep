@@ -4,14 +4,15 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Company;
-use App\Models\ForumEdition;
-use App\Models\ForumEditionCompany;
-use App\Models\SchoolLevel;
-use App\Models\SchoolPath;
-use App\Models\SchoolPathCompany;
+use App\Models\Forum_edition;
+use App\Models\Forum_edition_company;
+use App\Models\School_level;
+use App\Models\School_path;
+use App\Models\School_path_company;
 use App\Models\Visitor;
-use App\Models\InternshipOffer;
-use App\Models\SchoolLevelOffer;
+use App\Models\Internship_offer;
+use App\Models\School_level_offer;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,65 +23,29 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Create base school levels and paths
-        $schoolLevels = SchoolLevel::factory(3)->create();
-        $schoolPaths = SchoolPath::factory(4)->create();
+        $labels = ['3ème année', '4ème année', '5ème année'];
+        foreach ($labels as $label) {
+            School_level::createSchoolLevel($label);
+        }
 
-        // Create companies
-        $companies = Company::factory(5)->create();
+        $paths = ['Développement web', 'Développement mobile', 'Design', 'Cybersécurité'];
+        foreach ($paths as $path) {
+            School_path::createSchoolPath($path);
+        }
 
         // Create forum editions
-        $forumEditions = ForumEdition::factory(2)->create();
+        $date = '2024-01-01';
+        $picture = '/images/forum/2024.png';
+        $starting_hour = '10:00';
+        $ending_hour = '12:00';
+        $forumEditions = Forum_edition::createForum($date, $picture, $starting_hour, $ending_hour);
 
-        // Link companies to forum editions
-        foreach ($companies as $company) {
-            foreach ($forumEditions as $forum) {
-                ForumEditionCompany::create([
-                    'forum_id' => $forum->forum_id,
-                    'company_id' => $company->company_id
-                ]);
-            }
-        }
+        $logo = '/images/logo.png';
+        $ico = '/images/favicon.ico';
+        $description = 'Description de la plateforme';
+        $image = '/images/home/home.png';
+        $video = '/videos/home.mp4';
+        $settings = Setting::createSetting($logo, $ico, $description, $image, $video);
 
-        // Link companies to school paths (each company linked to 2 random paths)
-        foreach ($companies as $company) {
-            $randomPaths = $schoolPaths->random(2);
-            foreach ($randomPaths as $path) {
-                SchoolPathCompany::create([
-                    'company_id' => $company->company_id,
-                    'school_path_id' => $path->school_path_id
-                ]);
-            }
-        }
-
-        // Create internship offers
-        $offers = InternshipOffer::factory(10)->create();
-
-        // Link school levels to internship offers
-        foreach ($offers as $offer) {
-            // Each offer is available for 1-2 school levels
-            $randomLevels = $schoolLevels->random(rand(1, 2));
-            foreach ($randomLevels as $level) {
-                SchoolLevelOffer::create([
-                    'internship_offer_id' => $offer->internship_offer_id,
-                    'school_level_id' => $level->school_level_id
-                ]);
-            }
-        }
-
-        // Create visitors (including one admin)
-        Visitor::factory()->create([
-            'last_name' => 'Admin',
-            'first_name' => 'Super',
-            'login' => 'admin@epf.fr',
-            'password' => bcrypt('admin123'),
-            'admin' => true,
-            'school_level_id' => $schoolLevels->first()->school_level_id,
-            'school_path_id' => $schoolPaths->first()->school_path_id,
-            'abroad' => false,
-            'cv' => '/cvs/admin.pdf'
-        ]);
-
-        // Create regular visitors
-        Visitor::factory(20)->create();
     }
 }
