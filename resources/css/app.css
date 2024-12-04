@@ -27,13 +27,12 @@
 
 #pratical-informations .dark-pink {  /*applique le rose seulement pour la rubrique infos pratiques de la page d'accueil*/
     background-color :  #bd1080;
-    color : black;
+    color : white;
     margin : 0.5% 2% 0.5% 2%;
     padding : 1%;
     width : 25%;
     height: 1%;
     text-align: center;
-    color : white;
 }
 
 /* .dark-pink {  
@@ -71,4 +70,14 @@ img{
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.company:nth-child(odd) div div p{ /*selectionne les enfants impaires*/
+    background-color :  #bd1080;
+    color : white;
+}
+
+.company:nth-child(even) div div p{
+    background-color : #4263a3; /*selectionne les enfants paires*/
+    color : white;
 }
