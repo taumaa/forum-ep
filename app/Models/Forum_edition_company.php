@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Forum_edition_company extends Model
 {
     protected $primaryKey = 'forum_edition_company_id';
-
+    public $timestamps = false;
     protected $fillable = [
         'forum_id',
         'company_id',

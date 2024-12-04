@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Visitor extends Model
 {
     protected $primaryKey = 'visitor_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'last_name',
