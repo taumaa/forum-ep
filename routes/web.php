@@ -8,6 +8,7 @@ use App\Http\Controllers\ExhibitorController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ForumEditionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OfferController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +33,7 @@ Route::get('/edition-forum/{annee}', [ForumEditionController::class, 'getForumEd
 ################### OFFRES ###################
 
 # Page listant toutes les offres de stage
-Route::get('/offres', function () {
-    return view('offers');
-});
+Route::get('/offres', [OfferController::class, 'getAllInternshipOffers']);
 
 ##################### CV #####################
 
