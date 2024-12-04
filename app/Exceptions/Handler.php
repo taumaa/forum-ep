@@ -28,6 +28,9 @@ class Handler extends ExceptionHandler
         });
     }
 
+    /**
+     * Renvoie vers la page 404 si l'url entrée par l'utilisateur n'existe pas
+     */
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {

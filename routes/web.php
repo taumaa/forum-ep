@@ -29,7 +29,7 @@ Route::get('/entreprise/{id}', [CompanyController::class, 'getCompanyById']);
 ############### ÉDITIONS FORUM ###############
 
 # Page d'une édition de forum
-Route::get('/edition-forum/{annee}', [ForumEditionController::class, 'getForumEditionByYear']);
+Route::get('/editions-precedentes/{annee}', [ForumEditionController::class, 'getForumEditionByYear']);
 
 ################### OFFRES ###################
 
