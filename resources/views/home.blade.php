@@ -32,7 +32,7 @@
             <h1 class="mb-3">Entreprises présentes cette année</h1>
             @foreach($companies as $company)
                 <div class="flex flex-row gap-5 my-1 mx-5" >
-                    <img src="{{ $company->company->logo }}" alt="Logo {{ $company->company->name }}">
+                    <img src="{{ $company->company->logo }}" alt="Logo {{ $company->company->name }}" class="logos-companies">
                     <a href="{{ url('/exposants/' . $company->company->company_id) }}"><p>{{ $company->company->name }}</p></a>
                 </div>
             @endforeach

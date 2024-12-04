@@ -2,7 +2,7 @@
 
 @section('title', 'entreprise') <!-- Définir un titre spécifique -->
 
-@section('content')>
+@section('content')
         <section class="white"> 
             <div class="container">
                 <h1 class="mb-3">Nom entreprise</h1>
