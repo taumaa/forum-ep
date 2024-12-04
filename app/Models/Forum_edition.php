@@ -42,6 +42,13 @@ class Forum_edition extends Model
     }
 
     /**
+     * Récupère le dernier forum
+     */
+    public static function getLatestForum() {
+        return self::orderBy('date', 'desc')->first();
+    }
+
+    /**
      * Crée une nouvelle édition de forum
      */
     public static function createForum($date, $picture, $starting_hour, $ending_hour) {

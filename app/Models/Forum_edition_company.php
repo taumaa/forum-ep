@@ -21,9 +21,13 @@ class Forum_edition_company extends Model
     }
 
     /**
-     * Récupère toutes les lignes pour un forum_id donné avec les noms des companies associées
+     * Récupère les entreprises pour un forum_id donné avec les noms et logos des entreprises associées
      */
     public static function getCompaniesForForumById($forum_id) {
-        return self::where('forum_id', $forum_id)->with('company:name')->get();
+        return self::where('forum_id', $forum_id)
+            ->with('company:company_id,name,logo') 
+            ->get();
     }
 }
+
+
