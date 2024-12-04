@@ -1,54 +1,50 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileController; # truc de laravel
+
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CvController;
+use App\Http\Controllers\ExhibitorController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ForumEditionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OfferController;
+use App\Http\Controllers\QuoteController;
+
 use Illuminate\Support\Facades\Route;
 
 ################## ACCUEIL ##################
 
 # Page d'accueil
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'getHomeInformations']);
 
 ################# EXPOSANTS #################
 
 # Page listant les entreprises présentes
-Route::get('/exposants', function () {
-    return view('exhibitors');
-});
+Route::get('/exposants', [ExhibitorController::class, 'getAllCompanies']);
 
 # Page d'une entreprise
-Route::get('/entreprise/{id}', function ($id) {
-    return view('company', ['id' => $id]);
-});
+Route::get('/entreprise/{id}', [CompanyController::class, 'getCompanyById']);
 
 ############### ÉDITIONS FORUM ###############
 
 # Page d'une édition de forum
-Route::get('/editionsprecedentes/{annee}', function ($annee) {
-    return view('forum_edition', ['annee' => $annee]);
-});
+Route::get('/editions-precedentes/{annee}', [ForumEditionController::class, 'getForumEditionByYear']);
 
 ################### OFFRES ###################
 
 # Page listant toutes les offres de stage
-Route::get('/offres', function () {
-    return view('offers');
-});
+Route::get('/offres', [OfferController::class, 'getAllInternshipOffers']);
 
 ##################### CV #####################
 
 # Page listant toutes les CV des étudiants
-Route::get('/cvs', function () {
-    return view('cvs');
-});
+Route::get('/cvs', [CvController::class, 'getAllCvs']);
 
 ##################### FAQ #####################
 
 # Page de foire aux questions
-Route::get('/faq', function () {
-    return view('faq');
-});
+Route::get('/faq', [FaqController::class, 'getAllFaqs']);
 
 ################## CONNEXION ##################
 
@@ -68,9 +64,7 @@ Route::get('/inscription', function () {
 });
 
 # Page de demande de devis
-Route::get('/devis', function () {
-    return view('quote');
-});
+Route::get('/devis', [QuoteController::class, 'goToQuote']);
 
 ################### ADMIN ####################
 
