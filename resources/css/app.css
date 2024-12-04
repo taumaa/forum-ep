@@ -19,6 +19,10 @@ h2{
     font-size: 2rem;
 }
 
+h3{
+    font-size: 1.5rem;
+}
+
 p{
     font-size: 1.3rem;
 }
@@ -49,6 +53,11 @@ p{
     width : 25%;
     height: 1%;
     text-align: center;
+}
+
+.dark-pink {
+    background-color :  #bd1080;
+    color : white;
 }
 
 .gray {

@@ -24,7 +24,7 @@ Route::get('/', [HomeController::class, 'getHomeInformations']);
 Route::get('/exposants', [ExhibitorController::class, 'getAllCompanies']);
 
 # Page d'une entreprise
-Route::get('/entreprise/{id}', [CompanyController::class, 'getCompanyById']);
+Route::get('/exposants/{id}', [CompanyController::class, 'getCompanyById']);
 
 ############### ÉDITIONS FORUM ###############
 
