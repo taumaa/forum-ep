@@ -4,7 +4,7 @@
 
 @section('content')
     <section> 
-            <img src="../../images/ESIEE-Home-Main-Picture.webp" data-src="../../images/ESIEE-Home-Main-Picture.webp" alt="">
+        <img src="{{ asset('storage/images/ESIEE-Home-Main-Picture.webp') }}" alt="">
     </section>
 
     <section class="white"> 
