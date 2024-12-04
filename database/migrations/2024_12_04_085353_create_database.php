@@ -21,9 +21,23 @@ return new class extends Migration
         Schema::dropIfExists('internship_offers');
         Schema::dropIfExists('school_level_offers');
         Schema::dropIfExists('students');
-        Schema::dropIfExists('users');
         Schema::dropIfExists('settings');
         Schema::dropIfExists('faqs');
+
+        Schema::create('settings', function (Blueprint $table) {
+            $table->increments('setting_id')->primary();
+            $table->string('logo');
+            $table->string('ico');
+            $table->string('description', 3000);
+            $table->string('image');
+            $table->string('video');
+        });
+
+        Schema::create('faqs', function (Blueprint $table) {
+            $table->increments('faq_id')->primary();
+            $table->string('question');
+            $table->string('answer');
+        });
 
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('company_id')->primary();
@@ -110,27 +124,13 @@ return new class extends Migration
             $table->string('login');
             $table->string('password', 2000);
             $table->string('type');
-            $table->int('student_id');
-            $table->int('company_id');
+            $table->unsignedInteger('student_id');
+            $table->unsignedInteger('company_id');
 
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->foreign('company_id')->references('company_id')->on('companies')->onDelete('cascade');
         });
 
-        Schema::create('settings', function (Blueprint $table) {
-            $table->increments('setting_id')->primary();
-            $table->string('logo');
-            $table->string('ico');
-            $table->string('description', 3000);
-            $table->string('image');
-            $table->string('video');
-        });
-
-        Schema::create('faqs', function (Blueprint $table) {
-            $table->increments('faq_id')->primary();
-            $table->string('question');
-            $table->string('answer');
-        });
     }
 
     /**
