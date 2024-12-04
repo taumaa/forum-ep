@@ -12,6 +12,6 @@ class QuoteController extends Controller
     public function goToQuote() {
         if (true) // chercker si on est bien pas connecté en tant qu'étudiant
             return view('quote');
-        return view('404');
+        return view('errors.404');
     }
 }

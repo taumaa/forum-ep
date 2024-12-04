@@ -22,6 +22,6 @@ class ForumEditionController extends Controller
                 'companies' => $companies
             ]);
         }
-        return view('404');
+        return view('errors.404');
     }
 }

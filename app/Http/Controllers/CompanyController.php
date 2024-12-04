@@ -14,6 +14,6 @@ class CompanyController extends Controller
         $company = Company::getCompanyById($id);
         if ($company) 
             return view('company', ['company' => $company]);
-        return view('404');
+        return view('errors.404');
     }
 }
