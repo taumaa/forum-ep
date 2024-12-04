@@ -16,7 +16,7 @@ class Faq extends Model
     /**
      * Récupère toutes les question / réponses de la FAQ
      */
-    public static function getAllFaq() {
+    public static function getAllFaqs() {
         $faq = Faq::all();
         return $faq;
     }

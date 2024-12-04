@@ -19,7 +19,7 @@ class Setting extends Model
     /**
      * Récupère toutes les informations de la page d'accueil
      */
-    public static function getHomeInformations() {
+    public static function getAllSettings() {
         $setting = Setting::first();
         return $setting;
     }

@@ -19,7 +19,7 @@ Route::get('/', [HomeController::class, 'getHomeInformations']);
 ################# EXPOSANTS #################
 
 # Page listant les entreprises présentes
-Route::get('/exposants', [CompanyController::class, 'getAllCompanies']);
+Route::get('/exposants', [ExhibitorController::class, 'getAllCompanies']);
 
 # Page d'une entreprise
 Route::get('/entreprise/{id}', [CompanyController::class, 'getCompanyById']);
@@ -27,7 +27,7 @@ Route::get('/entreprise/{id}', [CompanyController::class, 'getCompanyById']);
 ############### ÉDITIONS FORUM ###############
 
 # Page d'une édition de forum
-Route::get('/editions-forum/{annee}', [ForumEditionController::class, 'getForumEditionByYear']);
+Route::get('/edition-forum/{annee}', [ForumEditionController::class, 'getForumEditionByYear']);
 
 ################### OFFRES ###################
 
@@ -44,7 +44,7 @@ Route::get('/cvs', [CvController::class, 'getAllCvs']);
 ##################### FAQ #####################
 
 # Page de foire aux questions
-Route::get('/faq', [FaqController::class, 'getAllFaq']);
+Route::get('/faq', [FaqController::class, 'getAllFaqs']);
 
 ################## CONNEXION ##################
 
