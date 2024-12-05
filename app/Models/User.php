@@ -12,6 +12,10 @@ class User extends Authenticatable
     use Notifiable;
     public $timestamps = false;
 
+    const TYPE_STUDENT = 'student';
+    const TYPE_COMPANY = 'company';
+    const TYPE_ADMIN = 'admin';
+
     /**
      * The attributes that are mass assignable.
      *
