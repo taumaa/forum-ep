@@ -19,7 +19,7 @@
                             </div>
                             <div class="flex flex-row gap-5 my-1">
                                 @foreach ($company->school_paths as $path)
-                                    <p class="p-1 px-4 min-w-40 text-center">{{ $path->school_path_label }}</p>
+                                    <p class="p-1 px-4 min-w-40 text-center">{{ $path }}</p>
                                 @endforeach
                             </div>
                             <p class="pt-4 line-clamp-3">

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class School_level extends Model
 {
     protected $primaryKey = 'school_level_id';
@@ -12,6 +13,19 @@ class School_level extends Model
     protected $fillable = [
         'school_level_label',
     ];
+
+    /**
+     * Lien avec la table des offres
+     */
+    public function internshipOffers()
+    {
+        return $this->belongsToMany(
+            Internship_offer::class,
+            'school_level_offers',
+            'school_level_id',
+            'internship_offer_id'
+        );
+    }
 
     /**
      * Récupère tous les niveaux scolaires

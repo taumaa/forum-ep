@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class School_path extends Model
 {
@@ -15,6 +16,18 @@ class School_path extends Model
 
     public function schoolPath()     {
         return $this->belongsTo(School_path::class, 'school_path_id');
+    }
+
+    /**
+     * Lien avec la table des offres
+     */
+    public function internshipOffers() {
+        return $this->belongsToMany(
+            Internship_offer::class,
+            'school_path_offers',
+            'internship_offer_id',
+            'school_path_id'
+        );
     }
 
     /**

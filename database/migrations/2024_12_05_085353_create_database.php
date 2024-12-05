@@ -36,7 +36,7 @@ return new class extends Migration
         Schema::create('faqs', function (Blueprint $table) {
             $table->increments('faq_id');
             $table->string('question');
-            $table->string('answer');
+            $table->string('answer', 2000);
         });
 
         Schema::create('companies', function (Blueprint $table) {
@@ -44,7 +44,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('logo');
             $table->string('sector');
-            $table->string('description', 2000);
+            $table->string('description', 3000);
             $table->string('website');
             $table->string('contact');
         });
@@ -76,24 +76,15 @@ return new class extends Migration
             $table->string('school_path_label');
         });
 
-        Schema::create('company_school_paths', function (Blueprint $table) {
-            $table->increments('company_school_path_id');
-            $table->unsignedInteger('company_id');
-            $table->unsignedInteger('school_path_id');
-            
-            $table->foreign('company_id')->references('company_id')->on('companies')->onDelete('cascade');
-            $table->foreign('school_path_id')->references('school_path_id')->on('school_paths')->onDelete('cascade');
-        });
-
         Schema::create('internship_offers', function (Blueprint $table) {
             $table->increments('internship_offer_id');
             $table->string('title');
             $table->string('offer_description', 5000);
             $table->unsignedInteger('company_id');
-            $table->unsignedInteger('school_path_id');
+            $table->string('location');
+            $table->string('date');
 
             $table->foreign('company_id')->references('company_id')->on('companies')->onDelete('cascade');
-            $table->foreign('school_path_id')->references('school_path_id')->on('school_paths')->onDelete('cascade');
         });
 
         Schema::create('school_level_offers', function (Blueprint $table) {
@@ -103,6 +94,15 @@ return new class extends Migration
 
             $table->foreign('internship_offer_id')->references('internship_offer_id')->on('internship_offers')->onDelete('cascade');
             $table->foreign('school_level_id')->references('school_level_id')->on('school_levels')->onDelete('cascade');
+        });
+
+        Schema::create('school_path_offers', function (Blueprint $table) {
+            $table->increments('school_path_offer_id');
+            $table->unsignedInteger('internship_offer_id');
+            $table->unsignedInteger('school_path_id');
+
+            $table->foreign('internship_offer_id')->references('internship_offer_id')->on('internship_offers')->onDelete('cascade');
+            $table->foreign('school_path_id')->references('school_path_id')->on('school_paths')->onDelete('cascade');
         });
 
         Schema::create('students', function (Blueprint $table) {
