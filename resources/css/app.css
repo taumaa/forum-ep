@@ -90,6 +90,16 @@ p{
     width: 200px;
 }
 
+/*########################################### NAV ###########################################*/
+
+.nav-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding : 1%;
+}
+
 /*############################# PAGE EDITIONS PRECEDENTES ET EXPOSANTS #############################*/
 
 .company:nth-child(odd) div div p,
