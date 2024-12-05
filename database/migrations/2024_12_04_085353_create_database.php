@@ -110,11 +110,10 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('first_name');
 
-            $table->boolean('admin');
-            $table->unsignedInteger('school_level_id');
-            $table->unsignedInteger('school_path_id');
-            $table->boolean('abroad');
-            $table->string('cv');
+            $table->unsignedInteger('school_level_id')->nullable();
+            $table->unsignedInteger('school_path_id')->nullable();
+            $table->boolean('abroad')->default(false);
+            $table->string('cv')->nullable();
             
             $table->foreign('school_level_id')->references('school_level_id')->on('school_levels')->onDelete('cascade');
             $table->foreign('school_path_id')->references('school_path_id')->on('school_paths')->onDelete('cascade');

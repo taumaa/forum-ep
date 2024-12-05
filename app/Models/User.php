@@ -11,6 +11,8 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use Notifiable;
     public $timestamps = false;
+    protected $primaryKey = 'user_id';
+    
 
     const TYPE_STUDENT = 'student';
     const TYPE_COMPANY = 'company';
@@ -22,9 +24,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
         'password',
+        'type'
     ];
 
     /**
