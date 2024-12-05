@@ -60,6 +60,7 @@ class Internship_offer extends Model
                 'company_id' => $offer->company_id,
                 'company_logo' => $offer->company->logo, // Récupérer le logo de l'entreprise
                 'company_name' => $offer->company->name, // Récupérer le nom de l'entreprise
+                'company_id' => $offer->company->company_id, // Récupérer l'id de l'entreprise
                 'location' => $offer->location,
                 'date' => $offer->date,
                 'school_level_labels' => $offer->schoolLevels->pluck('school_level_label')->toArray(), // Liste des niveaux scolaires

@@ -12,7 +12,7 @@
             <div>
                 <h1>{{ $offer->title }}</h1> 
                 <div>
-                    <a href=""><h2>{{ $offer->company_name }}</h2></a>
+                    <a href="{{ url('/exposants/' . $offer->company_id) }}"><h2>{{ $offer->company_name }}</h2></a>
                     <div class="flex flex-row flex-wrap mb-1 mt-4" >
                         @foreach ($offer->school_path_labels as $path)
                             <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $path }}</p>
