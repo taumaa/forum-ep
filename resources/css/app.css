@@ -143,6 +143,7 @@ p{
 
 input:focus {
     border: 2px solid #132c85 !important;
+    --tw-ring-color: #132c85 !important;
     outline: none;
     background-color: white; /* Vert clair */
 }
