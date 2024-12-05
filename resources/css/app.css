@@ -114,5 +114,11 @@ p{
     color : white;
 }
 
-/*############################# PAGE D'UNE ENTREPRISE #############################*/
+/*############################# PAGE DES OFFRES #############################*/
+
+.offer-container{
+    display: flex;
+    flex-direction: row;
+    padding : 1%;
+}
 
