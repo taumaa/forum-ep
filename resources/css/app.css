@@ -8,7 +8,6 @@
     flex-direction: column;
     margin-left: 15%;
     margin-right: 15%;
-    padding : 1%;
 }
 
 h1 {
@@ -68,7 +67,6 @@ p{
 .white {
     background-color :  white;
     color : black;
-
 }
 
 /*############################# IMAGES ET LOGOS #############################*/
@@ -97,7 +95,6 @@ p{
     flex-direction: row;
     margin-left: 15%;
     margin-right: 15%;
-    padding : 1%;
 }
 
 /*############################# PAGE EDITIONS PRECEDENTES ET EXPOSANTS #############################*/
@@ -119,6 +116,33 @@ p{
 .offer-container{
     display: flex;
     flex-direction: row;
-    padding : 1%;
 }
 
+/*############################# PAGE DES DEVIS #############################*/
+
+.quote-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.quote-input {
+    display: block; /* Correspond à block */
+    width: 100%; /* Correspond à w-full */
+    border-radius: 0.375rem; /* Correspond à rounded-md */
+    border: 2; /* Correspond à border-0 */
+    border-color: #9a9a9a;
+    color: #1f2937; /* Correspond à text-gray-900 */
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05); /* Correspond à shadow-sm */
+    box-sizing: border-box; /* Ensures proper padding and border handling */
+    background-color: white; /*Default background color */
+    outline: none;
+    /* box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px) #f0f0f0 ; */
+}
+
+input:focus {
+    border: 2px solid #132c85 !important;
+    outline: none;
+    background-color: white; /* Vert clair */
+}

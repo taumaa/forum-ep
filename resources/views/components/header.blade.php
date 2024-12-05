@@ -1,4 +1,4 @@
-<nav class="nav-container p-4">
+<nav class="nav-container py-4">
   <div class="flex-none">
     <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-esiee.svg') }}" alt="" class="logo-esiee"> </a>
   </div>
