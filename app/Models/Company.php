@@ -22,14 +22,14 @@ class Company extends Model
      * Lien avec la table des offres de stage
      */
     public function internshipOffers() {
-        return $this->hasMany(Internship_offer::class, 'company_id');
+        return $this->hasMany(Internship_offer::class, 'company_id', 'company_id');
     }
 
     /**
      * Récupère toutes les entreprises
      */
     public static function getAllCompanies() {
-        $companies = Company::with(['internshipOffers.schoolPath'])->get();
+        $companies = Company::with(['internshipOffers.schoolPaths'])->get();
 
         return $companies->map(function ($company) {
             return (object) [
@@ -40,25 +40,58 @@ class Company extends Model
                 'description' => $company->description,
                 'website' => $company->website,
                 'contact' => $company->contact,
-                'school_paths' => $company->internshipOffers->map(function ($offer) {
-                    return (object) [
-                        'school_path_id' => $offer->schoolPath->school_path_id,
-                        'school_path_label' => $offer->schoolPath->school_path_label,
-                    ];
-                })->unique('school_path_id')->values()
+                'school_paths' => $company->internshipOffers
+                    ->flatMap(function ($offer) {
+                        return $offer->schoolPaths->pluck('school_path_label');
+                    })
+                    ->unique()->values()->all(),
             ];
         });
     }
 
     /**
-     * Récupère une entreprise selon son id
+     * Récupère une entreprise par son ID
      */
-    public static function getCompanyById($id) {
-        $company = Company::find($id); 
-        if (!$company) {
-            return null;
-        }
-        return $company;
+    public static function getCompanyById($companyId) {
+        $company = Company::with(['internshipOffers.schoolPaths', 'internshipOffers.schoolLevels'])
+            ->findOrFail($companyId);
+    
+        return (object) [
+            'company_id' => $company->company_id,
+            'name' => $company->name,
+            'logo' => $company->logo,
+            'sector' => $company->sector,
+            'description' => $company->description,
+            'website' => $company->website,
+            'contact' => $company->contact,
+            'school_paths' => $company->internshipOffers
+                ->flatMap(function ($offer) {
+                    return $offer->schoolPaths->pluck('school_path_label');
+                })
+                ->unique()->values()->all(),
+            'offers' => $company->internshipOffers->map(function ($offer) {
+                return (object) [
+                    'internship_offer_id' => $offer->internship_offer_id,
+                    'title' => $offer->title,
+                    'offer_description' => $offer->offer_description,
+                    'company_id' => $offer->company_id,
+                    'location' => $offer->location,
+                    'date' => $offer->date,
+                    'school_levels' => $offer->schoolLevels->map(function ($schoolLevel) {
+                        return (object) [
+                            'school_level_id' => $schoolLevel->school_level_id,
+                            'school_level_label' => $schoolLevel->school_level_label,
+                        ];
+                    }),
+                    'school_paths' => $offer->schoolPaths->map(function ($schoolPath) {
+                        return (object) [
+                            'school_path_id' => $schoolPath->school_path_id,
+                            'school_path_label' => $schoolPath->school_path_label,
+                        ];
+                    }),
+                ];
+            }),
+        ];
     }
 
     /**

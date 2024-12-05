@@ -13,14 +13,30 @@ class Internship_offer extends Model
         'title',
         'offer_description',
         'company_id',
-        'school_path_id',
     ];
 
     /**
      * Lien avec la table des filières
      */
-    public function schoolPath() {
-        return $this->belongsTo(School_path::class, 'school_path_id');
+    public function schoolPaths() {
+        return $this->belongsToMany(
+            School_path::class,
+            'school_path_offers', // Nom de la table pivot
+            'internship_offer_id', // Clé étrangère dans la table pivot
+            'school_path_id' // Clé étrangère dans la table cible
+        );
+    }
+
+    /**
+     * Lien avec la table des niveaux
+     */
+    public function schoolLevels() {
+        return $this->belongsToMany(
+            School_level::class,
+            'school_level_offers', // Nom de la table pivot
+            'internship_offer_id', // Clé étrangère dans la table pivot
+            'school_level_id' // Clé étrangère dans la table cible
+        );
     }
 
     /**
@@ -60,13 +76,12 @@ class Internship_offer extends Model
     /**
      * Crée une nouvelle offre de stage
      */
-    public static function createInternshipOffer($title, $offer_description, $company_id, $school_path_id) {
+    public static function createInternshipOffer($title, $offer_description, $company_id) {
         $offer = new self();
 
         $offer->title = $title;
         $offer->offer_description = $offer_description;
         $offer->company_id = $company_id;
-        $offer->school_path_id = $school_path_id;
 
         $success = $offer->save(); 
         return response()->json(['success' => $success, 'offer' => $offer]);
@@ -75,14 +90,13 @@ class Internship_offer extends Model
     /**
      * Modifie une offre de stage désignée par son id
      */
-    public static function updateInternshipOfferById($id, $title, $offer_description, $company_id, $school_path_id) {
+    public static function updateInternshipOfferById($id, $title, $offer_description, $company_id) {
         $offer = self::find($id);
 
         if ($offer) {
             $offer->title = $title;
             $offer->offer_description = $offer_description;
             $offer->company_id = $company_id;
-            $offer->school_path_id = $school_path_id;
 
             $success = $offer->save();
             return response()->json(['success' => $success, 'offer' => $offer]);
