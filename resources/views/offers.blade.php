@@ -5,7 +5,7 @@
 @section('content')
     <div class="container company gap-5 my-4 mx-5">
         @for ($i = 0; $i < 5; $i++) 
-        <div class="nav-container company gap-5 my-4 mx-5">
+        <div class="offer-container company gap-5 my-4 gray">
             <div>
                 <h1>logo</h1>
             </div>
