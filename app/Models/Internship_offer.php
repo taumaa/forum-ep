@@ -40,11 +40,33 @@ class Internship_offer extends Model
     }
 
     /**
+     * Lien avec la table des entreprises 
+     */
+    public function company() {
+        return $this->belongsTo(Company::class, 'company_id', 'company_id');
+    }
+
+    /**
      * Récupère toutes les offres de stage
      */
     public static function getAllInternshipOffers() {
-        return self::all();
-    }
+        $offers = self::with(['company', 'schoolLevels', 'schoolPaths'])->get();
+    
+        return $offers->map(function ($offer) {
+            return (object) [
+                'internship_offer_id' => $offer->internship_offer_id,
+                'title' => $offer->title,
+                'offer_description' => $offer->offer_description,
+                'company_id' => $offer->company_id,
+                'company_logo' => $offer->company->logo, // Récupérer le logo de l'entreprise
+                'company_name' => $offer->company->name, // Récupérer le nom de l'entreprise
+                'location' => $offer->location,
+                'date' => $offer->date,
+                'school_level_labels' => $offer->schoolLevels->pluck('school_level_label')->toArray(), // Liste des niveaux scolaires
+                'school_path_labels' => $offer->schoolPaths->pluck('school_path_label')->toArray(), // Liste des filières
+            ];
+        });
+    }    
 
     /**
      * Récupère une offre de stage selon son id
