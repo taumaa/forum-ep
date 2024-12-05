@@ -36,7 +36,7 @@ return new class extends Migration
         Schema::create('faqs', function (Blueprint $table) {
             $table->increments('faq_id');
             $table->string('question');
-            $table->string('answer');
+            $table->string('answer', 2000);
         });
 
         Schema::create('companies', function (Blueprint $table) {
@@ -44,7 +44,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('logo');
             $table->string('sector');
-            $table->string('description', 2000);
+            $table->string('description', 3000);
             $table->string('website');
             $table->string('contact');
         });
