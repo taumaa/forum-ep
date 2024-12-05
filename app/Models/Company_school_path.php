@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Company_school_path extends Model
 {
     protected $primaryKey = 'company_school_path_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'company_id',

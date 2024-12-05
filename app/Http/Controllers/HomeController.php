@@ -15,15 +15,20 @@ class HomeController extends Controller
      */
     public function getHomeInformations() {
         $home_informations = Setting::getAllSettings();
-
         $latest_forum = Forum_edition::getLatestForum();
-
-        $companies = Forum_edition_company::getCompaniesForForumById($latest_forum->forum_id);
-
-        $dateTime = new DateTime($latest_forum->date);
-        setlocale(LC_TIME, 'fr_FR.UTF-8');
-        $formatter = new \IntlDateFormatter('fr_FR', \IntlDateFormatter::LONG, \IntlDateFormatter::NONE);
-        $formatted_date = $formatter->format($dateTime);
+        
+        // Initialize companies as empty array by default
+        $companies = [];
+        $formatted_date = null;
+        
+        if ($latest_forum) {
+            $companies = Forum_edition_company::getCompaniesForForumById($latest_forum->forum_id);
+            
+            $dateTime = new DateTime($latest_forum->date);
+            setlocale(LC_TIME, 'fr_FR.UTF-8');
+            $formatter = new \IntlDateFormatter('fr_FR', \IntlDateFormatter::LONG, \IntlDateFormatter::NONE);
+            $formatted_date = $formatter->format($dateTime);
+        }
         
         return view('home', [
             'home_informations' => $home_informations, 

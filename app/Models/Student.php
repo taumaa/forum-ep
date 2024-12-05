@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Visitor extends Model
+class Student extends Model
 {
-    protected $primaryKey = 'visitor_id';
+    protected $primaryKey = 'student_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'last_name',

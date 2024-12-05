@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Internship_offer extends Model
 {
     protected $primaryKey = 'internship_offer_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'title',

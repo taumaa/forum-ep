@@ -4,7 +4,9 @@
 
 @section('content')
     <section> 
-        <img class="home-image" src="{{ asset('storage/images/' . $home_informations->image) }}" alt="Image d'accueil">
+        @if($home_informations && $home_informations->image)
+            <img class="home-image" src="{{ asset('storage/images/' . $home_informations->image) }}" alt="Image d'accueil">
+        @endif
     </section>
 
     <section class="white"> 
@@ -32,7 +34,7 @@
             <h1 class="mb-3">Entreprises présentes cette année</h1>
             @foreach($companies as $company)
                 <div class="flex flex-row gap-5 my-1 mx-5" >
-                    <img src="{{ $company->company->logo }}" alt="Logo {{ $company->company->name }}">
+                    <img src="{{ $company->company->logo }}" alt="Logo {{ $company->company->name }}" class="logos-companies">
                     <a href="{{ url('/exposants/' . $company->company->company_id) }}"><p>{{ $company->company->name }}</p></a>
                 </div>
             @endforeach
@@ -53,7 +55,9 @@
     <section class="white px-30"> 
         <div class="container">
             <video width="640" height="360" controls>
-                <source src="{{ asset('storage/images/' . $home_informations->video) }}" type="video/mp4">
+                @if($home_informations && $home_informations->video)
+                    <source src="{{ asset('storage/images/' . $home_informations->video) }}" type="video/mp4">
+                @endif
                 Vidéo du forum non prise en charge
             </video>
         </div>

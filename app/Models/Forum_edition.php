@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Forum_edition extends Model
 {
     protected $primaryKey = 'forum_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'date',
