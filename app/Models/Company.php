@@ -19,11 +19,35 @@ class Company extends Model
     ];
 
     /**
+     * Lien avec la table des offres de stage
+     */
+    public function internshipOffers() {
+        return $this->hasMany(Internship_offer::class, 'company_id');
+    }
+
+    /**
      * Récupère toutes les entreprises
      */
     public static function getAllCompanies() {
-        $companies = Company::all();
-        return $companies;
+        $companies = Company::with(['internshipOffers.schoolPath'])->get();
+
+        return $companies->map(function ($company) {
+            return (object) [
+                'company_id' => $company->company_id,
+                'name' => $company->name,
+                'logo' => $company->logo,
+                'sector' => $company->sector,
+                'description' => $company->description,
+                'website' => $company->website,
+                'contact' => $company->contact,
+                'school_paths' => $company->internshipOffers->map(function ($offer) {
+                    return (object) [
+                        'school_path_id' => $offer->schoolPath->school_path_id,
+                        'school_path_label' => $offer->schoolPath->school_path_label,
+                    ];
+                })->unique('school_path_id')->values()
+            ];
+        });
     }
 
     /**
