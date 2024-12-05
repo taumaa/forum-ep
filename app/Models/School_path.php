@@ -13,6 +13,10 @@ class School_path extends Model
         'school_path_label',
     ];
 
+    public function schoolPath()     {
+        return $this->belongsTo(School_path::class, 'school_path_id');
+    }
+
     /**
      * Récupère toutes les filières
      */

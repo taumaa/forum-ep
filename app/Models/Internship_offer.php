@@ -17,6 +17,13 @@ class Internship_offer extends Model
     ];
 
     /**
+     * Lien avec la table des filières
+     */
+    public function schoolPath() {
+        return $this->belongsTo(School_path::class, 'school_path_id');
+    }
+
+    /**
      * Récupère toutes les offres de stage
      */
     public static function getAllInternshipOffers() {
