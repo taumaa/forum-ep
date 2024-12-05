@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -23,6 +24,13 @@ class Company extends Model
      */
     public function internshipOffers() {
         return $this->hasMany(Internship_offer::class, 'company_id', 'company_id');
+    }
+
+    /**
+     * Lien avec la table des éditions de forum
+     */
+    public function forumEditions() {
+        return $this->belongsToMany(Forum_edition::class, 'forum_edition_companies', 'company_id', 'forum_id');
     }
 
     /**
@@ -48,6 +56,36 @@ class Company extends Model
             ];
         });
     }
+
+    /**
+     * Récupère toutes les entreprises par édition
+     */
+    public static function getAllCompaniesByForumEdition($forum_id) {
+        $companies = Company::with(['internshipOffers.schoolPaths'])
+        ->whereHas('forumEditions', function ($query) use ($forum_id) {
+            // Qualifier 'forum_id' avec le nom de la table 'forum_edition_company' ou 'forum_editions'
+            $query->where('forum_edition_companies.forum_id', $forum_id);
+        })
+        ->get();
+    
+        // Transformer les résultats pour inclure les school_paths uniques
+        return $companies->map(function ($company) {
+            return (object) [
+                'company_id' => $company->company_id,
+                'name' => $company->name,
+                'logo' => $company->logo,
+                'sector' => $company->sector,
+                'description' => $company->description,
+                'website' => $company->website,
+                'contact' => $company->contact,
+                'school_paths' => $company->internshipOffers
+                    ->flatMap(function ($offer) {
+                        return $offer->schoolPaths->pluck('school_path_label');
+                    })
+                    ->unique()->values()->all(),
+            ];
+        });
+    }    
 
     /**
      * Récupère une entreprise par son ID

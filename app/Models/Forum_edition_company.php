@@ -25,7 +25,7 @@ class Forum_edition_company extends Model
      */
     public static function getCompaniesForForumById($forum_id) {
         return self::where('forum_id', $forum_id)
-            ->with('company:company_id,name,logo') 
+            ->with('company:company_id,name,logo,sector') 
             ->get();
     }
 }
