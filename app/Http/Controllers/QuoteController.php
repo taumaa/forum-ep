@@ -29,8 +29,10 @@ class QuoteController extends Controller
             // Récupérer les données du formulaire
             $formData = $request->all();
 
+            // return $formData;
+
             // Nom du fichier Excel
-            $fileName = 'Demande_devis_' . $formData['company_name'] . '.xlsx';
+            $fileName = 'Demande_devis_' . $formData['Nom_entreprise'] . '.xlsx';
 
             // Utiliser Laravel Excel pour exporter les données
             Excel::store(new QuoteFormExport($formData), 'quotes/' . $fileName, 'public'); 

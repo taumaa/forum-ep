@@ -20,19 +20,13 @@ class QuoteFormExport implements FromCollection, WithHeadings, WithColumnWidths
      */
     public function collection()
     {
-        return collect([
-            [
-                $this->formData['company_name'] ?? '',
-                $this->formData['siret'] ?? '',
-                $this->formData['tva'] ?? '',
-                $this->formData['address'] ?? '',
-                $this->formData['postal_code'] ?? '',
-                $this->formData['city'] ?? '',
-                $this->formData['order_slip'] ?? '',
-                $this->formData['name'] ?? '',
-                $this->formData['stand'] ?? '',
-            ]
-        ]);
+        $data = [];
+
+        foreach ($this->formData as $key => $value) {
+            $data[] = $value ?? '';
+        }
+
+        return collect([$data]);
     }
 
     /**
@@ -40,17 +34,13 @@ class QuoteFormExport implements FromCollection, WithHeadings, WithColumnWidths
      */
     public function headings(): array
     {
-        return [
-            'Nom de l\'entreprise',
-            'N° de SIRET',
-            'N° de TVA intracommunautaire',
-            'Adresse de facturation',
-            'Code postal',
-            'Ville',
-            'Bon de commande interne',
-            'Nom & Prénom du signataire',
-            'Type de stand',
-        ];
+        $headings = [];
+
+        foreach ($this->formData as $key => $value) {
+            $headings[] = $key ?? '';
+        }
+
+        return $headings;
     }
 
     /**
