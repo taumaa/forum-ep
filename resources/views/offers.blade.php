@@ -22,8 +22,9 @@
                         @endforeach
                     </div>
                     <div class="flex flex-row flex-wrap my-1">
-                        <p class="p-1 px-4 min-w-40 mr-1 text-center">{{ $offer->date }}</p>
-                        <p class="p-1 px-4 min-w-40 text-center">{{ $offer->location }}</p>
+                        <p class="p-1 px-4 min-w-40 mr-1 text-center">{{ $offer->location }}</p>
+                        <p class="p-1 px-4 min-w-40 mr-1 text-center">{{ $offer->min_duration }} - {{ $offer->max_duration }} mois</p>
+                        <p class="p-1 px-4 min-w-40 text-center">{{ $offer->date }}</p>
                     </div>
                     <a href="" class="flex flex-row my-3 min-w-40 text-center">Retrouver l'offre ici : {{ $offer->offer_description }} </a>
                 </div>

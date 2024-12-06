@@ -34,18 +34,27 @@ class Company extends Model
     }
 
     /**
+     * Lien avec la table des secteurs d'activité
+     */
+    public function sector() {
+        return $this->belongsTo(Sector::class, 'sector_id', 'sector_id');
+    }
+
+
+    /**
      * Récupère toutes les entreprises
      */
     public static function getAllCompanies() {
-        $companies = Company::with(['internshipOffers.schoolPaths'])->get();
+        $companies = Company::with(['internshipOffers.schoolPaths', 'sector'])->get();
 
         return $companies->map(function ($company) {
             return (object) [
                 'company_id' => $company->company_id,
                 'name' => $company->name,
                 'logo' => $company->logo,
-                'sector' => $company->sector,
+                'sector' => $company->sector->sector_label,
                 'description' => $company->description,
+                'location' => $company->location,
                 'website' => $company->website,
                 'contact' => $company->contact,
                 'school_paths' => $company->internshipOffers
@@ -61,9 +70,8 @@ class Company extends Model
      * Récupère toutes les entreprises par édition
      */
     public static function getAllCompaniesByForumEdition($forum_id) {
-        $companies = Company::with(['internshipOffers.schoolPaths'])
+        $companies = Company::with(['internshipOffers.schoolPaths', 'sector'])
         ->whereHas('forumEditions', function ($query) use ($forum_id) {
-            // Qualifier 'forum_id' avec le nom de la table 'forum_edition_company' ou 'forum_editions'
             $query->where('forum_edition_companies.forum_id', $forum_id);
         })
         ->get();
@@ -74,15 +82,16 @@ class Company extends Model
                 'company_id' => $company->company_id,
                 'name' => $company->name,
                 'logo' => $company->logo,
-                'sector' => $company->sector,
+                'sector' => $company->sector->sector_label,
                 'description' => $company->description,
+                'location' => $company->location,
                 'website' => $company->website,
                 'contact' => $company->contact,
                 'school_paths' => $company->internshipOffers
                     ->flatMap(function ($offer) {
                         return $offer->schoolPaths->pluck('school_path_label');
                     })
-                    ->unique()->values()->all(),
+                    ->unique()->sort()->values()->all(),
             ];
         });
     }    
@@ -91,22 +100,23 @@ class Company extends Model
      * Récupère une entreprise par son ID
      */
     public static function getCompanyById($companyId) {
-        $company = Company::with(['internshipOffers.schoolPaths', 'internshipOffers.schoolLevels'])
+        $company = Company::with(['internshipOffers.schoolPaths', 'internshipOffers.schoolLevels', 'sector'])
             ->findOrFail($companyId);
     
         return (object) [
             'company_id' => $company->company_id,
             'name' => $company->name,
             'logo' => $company->logo,
-            'sector' => $company->sector,
+            'sector' => $company->sector->sector_label,
             'description' => $company->description,
+            'location' => $company->location,
             'website' => $company->website,
             'contact' => $company->contact,
             'school_paths' => $company->internshipOffers
                 ->flatMap(function ($offer) {
                     return $offer->schoolPaths->pluck('school_path_label');
                 })
-                ->unique()->values()->all(),
+                ->unique()->sort()->values()->all(),
             'offers' => $company->internshipOffers->map(function ($offer) {
                 return (object) [
                     'internship_offer_id' => $offer->internship_offer_id,
@@ -115,13 +125,15 @@ class Company extends Model
                     'company_id' => $offer->company_id,
                     'location' => $offer->location,
                     'date' => $offer->date,
-                    'school_levels' => $offer->schoolLevels->map(function ($schoolLevel) {
+                    'min_duration' => $offer->min_duration,
+                    'max_duration' => $offer->max_duration,
+                    'school_levels' => $offer->schoolLevels->sortBy('school_level_label')->map(function ($schoolLevel) {
                         return (object) [
                             'school_level_id' => $schoolLevel->school_level_id,
                             'school_level_label' => $schoolLevel->school_level_label,
                         ];
                     }),
-                    'school_paths' => $offer->schoolPaths->map(function ($schoolPath) {
+                    'school_paths' => $offer->schoolPaths->sortBy('school_path_label')->map(function ($schoolPath) {
                         return (object) [
                             'school_path_id' => $schoolPath->school_path_id,
                             'school_path_label' => $schoolPath->school_path_label,
@@ -142,20 +154,21 @@ class Company extends Model
     /**
      * Récupère toutes les entreprises selon un secteur d'activité
      */
-    public static function getCompaniesBySector($sector) {
-        return self::where('sector', $sector)->get();
+    public static function getCompaniesBySector($sector_id) {
+        return self::where('sector_id', $sector_id)->get();
     }
 
     /**
      * Crée une nouvelle entreprise
      */
-    public static function createCompany($name, $logo, $sector, $description, $website, $contact) {
+    public static function createCompany($name, $logo, $sector_id, $description, $location, $website, $contact) {
         $company = new Company();
 
         $company->name = $name;
         $company->logo = $logo;
-        $company->sector = $sector;
+        $company->sector_id = $sector_id;
         $company->description = $description;
+        $company->location = $location;
         $company->website = $website;
         $company->contact = $contact;
 
@@ -167,14 +180,15 @@ class Company extends Model
     /**
      * Modifie une entreprise désignée par son id
      */
-    public static function updateCompanyById($id, $name, $logo, $sector, $description, $website, $contact) {
+    public static function updateCompanyById($id, $name, $logo, $sector_id, $description, $location, $website, $contact) {
         $company = self::find($id);
 
         if ($company) {
             $company->name = $name;
             $company->logo = $logo;
-            $company->sector = $sector;
+            $company->sector_id = $sector_id;
             $company->description = $description;
+            $company->location = $location;
             $company->website = $website;
             $company->contact = $contact;
 
@@ -186,8 +200,8 @@ class Company extends Model
     /**
      * Supprime une entreprise désignée par son id
      */
-    public static function deleteCompanyById($id, $name, $logo, $sector, $description, $website, $contact) {
-        $company = self::find($id);
+    public static function deleteCompanyById($company_id) {
+        $company = self::find($company_id);
 
         if ($company) {
             $success = $company->delete();
