@@ -33,7 +33,10 @@ class QuoteController extends Controller
             $fileName = 'Demande_devis_' . $formData['company_name'] . '.xlsx';
 
             // Utiliser Laravel Excel pour exporter les données
-            return Excel::download(new QuoteFormExport($formData), $fileName);
+            Excel::store(new QuoteFormExport($formData), 'quotes/' . $fileName, 'public'); 
+
+            // Retourne la vue indiquant que l'opération est réussie
+            return view('quote_validation');
         } 
         return view('errors.404');
     }
