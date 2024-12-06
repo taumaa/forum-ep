@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('description', 3000);
             $table->string('image');
             $table->string('video');
+            $table->string('building');
         });
 
         Schema::create('faqs', function (Blueprint $table) {

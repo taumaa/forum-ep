@@ -15,6 +15,7 @@ class Setting extends Model
         'description',
         'image',
         'video',
+        'building',
     ];
 
     /**
@@ -28,7 +29,7 @@ class Setting extends Model
     /**
      * Modifie les informations de la page d'accueil
      */
-    public static function updateSettingById($id, $logo, $ico, $description, $image, $video) {
+    public static function updateSettingById($id, $logo, $ico, $description, $image, $video, $building) {
         $setting = self::find($id);
     
         if ($setting) {
@@ -37,23 +38,10 @@ class Setting extends Model
             $setting->description = $description;
             $setting->image = $image;
             $setting->video = $video;
+            $setting->building = $building;
     
             $success = $setting->save();
             return response()->json(['success' => $success, 'setting' => $setting]);
         }
-    }
-
-    /**
-     * Crée les informations de la page d'accueil
-     */
-    public static function createSetting($logo, $ico, $description, $image, $video) {
-        $setting = new Setting();
-
-        $setting->logo = $logo;
-        $setting->ico = $ico;
-        $setting->description = $description;
-        $setting->image = $image;
-        $setting->video = $video;
-        $success = $setting->save();
     }
 }

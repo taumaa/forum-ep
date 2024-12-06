@@ -22,7 +22,7 @@
             <div id="pratical-informations"class="flex flex-wrap justify-center items-center my-3">
                 <p class="dark-pink">{{ $formatted_date }}</p>
                 <p class="dark-pink">{{ $latest_forum->starting_hour }} - {{ $latest_forum->ending_hour }}</p>
-                <p class="dark-pink">Bâtiment Perrault</p>
+                <p class="dark-pink">{{ $home_informations->building }}</p>
                 <a href="https://www.esiee.fr/informations/plan-dacces" class="dark-pink" target="_blank"><p>Plan d'accès ></p></a>
                 <a href="https://www.esiee.fr/formations/les-formations-esiee-paris" class="dark-pink" target="_blank"><p>Nos filières ></p></a>
             </div>
