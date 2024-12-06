@@ -131,6 +131,11 @@ return new class extends Migration
             $table->foreign('company_id')->references('company_id')->on('companies')->onDelete('cascade');
         });
 
+        Schema::create('options', function (Blueprint $table) {
+            $table->increments('option_id');
+            $table->string('option_label');
+        });
+
         
     }
 
