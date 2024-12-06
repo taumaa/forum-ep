@@ -119,6 +119,13 @@ p{
     flex-direction: row;
 }
 
+/*############################# PAGE D'UNE ENTREPRISE' #############################*/
+
+.company-offer div div p{ 
+    background-color :  #bd1080;
+    color : white;
+}
+
 /*############################# PAGE DES DEVIS #############################*/
 
 .quote-container{
