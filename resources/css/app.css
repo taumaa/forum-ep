@@ -113,7 +113,8 @@ p{
 
 /*############################# PAGE DES OFFRES #############################*/
 
-.offer-container{
+.offer-container,
+.options-container{
     display: flex;
     flex-direction: row;
 }
@@ -128,6 +129,7 @@ p{
 }
 
 .quote-input {
+    margin: 15px 0px 15px 0px;
     display: block; /* Correspond à block */
     width: 100%; /* Correspond à w-full */
     border-radius: 0.375rem; /* Correspond à rounded-md */
@@ -138,11 +140,27 @@ p{
     box-sizing: border-box; /* Ensures proper padding and border handling */
     background-color: white; /*Default background color */
     outline: none;
-    /* box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px) #f0f0f0 ; */
 }
 
-input:focus {
+input:not([type="radio"]):focus {
     border: 2px solid #132c85 !important;
     outline: none;
-    background-color: white; /* Vert clair */
+    background-color: white;
 }
+
+.form-group:has(input:focus) label{
+    color: #132c85 ;
+    font-weight: 500;
+}
+
+.form-group:has(select:focus) label{
+    color: #132c85 ;
+    font-weight: 500;
+}
+
+.button-color {
+    background-color: #132c85 ;
+    border-radius: 0.375rem;
+    color: white;
+}
+
