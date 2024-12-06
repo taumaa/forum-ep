@@ -74,17 +74,17 @@
                 </div>
             </fieldset>
         </div>
-        <div class="options-container flex-wrap">
-            @for ($i=0; $i<6; ++$i)
+        <div class="options-container flex-wrap justify-between">
+           @foreach ($options as $option)
                 <div class="form-group mr-8 my-1">
-                    <label for="dropdown" class="mr-1">Choisissez une option :</label>
+                    <label for="dropdown" class="mr-1">{{$option->option_label}}</label>
                     <select id="dropdown" name="options">
                         @for ($j=0; $j<11; ++$j)
                             <option value="{{$j}}">{{$j}}</option>
                         @endfor
                     </select>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </section>
 

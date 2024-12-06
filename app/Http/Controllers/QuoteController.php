@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Option;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
@@ -11,7 +12,10 @@ class QuoteController extends Controller
      */
     public function goToQuote() {
         if (true) // chercker si on est bien pas connecté en tant qu'étudiant
-            return view('quote');
+            $options = Option::getAllOptions();
+            return view('quote', ['options' => $options]);
         return view('errors.404');
     }
+
+    
 }
