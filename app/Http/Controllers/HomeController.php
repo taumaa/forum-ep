@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sector;
+use App\Models\Company;
 use App\Models\Setting;
 use App\Models\Forum_edition;
 use App\Models\Forum_edition_company;

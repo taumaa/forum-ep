@@ -25,9 +25,24 @@ class Forum_edition_company extends Model
      */
     public static function getCompaniesForForumById($forum_id) {
         return self::where('forum_id', $forum_id)
-            ->with('company:company_id,name,logo,sector') 
-            ->get();
+            ->with(['company' => function ($query) {
+                $query->with('sector') // Charger la relation `sector` pour obtenir sector_label
+                      ->select('company_id', 'name', 'logo', 'sector_id'); // Inclure sector_id pour la relation
+            }])
+            ->get()
+            ->sortBy(function ($forumCompany) {
+                return $forumCompany->company->name; // Trier par name de company
+            })
+            ->map(function ($forumCompany) {
+                return (object) [
+                    'company_id' => $forumCompany->company->company_id,
+                    'name' => $forumCompany->company->name,
+                    'logo' => $forumCompany->company->logo,
+                    'sector' => $forumCompany->company->sector ? $forumCompany->company->sector->sector_label : null, // Utilise sector_label
+                ];
+            });
     }
+    
 }
 
 

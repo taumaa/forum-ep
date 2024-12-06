@@ -63,6 +63,8 @@ class Internship_offer extends Model
                 'company_id' => $offer->company->company_id, // Récupérer l'id de l'entreprise
                 'location' => $offer->location,
                 'date' => $offer->date,
+                'min_duration' => $offer->min_duration,
+                'max_duration' => $offer->max_duration,
                 'school_level_labels' => $offer->schoolLevels->pluck('school_level_label')->toArray(), // Liste des niveaux scolaires
                 'school_path_labels' => $offer->schoolPaths->pluck('school_path_label')->toArray(), // Liste des filières
             ];

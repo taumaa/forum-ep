@@ -9,7 +9,7 @@
 
         <section class="white"> 
             <div class="container">
-                <h1 class="mb-3">Les entreprises ayant participées en {{ $year }}</h1>
+                <h1 class="mb-3">Les entreprises ayant participé en {{ $year }}</h1>
                 @foreach ($companies as $company)
                     <div class="company flex flex-row gap-5 my-4 mx-5">
                         <div>

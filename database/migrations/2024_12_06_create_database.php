@@ -20,9 +20,12 @@ return new class extends Migration
         Schema::dropIfExists('company_school_paths');
         Schema::dropIfExists('internship_offers');
         Schema::dropIfExists('school_level_offers');
+        Schema::dropIfExists('school_path_offers');
         Schema::dropIfExists('students');
         Schema::dropIfExists('settings');
         Schema::dropIfExists('faqs');
+        Schema::dropIfExists('sectors');
+        Schema::dropIfExists('options');
 
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('setting_id');
@@ -31,6 +34,7 @@ return new class extends Migration
             $table->string('description', 3000);
             $table->string('image');
             $table->string('video');
+            $table->string('building');
         });
 
         Schema::create('faqs', function (Blueprint $table) {
@@ -39,14 +43,22 @@ return new class extends Migration
             $table->string('answer', 2000);
         });
 
+        Schema::create('sectors', function (Blueprint $table) {
+            $table->increments('sector_id');
+            $table->string('sector_label');
+        });
+
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('company_id');
             $table->string('name');
             $table->string('logo');
-            $table->string('sector');
+            $table->unsignedInteger('sector_id');
             $table->string('description', 3000);
+            $table->string('location');
             $table->string('website');
             $table->string('contact');
+
+            $table->foreign('sector_id')->references('sector_id')->on('sectors')->onDelete('cascade');
         });
 
         Schema::create('forum_editions', function (Blueprint $table) {
@@ -83,6 +95,8 @@ return new class extends Migration
             $table->unsignedInteger('company_id');
             $table->string('location');
             $table->string('date');
+            $table->unsignedInteger('min_duration');
+            $table->unsignedInteger('max_duration');
 
             $table->foreign('company_id')->references('company_id')->on('companies')->onDelete('cascade');
         });
@@ -129,6 +143,11 @@ return new class extends Migration
 
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->foreign('company_id')->references('company_id')->on('companies')->onDelete('cascade');
+        });
+
+        Schema::create('options', function (Blueprint $table) {
+            $table->increments('option_id');
+            $table->string('option_label');
         });
 
         

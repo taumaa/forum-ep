@@ -22,7 +22,7 @@
             <div id="pratical-informations"class="flex flex-wrap justify-center items-center my-3">
                 <p class="dark-pink">{{ $formatted_date }}</p>
                 <p class="dark-pink">{{ $latest_forum->starting_hour }} - {{ $latest_forum->ending_hour }}</p>
-                <p class="dark-pink">Bâtiment Perrault</p>
+                <p class="dark-pink">{{ $home_informations->building }}</p>
                 <a href="https://www.esiee.fr/informations/plan-dacces" class="dark-pink" target="_blank"><p>Plan d'accès ></p></a>
                 <a href="https://www.esiee.fr/formations/les-formations-esiee-paris" class="dark-pink" target="_blank"><p>Nos filières ></p></a>
             </div>
@@ -34,8 +34,8 @@
             <h1 class="mb-3">Entreprises présentes cette année</h1>
             @foreach($companies as $company)
                 <div class="flex flex-row gap-5 my-1 mx-5" >
-                    <img src="{{ $company->company->logo }}" alt="Logo {{ $company->company->name }}" class="logos-companies">
-                    <a href="{{ url('/exposants/' . $company->company->company_id) }}"><p>{{ $company->company->name }}</p></a>
+                    <img src="{{ $company->logo }}" alt="Logo {{ $company->name }}" class="logos-companies">
+                    <a href="{{ url('/exposants/' . $company->company_id) }}"><p>{{ $company->name }}</p></a>
                 </div>
             @endforeach
             <div id="pratical-informations"class="flex flex-wrap my-3">
