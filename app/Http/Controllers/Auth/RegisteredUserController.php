@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Student;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('register');
+        $school_paths = \App\Models\School_path::getAllSchoolPaths();
+        $school_levels = \App\Models\School_level::getAllSchoolLevels();
+        return view('register', ['school_paths' => $school_paths, 'school_levels' => $school_levels]);
     }
 
     /**

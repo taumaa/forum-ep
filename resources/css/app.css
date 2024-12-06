@@ -135,9 +135,9 @@ p{
     margin-right: 15%;
 }
 
-.quote-input {
+.quote-input,
+.register-input {
     margin: 15px 0px 15px 0px;
-    display: block; /* Correspond à block */
     width: 100%; /* Correspond à w-full */
     border-radius: 0.375rem; /* Correspond à rounded-md */
     border: 2; /* Correspond à border-0 */

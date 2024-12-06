@@ -3,75 +3,83 @@
 @section('title', 'Register')
 
 @section('content')
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                Register for an account
-            </h2>
+    <div class="container">
+        <div class="">
+            <h1 class="mt-10 text-center text-3xl ">
+                Incription pour les étudiants
+            </h1>
         </div>
 
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="mt-8 mx-32">
             <form class="space-y-6" action="{{ route('register') }}" method="POST">
                 @csrf
 
-                <div>
-                    <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
-                    <div class="mt-2">
-                        <input id="first_name" name="first_name" type="text" autocomplete="given-name" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
+                <div class="form-group mt-2">
+                    <label for="first_name" class="absolute white mb-2 ml-4 px-3">Prénom :*</label>
+                    <input id="first_name" name="first_name" type="text" autocomplete="given-name" required class="register-input">
                     @error('first_name')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div>
-                    <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">Last Name</label>
-                    <div class="mt-2">
-                        <input id="last_name" name="last_name" type="text" autocomplete="family-name" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
+                <div class="form-group mt-2">
+                    <label for="last_name" class="absolute white mb-2 ml-4 px-3">Nom :*</label>
+                    <input id="last_name" name="last_name" type="text" autocomplete="family-name" required class="register-input">
                     @error('last_name')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
                 
-                <div>
-                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                    <div class="mt-2">
-                        <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
+                <div class="form-group mt-2">
+                    <label for="email" class="absolute white mb-2 ml-4 px-3">Email ESIEE Paris :*</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required class="register-input">
                     @error('email')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
+                
+                <div class="form-group mr-8 my-1">
+                    <label for="dropdown" class="mr-1">Filiere :*</label>
+                    <select id="dropdown" name="options">
+                        @foreach ($school_paths as $school_path)
+                            <option value="{{$school_path->school_path_label}}" class="">{{$school_path->school_path_label}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                <div>
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                    <div class="mt-2">
-                        <input id="password" name="password" type="password" autocomplete="new-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
+                <div class="form-group mr-8 my-1">
+                    <label for="dropdown" class="mr-1">Niveau :*</label>
+                    <select id="dropdown" name="options">
+                        @foreach ($school_levels as $school_level)
+                            <option value="{{$school_level->school_level_label}}">{{$school_level->school_level_label}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label for="password" class="absolute white mb-2 ml-4 px-3">Mot de passe :*</label>
+                    <input id="password" name="password" type="password" autocomplete="new-password" required class="register-input">
                     @error('password')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div>
-                    <label for="password_confirmation" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
-                    <div class="mt-2">
-                        <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
+                <div class="form-group mt-2">
+                    <label for="password_confirmation" class="absolute white mb-2 ml-4 px-3">Confirmation du mot de passe :*</label>
+                    <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required class="register-input">
                 </div>
 
-                <div>
-                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                        Register
+                <div class="flex justify-center items-center py-5">
+                    <button type="submit" class="button-color border-2 px-6 py-2">
+                        Inscription
                     </button>
                 </div>
             </form>
 
             <p class="mt-10 text-center text-sm text-gray-500">
-                Already have an account?
+                Vous avez déjà un compte ?
                 <a href="{{ route('login') }}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                    Sign in
+                    Connexion
                 </a>
             </p>
         </div>
