@@ -27,29 +27,31 @@
 
                 <div>
                     <h2>Nos offres de stages</h2>
-                    <div>
+                    <div class="company-offer">
                         @foreach ($company->offers as $offer)
-                            <div class="dark-pink flex flex-col gap-5 mb-5" >
-                                <h3>{{ $offer->title }}</h3>
-                                <div class="flex flex-row gap-5 mb-5 justify-center" >
+                            <div class="gray flex flex-col gap-1 mb-5 p-6" >
+                                <h3 class="pl-11">{{ $offer->title }}</h3>
+                                <div class="flex flex-row flex-wrap mb-1 mt-2 pl-11" >
                                     @foreach ($offer->school_paths as $path)
-                                        <p class="p-1 px-4 min-w-40 text-center">{{ $path->school_path_label }}</p>
+                                        <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $path->school_path_label }}</p>
                                     @endforeach
                                     @foreach ($offer->school_levels as $level)
-                                        <p class="p-1 px-4 min-w-40 text-center">{{ $level->school_level_label }}</p>
+                                        <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $level->school_level_label }}</p>
                                     @endforeach
-                                    <p class="p-1 px-4 min-w-40 text-center">{{ $offer->offer_description }}</p>
-                                    <p class="p-1 px-4 min-w-40 text-center">{{ $offer->location }}</p>
-                                    <p class="p-1 px-4 min-w-40 text-center">{{ $offer->min_duration }} - {{ $offer->max_duration }} mois</p>
-                                    <p class="p-1 px-4 min-w-40 text-center">{{ $offer->date }}</p>
                                 </div>
+                                <div class="flex flex-row flex-wrap my-1 pl-11">
+                                    <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $offer->location }}</p>
+                                    <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $offer->min_duration }} - {{ $offer->max_duration }} mois</p>
+                                    <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $offer->date }}</p>
+                                </div>
+                                <a href="" class="min-w-40 mr-1 mt-1 pl-11">Retrouver l'offre ici : {{ $offer->offer_description }} </a>
                             </div>
                         @endforeach
                     </div>
                 </div>
             </div>
 
-            <div class="quote-container gray justify-center">
+            <div class="quote-container light-blue justify-center">
                 <img src="{{ $company->logo }}" alt="Logo {{ $company->name }}">
                 <div class="">
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->website }}</p>
