@@ -66,6 +66,8 @@ Route::get('/inscription', function () {
 # Page de demande de devis
 Route::get('/devis', [QuoteController::class, 'goToQuote']);
 
+Route::get('/quote_validation', [QuoteController::class, 'goToQuoteValidation']);
+
 ################### ADMIN ####################
 
 # Page pour administrer le site

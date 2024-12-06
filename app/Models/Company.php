@@ -16,7 +16,8 @@ class Company extends Model
         'sector',
         'description',
         'website',
-        'contact',
+        'email',
+        'phone',
     ];
 
     /**
@@ -56,7 +57,8 @@ class Company extends Model
                 'description' => $company->description,
                 'location' => $company->location,
                 'website' => $company->website,
-                'contact' => $company->contact,
+                'email' => $company->email,
+                'phone' => $company->phone,
                 'school_paths' => $company->internshipOffers
                     ->flatMap(function ($offer) {
                         return $offer->schoolPaths->pluck('school_path_label');
@@ -86,7 +88,8 @@ class Company extends Model
                 'description' => $company->description,
                 'location' => $company->location,
                 'website' => $company->website,
-                'contact' => $company->contact,
+                'email' => $company->email,
+                'phone' => $company->phone,
                 'school_paths' => $company->internshipOffers
                     ->flatMap(function ($offer) {
                         return $offer->schoolPaths->pluck('school_path_label');
@@ -111,7 +114,8 @@ class Company extends Model
             'description' => $company->description,
             'location' => $company->location,
             'website' => $company->website,
-            'contact' => $company->contact,
+            'email' => $company->email,
+            'phone' => $company->phone,
             'school_paths' => $company->internshipOffers
                 ->flatMap(function ($offer) {
                     return $offer->schoolPaths->pluck('school_path_label');
@@ -161,7 +165,7 @@ class Company extends Model
     /**
      * Crée une nouvelle entreprise
      */
-    public static function createCompany($name, $logo, $sector_id, $description, $location, $website, $contact) {
+    public static function createCompany($name, $logo, $sector_id, $description, $location, $website, $email, $phone) {
         $company = new Company();
 
         $company->name = $name;
@@ -170,7 +174,8 @@ class Company extends Model
         $company->description = $description;
         $company->location = $location;
         $company->website = $website;
-        $company->contact = $contact;
+        $company->email = $email;
+        $company->phone = $phone;
 
         $success = $company->save(); 
 
@@ -180,7 +185,7 @@ class Company extends Model
     /**
      * Modifie une entreprise désignée par son id
      */
-    public static function updateCompanyById($id, $name, $logo, $sector_id, $description, $location, $website, $contact) {
+    public static function updateCompanyById($id, $name, $logo, $sector_id, $description, $location, $website, $email, $phone) {
         $company = self::find($id);
 
         if ($company) {
@@ -190,7 +195,8 @@ class Company extends Model
             $company->description = $description;
             $company->location = $location;
             $company->website = $website;
-            $company->contact = $contact;
+            $company->email = $email;
+            $company->phone = $phone;
 
             $success = $company->save();
             return response()->json(['success' => $success, 'company' => $company]);

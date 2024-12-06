@@ -56,7 +56,8 @@ return new class extends Migration
             $table->string('description', 3000);
             $table->string('location');
             $table->string('website');
-            $table->string('contact');
+            $table->string('email');
+            $table->string('phone');
 
             $table->foreign('sector_id')->references('sector_id')->on('sectors')->onDelete('cascade');
         });
