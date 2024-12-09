@@ -8,7 +8,7 @@
                 <h1 class="mb-3">{{ $company->name }}</h1>
                 <div class="company flex flex-row gap-5 my-4 mx-5">
                     <div>
-                        <img src="{{ $company->logo }}" alt="Logo {{ $company->name }}">
+                        <img src="{{ asset('storage/company-logos/' . $company->logo) }}" class="logos-companies" alt="Logo {{ $company->name }}">
                     </div>
                     <div>
                         <div class="flex flex-row gap-5 mb-1 mt-4" >
@@ -51,8 +51,8 @@
                 </div>
             </div>
 
-            <div class="quote-container light-blue justify-center">
-                <img src="{{ $company->logo }}" alt="Logo {{ $company->name }}">
+            <div class="quote-container light-blue justify-center items-center">
+                <img src="{{ asset('storage/company-logos/' . $company->logo) }}" class="logos-companies" alt="Logo {{ $company->name }}">
                 <div class="">
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->website }}</p>
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->location }}</p>
