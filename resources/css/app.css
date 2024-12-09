@@ -84,18 +84,75 @@ p{
 
 }
 
-.logo-esiee{
+.nav-container .logo-esiee{
     width: 200px;
 }
 
+.nav-fixed .logo-esiee{
+    width: 100px;
+}
+
+
 /*########################################### NAV ###########################################*/
 
+/*##### nav fixed #####*/
+.nav-fixed{
+    display: flex;
+    flex-direction: row;
+    padding-left: 15%;
+    padding-right: 15%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 2px solid rgba(204, 204, 204, 0.9);
+}
+.nav-fixed div > ul > li {
+    padding-top:1rem ;
+    padding-bottom:1rem ;
+}
+
+.nav-fixed .years {
+    margin-top: 15px;
+    padding:10px 50px 10px 50px ;
+    background-color:#f0f0f0e6;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/*##### nav container #####*/
 .nav-container{
     display: flex;
     flex-direction: row;
-    margin-left: 15%;
-    margin-right: 15%;
+    padding-left: 15%;
+    padding-right: 15%;
+    border-bottom: 2px solid rgba(204, 204, 204, 0.9);
 }
+
+.nav-container div > ul > li {
+    padding-top:2rem ;
+    padding-bottom:2rem ;
+}
+
+.nav-container .years {
+    margin-top: 31px;
+    font-size: large;
+    padding:10px 50px 10px 50px ;
+    background-color:#f0f0f0e6;
+}
+
+.years {
+    display: none;
+}
+
+.years:hover,
+.dropdown:hover .years {
+    display: block;
+}
+
+
+
 
 /*############################# PAGE EDITIONS PRECEDENTES ET EXPOSANTS #############################*/
 
