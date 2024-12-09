@@ -80,8 +80,9 @@ p{
   height: 100%;
 }
 
-.logos-companies {
-
+.logos-companies{
+    max-width: 10rem;
+    max-height: 7rem;
 }
 
 .nav-container .logo-esiee{

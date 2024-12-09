@@ -69,6 +69,36 @@ class Company extends Model
     }
 
     /**
+     * Récupère toutes les entreprises par année
+     */
+    public static function getAllCompaniesByYear($date) {
+        $companies = Company::whereHas('forumEditions', function ($query) use ($date) {
+            $query->where('date', $date); 
+        })
+        ->with(['internshipOffers.schoolPaths', 'sector'])
+        ->get();
+
+        return $companies->map(function ($company) {
+            return (object) [
+                'company_id' => $company->company_id,
+                'name' => $company->name,
+                'logo' => $company->logo,
+                'sector' => $company->sector->sector_label,
+                'description' => $company->description,
+                'location' => $company->location,
+                'website' => $company->website,
+                'email' => $company->email,
+                'phone' => $company->phone,
+                'school_paths' => $company->internshipOffers
+                    ->flatMap(function ($offer) {
+                        return $offer->schoolPaths->pluck('school_path_label');
+                    })
+                    ->unique()->values()->all(),
+            ];
+        });
+    }
+
+    /**
      * Récupère toutes les entreprises par édition
      */
     public static function getAllCompaniesByForumEdition($forum_id) {

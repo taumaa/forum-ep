@@ -5,9 +5,9 @@
 @section('content')
     <form action="/quote-validation">
         <section class="quote-container flex flex-row gap-16 my-4 mx-5">
-            <div>
+            {{-- <div>
                 <h2>Ajouter le logo</h2>   
-            </div>
+            </div> --}}
             <div class="flex flex-col flex-grow">
                 <div class="form-group mt-2">
                     <label for="Nom_entreprise" class="absolute white mb-2 ml-4 px-3">Nom de l'entreprise :*</label>

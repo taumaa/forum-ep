@@ -7,7 +7,7 @@
         @foreach ($internship_offers as $offer) 
         <div class="offer-container company gap-5 my-4 gray">
             <div>
-                <img src="{{ $offer->company_logo }}" alt="Logo {{ $offer->company_name }}">
+                <img src="{{ asset('storage/company-logos/' . $offer->company_logo) }}" class="logos-companies" alt="Logo {{ $offer->company_name }}">
             </div>
             <div>
                 <h1>{{ $offer->title }}</h1> 
