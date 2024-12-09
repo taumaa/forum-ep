@@ -28,9 +28,7 @@ class QuoteController extends Controller
         if (true) { // chercker si on est bien pas connecté en tant qu'étudiant
             // Récupérer les données du formulaire
             $formData = $request->all();
-
-            // return $formData;
-
+            
             // Nom du fichier Excel
             $fileName = 'Demande_devis_' . $formData['Nom_entreprise'] . '.xlsx';
 
@@ -38,7 +36,7 @@ class QuoteController extends Controller
             Excel::store(new QuoteFormExport($formData), 'quotes/' . $fileName, 'public'); 
 
             // Retourne la vue indiquant que l'opération est réussie
-            return view('quote_validation');
+            return view('quote-validation');
         } 
         return view('errors.404');
     }
