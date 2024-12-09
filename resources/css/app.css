@@ -35,7 +35,7 @@ p{
 
 .dark-blue {
     background-color : #132c85;
-    color : black;
+    color : white;
 
 }
 
@@ -93,6 +93,24 @@ p{
     width: 100px;
 }
 
+.logo-esiee-footer{
+    width: 500px;
+}
+
+.logo-cci-paris-ile-de-france-education,
+.logo-univ-gustave-eiffel{
+    width: 190px;
+    margin-top : 30px;
+}
+
+.logo-cci-paris-ile-de-france-education{
+    margin-right : 10px;
+}
+
+.logo-univ-gustave-eiffel{
+    margin-left : 10px;
+    align-items: right;
+}
 
 /*########################################### NAV ###########################################*/
 
@@ -152,7 +170,14 @@ p{
     display: block;
 }
 
+/*########################################### FOOTER ###########################################*/
 
+.footer-container{
+    display: flex;
+    flex-direction: row;
+    padding-left: 15%;
+    padding-right: 15%;
+}
 
 
 /*############################# PAGE EDITIONS PRECEDENTES ET EXPOSANTS #############################*/
