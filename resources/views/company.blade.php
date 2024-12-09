@@ -56,6 +56,8 @@
                 <div class="">
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->website }}</p>
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->location }}</p>
+                    <p class="p-1 px-4 min-w-40 text-center">{{ $company->email }}</p>
+                    <p class="p-1 px-4 min-w-40 text-center">{{ $company->phone }}</p>
                 </div>
             </div>
         </section>
