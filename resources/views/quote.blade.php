@@ -3,7 +3,7 @@
 @section('title', 'devis') <!-- Définir un titre spécifique -->
 
 @section('content')
-    <form action="/quote_validation">
+    <form action="/quote-validation">
         <section class="quote-container flex flex-row gap-16 my-4 mx-5">
             <div>
                 <h2>Ajouter le logo</h2>   

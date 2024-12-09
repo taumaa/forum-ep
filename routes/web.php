@@ -10,6 +10,7 @@ use App\Http\Controllers\ForumEditionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\AdminController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -66,7 +67,8 @@ Route::get('/inscription', function () {
 # Page de demande de devis
 Route::get('/devis', [QuoteController::class, 'goToQuote']);
 
-Route::get('/quote_validation', [QuoteController::class, 'goToQuoteValidation']);
+# Récupérer la demande de devis dans un Excel
+Route::get('/quote-validation', [QuoteController::class, 'goToQuoteValidation']);
 
 ################### ADMIN ####################
 
@@ -74,6 +76,13 @@ Route::get('/quote_validation', [QuoteController::class, 'goToQuoteValidation'])
 Route::get('/admin', function () {
     return view('admin');
 });
+
+# Récupérer les entreprises dans un Excel
+Route::get('/get-all-companies', [AdminController::class, 'getAllCompanies']);
+
+# Récupérer les étudiants dans un Excel
+Route::get('/get-all-students', [AdminController::class, 'getAllStudents']);
+
 
 
 
