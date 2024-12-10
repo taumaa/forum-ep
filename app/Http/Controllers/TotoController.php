@@ -12,7 +12,7 @@ use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class TotoController extends Controller
 {
     /**
      * Récupère la liste des entreprises dans un excel

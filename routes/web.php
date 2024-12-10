@@ -10,7 +10,7 @@ use App\Http\Controllers\ForumEditionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\QuoteController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TotoController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -73,15 +73,15 @@ Route::get('/quote-validation', [QuoteController::class, 'goToQuoteValidation'])
 ################### ADMIN ####################
 
 # Page pour administrer le site
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/toto', function () {
+    return view('toto');
 });
 
 # Récupérer les entreprises dans un Excel
-Route::get('/get-all-companies', [AdminController::class, 'getAllCompanies']);
+Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);
 
 # Récupérer les étudiants dans un Excel
-Route::get('/get-all-students', [AdminController::class, 'getAllStudents']);
+Route::get('/get-all-students', [TotoController::class, 'getAllStudents']);
 
 
 // Groupe avec toutes les routes student
