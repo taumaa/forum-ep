@@ -68,7 +68,7 @@ class TotoController extends Controller
     }
 
     /**
-     * Enregistre le logo d'une entreprise
+     * Enregistre le CV d'un étudiant
      */
     public function uploadCv (Request $request) {
         $request->validate([
