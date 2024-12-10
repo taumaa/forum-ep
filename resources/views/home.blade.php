@@ -33,8 +33,8 @@
         <div class="container">
             <h1 class="mb-3">Entreprises présentes cette année</h1>
             @foreach($companies as $company)
-                <div class="flex flex-row gap-5 my-1 mx-5" >
-                    <img src="{{ $company->logo }}" alt="Logo {{ $company->name }}" class="logos-companies">
+                <div class="flex flex-row gap-5 my-1 mx-5 items-center" >
+                    <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies">
                     <a href="{{ url('/exposants/' . $company->company_id) }}"><p>{{ $company->name }}</p></a>
                 </div>
             @endforeach

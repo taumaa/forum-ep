@@ -13,7 +13,7 @@
                 @foreach ($companies as $company)
                     <div class="company flex flex-row gap-5 my-4 mx-5">
                         <div>
-                            <img src="{{ $company->logo }}" alt="Logo {{ $company->name }}">
+                            <img src="{{ asset('storage/company-logos/' . $company->logo) }}" class="logos-companies" alt="Logo {{ $company->name }}">
                         </div>
                         <div>
                             <a href="{{ url('/exposants/' . $company->company_id) }}"><h2>{{ $company->name }}</h2></a>

@@ -10,7 +10,7 @@ use App\Models\Forum_edition_company;
 use App\Models\School_level;
 use App\Models\School_path;
 use App\Models\School_path_company;
-use App\Models\Visitor;
+use App\Models\Student;
 use App\Models\Internship_offer;
 use App\Models\School_level_offer;
 use App\Models\Setting;
