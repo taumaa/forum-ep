@@ -7,6 +7,22 @@
         <section class="white"> 
             <div class="container">
                 <h1 class="mb-3">Les entreprises qui seront présentes</h1>
+                {{-- <div class="flex flex-row">
+                    <input type="search" id="site-search" name="q" />
+                    <button>Rechercher</button>
+                    <label for="paths" class="mr-1">Filieres</label>
+                    <select id="paths" name="paths">
+                        @foreach ($all_paths as $path)
+                            <option value="{{ $path->school_path_label }}">{{ $path->school_path_label }}</option>
+                        @endforeach
+                    </select>
+                    <label for="sectors" class="mr-1">Secteurs</label>
+                    <select id="sectors" name="sectors">
+                        @foreach ($all_sectors as $sector)
+                            <option value="{{ $sector->sector_label }}">{{ $sector->sector_label }}</option>
+                        @endforeach
+                    </select>
+                </div> --}}
                 @foreach ($exhibitors as $company)
                     <div class="company flex flex-row gap-5 my-4 mx-5">
                         <div>
