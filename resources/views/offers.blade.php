@@ -4,8 +4,36 @@
 
 @section('content')
     <div class="container company gap-5 my-4 mx-5">
-        @foreach ($internship_offers as $offer) 
-        <div class="offer-container company gap-5 my-4 gray">
+
+        
+        <div class="flex flex-row">
+            <input type="search" id="site-search" name="q" />
+            <button>Rechercher</button>
+            <label for="paths" class="mr-1">Filieres</label>
+            <select id="paths" name="paths">
+                @foreach ($all_paths as $path)
+                    <option value="{{ $path->school_path_label }}">{{ $path->school_path_label }}</option>
+                @endforeach
+            </select>
+            <label for="levels" class="mr-1">Niveaux</label>
+            <select id="levels" name="levels">
+                @foreach ($all_levels as $level)
+                    <option value="{{ $level->school_level_label }}">{{ $level->school_level_label }}</option>
+                @endforeach
+            </select>
+            <label for="months" class="mr-1">Mois de début</label>
+            <select id="months" name="months">
+                @foreach ($all_months as $month)
+                    <option value="{{ $month }}">{{ $month }}</option>
+                @endforeach
+            </select>
+        </div>
+ 
+        @foreach ($internship_offers as $offer)
+        <div class="offer-container company gap-5 my-4 gray"
+                data-paths="{{ implode(',', $offer->school_path_labels) }}"
+                data-levels="{{ implode(',', $offer->school_level_labels) }}"
+                data-month="{{ $offer->date }}">
             <div>
                 <img src="{{ asset('storage/company-logos/' . $offer->company_logo) }}" class="logos-companies" alt="Logo {{ $offer->company_name }}">
             </div>
