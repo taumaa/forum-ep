@@ -36,7 +36,7 @@ class QuoteController extends Controller
             Excel::store(new QuoteFormExport($formData), 'quotes/' . $fileName, 'public'); 
 
             // Retourne la vue indiquant que l'opération est réussie
-            return view('quote-validation');
+            return view('quote_validation');
         } 
         return view('errors.404');
     }
