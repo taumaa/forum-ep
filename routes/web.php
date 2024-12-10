@@ -84,7 +84,21 @@ Route::get('/get-all-companies', [AdminController::class, 'getAllCompanies']);
 Route::get('/get-all-students', [AdminController::class, 'getAllStudents']);
 
 
+// Groupe avec toutes les routes student
+Route::middleware(['auth'])->group(function () {
+    Route::get('/student', [StudentHomeController::class, 'index'])->name('student.home');
+});
 
+
+// Groupe avec toutes les routes admin.
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.home');
+});
+
+// Groupe avec toutes les routes admin.
+Route::middleware(['auth'])->group(function () {
+    Route::get('/company', [CompanyHomeController::class, 'index'])->name('company.home');
+});
 
 
 
