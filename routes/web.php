@@ -83,6 +83,12 @@ Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);
 # Récupérer les étudiants dans un Excel
 Route::get('/get-all-students', [TotoController::class, 'getAllStudents']);
 
+# Enregistrer un logo pour une entreprise
+Route::post('/upload-logo', [TotoController::class, 'uploadLogo']);
+
+# Enregistrer un cv pour un étudiant
+Route::post('/upload-cv', [TotoController::class, 'uploadCv']);
+
 
 // Groupe avec toutes les routes student
 Route::middleware(['auth'])->group(function () {
