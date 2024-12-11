@@ -3,6 +3,8 @@
 @section('title', 'offres') <!-- Définir un titre spécifique -->
 
 @section('content')
+    @vite(['resources/js/offers-filters.js'])
+    
     <div class="container company gap-5 my-4 mx-5">
 
         
