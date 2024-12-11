@@ -7,7 +7,7 @@
 
         
         <div class="flex flex-row">
-            <input type="search" id="site-search" name="q" />
+            <input type="search" id="offers-search" name="q" />
             <button>Rechercher</button>
             <label for="paths" class="mr-1">Filieres</label>
             <select id="paths" name="paths">
@@ -33,7 +33,8 @@
         <div class="offer-container company gap-5 my-4 gray"
                 data-paths="{{ implode(',', $offer->school_path_labels) }}"
                 data-levels="{{ implode(',', $offer->school_level_labels) }}"
-                data-month="{{ $offer->date }}">
+                data-month="{{ $offer->date }}"
+                data-title="{{ $offer->title }}">
             <div>
                 <img src="{{ asset('storage/company-logos/' . $offer->company_logo) }}" class="logos-companies" alt="Logo {{ $offer->company_name }}">
             </div>

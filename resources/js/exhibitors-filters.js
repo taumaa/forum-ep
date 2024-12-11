@@ -2,18 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sélectionner les éléments de filtre
     const pathSelect = document.getElementById('paths');
     const sectorSelect = document.getElementById('sectors');
+    const searchInput = document.getElementById('companies-search');
 
     // Fonction de filtrage des offres
     function filterOffres() {
         // Récupérer les valeurs sélectionnées
         const pathValue = pathSelect.value;
         const sectorValue = sectorSelect.value;
+        const searchValue = searchInput.value.toLowerCase();
 
         // Sélectionner toutes les offres
         const companies = document.querySelectorAll('.company');
         const companiesContainer = document.querySelector('.container');
 
         // Tableaux pour gérer la priorité
+        const prioritizedsearchOffers = [];
         const prioritizedOffers = []; //path & sector ok
         const secondprioritizedOffers = []; // path ok
         const otherOffers = []; //sector ok
@@ -22,22 +25,32 @@ document.addEventListener('DOMContentLoaded', () => {
         companies.forEach(company => {
             const paths = company.getAttribute('data-paths').split(',');
             const sectors = company.getAttribute('data-sectors');
+            const title = company.getAttribute('data-name').toLowerCase(); 
 
             // Vérifier si l'offre correspond aux filtres sélectionnés
             const matchesPath = !pathValue || paths.includes(pathValue);
             const matchesSector = !sectorValue || sectors.includes(sectorValue);
+            const matchesSearch = !searchValue || title.includes(searchValue);
 
             // Afficher ou cacher l'offre en fonction du résultat du filtre
-            if (matchesPath || matchesSector) {
-                if (matchesPath && matchesSector){
+            if (matchesPath || matchesSector || matchesSearch) {
+                if (matchesSearch){
+                    prioritizedsearchOffers.push(company);
+                }else if (matchesPath && matchesSector){
                     prioritizedOffers.push(company);
-                } else if (matchesPath){
+                }else if (matchesPath){
                     secondprioritizedOffers.push(company);
-                } else {
+                }else {
                     otherOffers.push(company);
                 }
                 // Ajouter l'offre au DOM si elle correspond
                 // Afficher d'abord les offres prioritaires, puis les autres
+                prioritizedsearchOffers.forEach(company => {
+                    company.style.display = 'flex';
+                    if (companiesContainer.contains(company)) {
+                        companiesContainer.appendChild(company);
+                    };
+                });
                 prioritizedOffers.forEach(company => {
                     company.style.display = 'flex';
                     if (companiesContainer.contains(company)) {
@@ -68,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ajouter des écouteurs d'événements aux filtres
     pathSelect.addEventListener('change', filterOffres);
     sectorSelect.addEventListener('change', filterOffres);
+    searchInput.addEventListener('input', filterOffres);
 
     // Initialiser le filtre
     filterOffres();

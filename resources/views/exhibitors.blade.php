@@ -8,7 +8,7 @@
             <div class="container">
                 <h1 class="mb-3">Les entreprises qui seront présentes</h1>
                 <div class="flex flex-row">
-                    <input type="search" id="site-search" name="q" />
+                    <input type="search" id="companies-search" name="companies-search" />
                     <button>Rechercher</button>
                     <label for="paths" class="mr-1">Filieres</label>
                     <select id="paths" name="paths">
@@ -27,7 +27,8 @@
                 @foreach ($exhibitors as $company)
                 <div class="company flex flex-row gap-5 my-4 mx-5"
                         data-paths="{{ implode(',', $company->school_paths) }}"
-                        data-sectors="{{ $company->sector }}">
+                        data-sectors="{{ $company->sector }}"
+                        data-name="{{ $company->name }}">
                     <div>
                         <img src="{{ asset('storage/company-logos/' . $company->logo) }}" class="logos-companies" alt="Logo {{ $company->name }}">
                     </div>

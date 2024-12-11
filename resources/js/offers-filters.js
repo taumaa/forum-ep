@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pathSelect = document.getElementById('paths');
     const levelSelect = document.getElementById('levels');
     const monthSelect = document.getElementById('months');
+    const searchInput = document.getElementById('offers-search');
 
     // Fonction de filtrage des offres
     function filterOffres() {
@@ -10,12 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const pathValue = pathSelect.value;
         const levelValue = levelSelect.value;
         const monthValue = monthSelect.value;
+        const searchValue = searchInput.value.toLowerCase();
 
         // Sélectionner toutes les offres
         const offers = document.querySelectorAll('.offer-container');
         const offersContainer = document.querySelector('.container');
 
         // Tableaux pour gérer la priorité
+        const prioritizedsearchOffers = [];
         const prioritizedOffers = []; //path & level ok
         const secondprioritizedOffers = []; // path ok
         const otherOffers = []; // level ok
@@ -25,15 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const paths = offer.getAttribute('data-paths').split(',');
             const levels = offer.getAttribute('data-levels').split(',');
             const month = offer.getAttribute('data-month');
+            const title = offer.getAttribute('data-title').toLowerCase(); 
 
             // Vérifier si l'offre correspond aux filtres sélectionnés
             const matchesPath = !pathValue || paths.includes(pathValue);
             const matchesLevel = !levelValue || levels.includes(levelValue);
             const matchesMonth = !monthValue || month.includes(monthValue);
+            const matchesSearch = !searchValue || title.includes(searchValue);
 
             
-            if (matchesPath || matchesLevel || matchesMonth) {
-                if (matchesPath && matchesLevel){
+            if (matchesPath || matchesLevel || matchesMonth || matchesSearch) {
+                if (matchesSearch){
+                    prioritizedsearchOffers.push(offer);
+                }else if (matchesPath && matchesLevel){
                     prioritizedOffers.push(offer);
                 }else if (matchesPath){
                     secondprioritizedOffers.push(offer);
@@ -41,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     otherOffers.push(offer);
                 }
                 // Afficher d'abord les offres prioritaires, puis les autres
+                prioritizedsearchOffers.forEach(offer => {
+                    offer.style.display = 'flex';
+                    if (offersContainer.contains(offer)) {
+                        offersContainer.appendChild(offer);
+                    };
+                });
                 prioritizedOffers.forEach(offer => {
                     offer.style.display = 'flex';
                     if (offersContainer.contains(offer)) {
@@ -75,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pathSelect.addEventListener('change', filterOffres);
     levelSelect.addEventListener('change', filterOffres);
     monthSelect.addEventListener('change', filterOffres);
+    searchInput.addEventListener('input', filterOffres);
 
     // Initialiser le filtre
     filterOffres();
