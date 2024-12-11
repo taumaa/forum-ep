@@ -7,7 +7,7 @@
             <p class="mt-3">
                 Étudiants ou entreprises, prenez contact avec nos équipes pour toutes informations supplémentaires.
             </p>
-            <a href="https://www.esiee.fr/contact-1" class="gray flex flex-grow py-1 pl-3 w-48 text-center mt-5"><p>Nous contacter ></p></a>
+            <a href="https://www.esiee.fr/contact-1" target="_blank" class="gray flex flex-grow py-1 pl-3 w-48 text-center mt-5"><p>Nous contacter ></p></a>
         </div>
         <div>
             <div>
