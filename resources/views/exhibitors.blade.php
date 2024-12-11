@@ -4,6 +4,8 @@
 
 @section('content')
 
+    @vite(['resources/js/exhibitors-filters.js' ])
+
         <section class="white"> 
             <div class="container">
                 <h1 class="mb-3">Les entreprises qui seront présentes</h1>
