@@ -31,6 +31,11 @@
     {{-- TELECHARGE UN ZIP AVEC TOUS LES CVS ETUDIANTS --}}
     <a href="{{ url('/download-all-cvs') }}"><p>Télécharger tous les CVs</p></a>
 
+    {{-- TELECHARGER ET VOIR LE CV D'UN ETUDIANT --}}
+    {{-- /!\ VÉRIFIER S'IL Y A UN NOM DE CV ENREGISTRÉ DANS LA BDD AVANT --}}
+    <a href="{{ asset('storage/cvs/' . 'cv-nom-prenom.pdf') }}" download="cv-nom-prenom.pdf">Télécharger un CV étudiant</a><br>
+    <a href="{{ asset('storage/cvs/' . 'cv-nom-prenom.pdf') }}" target="_blank">Voir un CV étudiant</a>
+
 @endsection
 
 
