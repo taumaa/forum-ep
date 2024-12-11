@@ -1,6 +1,6 @@
 <nav id="nav" class="nav-container">
   <div class="flex-none">
-    <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-esiee.svg') }}" alt="" class="logo-esiee pt-4"> </a>
+    <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-esiee.svg') }}" alt="Logo de l'ESIEE" class="logo-esiee pt-4"> </a>
   </div>
   <div class="flex flex-grow justify-end items-center">
     <ul class="flex flex-row">
