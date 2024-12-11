@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const offers = document.querySelectorAll('.offer-container');
         const offersContainer = document.querySelector('.container');
 
+        // Tableaux pour gérer la priorité
+        const prioritizedOffers = []; //path & level ok
+        const secondprioritizedOffers = []; // path ok
+        const otherOffers = []; // level ok
+
         // Filtrer chaque offre en fonction des critères
         offers.forEach(offer => {
             const paths = offer.getAttribute('data-paths').split(',');
@@ -26,13 +31,35 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesLevel = !levelValue || levels.includes(levelValue);
             const matchesMonth = !monthValue || month.includes(monthValue);
 
-            // Afficher ou cacher l'offre en fonction du résultat du filtre
+            
             if (matchesPath || matchesLevel || matchesMonth) {
-                offer.style.display = 'flex';
-                // Ajouter l'offre au DOM si elle correspond
-                if (offersContainer.contains(offer)) {
-                    offersContainer.appendChild(offer);
-            }} else {
+                if (matchesPath && matchesLevel){
+                    prioritizedOffers.push(offer);
+                }else if (matchesPath){
+                    secondprioritizedOffers.push(offer);
+                } else {
+                    otherOffers.push(offer);
+                }
+                // Afficher d'abord les offres prioritaires, puis les autres
+                prioritizedOffers.forEach(offer => {
+                    offer.style.display = 'flex';
+                    if (offersContainer.contains(offer)) {
+                        offersContainer.appendChild(offer);
+                    };
+                });
+                secondprioritizedOffers.forEach(offer => {
+                    offer.style.display = 'flex';
+                    if (offersContainer.contains(offer)) {
+                        offersContainer.appendChild(offer);
+                    };
+                });
+                otherOffers.forEach(offer => {
+                    offer.style.display = 'flex';
+                    if (offersContainer.contains(offer)) {
+                        offersContainer.appendChild(offer);
+                    };
+                });
+            } else {
                 // Retirer l'offre du DOM si elle ne correspond pas
                 offer.style.display = 'none';
                 if (!offersContainer.contains(offer)) {
@@ -40,6 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }}
         });
     }
+
+     
+
 
     // Ajouter des écouteurs d'événements aux filtres
     pathSelect.addEventListener('change', filterOffres);
