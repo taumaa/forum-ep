@@ -28,6 +28,9 @@
         <button type="submit">Télécharger un CV d'un étudiant</button>
     </form>
 
+    {{-- TELECHARGE UN ZIP AVEC TOUS LES CVS ETUDIANTS --}}
+    <a href="{{ url('/download-all-cvs') }}"><p>Télécharger tous les CVs</p></a>
+
 @endsection
 
 
