@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesPath = !pathValue || paths.includes(pathValue);
             const matchesLevel = !levelValue || levels.includes(levelValue);
             const matchesMonth = !monthValue || month.includes(monthValue);
-            const matchesSearch = !searchValue || title.includes(searchValue);
+            const matchesSearch = (!searchValue || title.includes(searchValue)) && searchValue.trim() != '';
 
             
             if (matchesPath || matchesLevel || matchesMonth || matchesSearch) {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     prioritizedOffers.push(offer);
                 }else if (matchesPath){
                     secondprioritizedOffers.push(offer);
-                } else {
+                }else {
                     otherOffers.push(offer);
                 }
                 // Afficher d'abord les offres prioritaires, puis les autres
@@ -80,9 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }}
         });
     }
-
-     
-
 
     // Ajouter des écouteurs d'événements aux filtres
     pathSelect.addEventListener('change', filterOffres);

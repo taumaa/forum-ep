@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Vérifier si l'offre correspond aux filtres sélectionnés
             const matchesPath = !pathValue || paths.includes(pathValue);
             const matchesSector = !sectorValue || sectors.includes(sectorValue);
-            const matchesSearch = !searchValue || title.includes(searchValue);
+            const matchesSearch = (!searchValue || title.includes(searchValue)) && searchValue.trim() != '';
 
             // Afficher ou cacher l'offre en fonction du résultat du filtre
             if (matchesPath || matchesSector || matchesSearch) {
