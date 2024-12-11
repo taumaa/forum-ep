@@ -1,45 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Sélectionner les éléments de filtre
-    const filiereSelect = document.getElementById('paths');
+    const pathSelect = document.getElementById('paths');
     const sectorSelect = document.getElementById('sectors');
 
     // Fonction de filtrage des offres
     function filterOffres() {
         // Récupérer les valeurs sélectionnées
-        const filiereValue = filiereSelect.value;
+        const pathValue = pathSelect.value;
         const sectorValue = sectorSelect.value;
 
         // Sélectionner toutes les offres
-        const offers = document.querySelectorAll('.company');
-        const offersContainer = document.querySelector('.container');
+        const companies = document.querySelectorAll('.company');
+        const companiesContainer = document.querySelector('.container');
 
         // Filtrer chaque offre en fonction des critères
-        offers.forEach(offer => {
-            const paths = offer.getAttribute('data-paths').split(',');
-            const sectors = offer.getAttribute('data-sectors');
+        companies.forEach(company => {
+            const paths = company.getAttribute('data-paths').split(',');
+            const sectors = company.getAttribute('data-sectors');
 
             // Vérifier si l'offre correspond aux filtres sélectionnés
-            const matchesFiliere = !filiereValue || paths.includes(filiereValue);
+            const matchesPath = !pathValue || paths.includes(pathValue);
             const matchesSector = !sectorValue || sectors.includes(sectorValue);
 
             // Afficher ou cacher l'offre en fonction du résultat du filtre
             console.log('totoooooo');
-            if (matchesFiliere || matchesSector) {
-                offer.style.display = 'flex';
+            if (matchesPath || matchesSector) {
+                company.style.display = 'flex';
                 // Ajouter l'offre au DOM si elle correspond
-                if (offersContainer.contains(offer)) {
-                    offersContainer.appendChild(offer);
+                if (companiesContainer.contains(company)) {
+                    companiesContainer.appendChild(company);
             }} else {
                 // Retirer l'offre du DOM si elle ne correspond pas
-                offer.style.display = 'none';
-                if (!offersContainer.contains(offer)) {
-                    offersContainer.removeChild(offer);
+                company.style.display = 'none';
+                if (!companiesContainer.contains(company)) {
+                    companiesContainer.removeChild(company);
             }}
         });
     }
 
     // Ajouter des écouteurs d'événements aux filtres
-    filiereSelect.addEventListener('change', filterOffres);
+    pathSelect.addEventListener('change', filterOffres);
     sectorSelect.addEventListener('change', filterOffres);
 
     // Initialiser le filtre
