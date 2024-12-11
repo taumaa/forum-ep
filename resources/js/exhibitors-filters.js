@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const companies = document.querySelectorAll('.company');
         const companiesContainer = document.querySelector('.container');
 
+        // Tableaux pour gérer la priorité
+        const prioritizedOffers = []; //path & sector ok
+        const secondprioritizedOffers = []; // path ok
+        const otherOffers = []; //sector ok
+
         // Filtrer chaque offre en fonction des critères
         companies.forEach(company => {
             const paths = company.getAttribute('data-paths').split(',');
@@ -23,13 +28,35 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesSector = !sectorValue || sectors.includes(sectorValue);
 
             // Afficher ou cacher l'offre en fonction du résultat du filtre
-            console.log('totoooooo');
             if (matchesPath || matchesSector) {
-                company.style.display = 'flex';
+                if (matchesPath && matchesSector){
+                    prioritizedOffers.push(company);
+                } else if (matchesPath){
+                    secondprioritizedOffers.push(company);
+                } else {
+                    otherOffers.push(company);
+                }
                 // Ajouter l'offre au DOM si elle correspond
-                if (companiesContainer.contains(company)) {
-                    companiesContainer.appendChild(company);
-            }} else {
+                // Afficher d'abord les offres prioritaires, puis les autres
+                prioritizedOffers.forEach(company => {
+                    company.style.display = 'flex';
+                    if (companiesContainer.contains(company)) {
+                        companiesContainer.appendChild(company);
+                    };
+                });
+                secondprioritizedOffers.forEach(company => {
+                    company.style.display = 'flex';
+                    if (companiesContainer.contains(company)) {
+                        companiesContainer.appendChild(company);
+                    };
+                });
+                otherOffers.forEach(company => {
+                    company.style.display = 'flex';
+                    if (companiesContainer.contains(company)) {
+                        companiesContainer.appendChild(company);
+                    };
+                });
+            } else {
                 // Retirer l'offre du DOM si elle ne correspond pas
                 company.style.display = 'none';
                 if (!companiesContainer.contains(company)) {
