@@ -141,6 +141,7 @@ return new class extends Migration
             $table->enum('type', ['student', 'company', 'admin']);
             $table->unsignedInteger('student_id')->nullable();
             $table->unsignedInteger('company_id')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
 
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->foreign('company_id')->references('company_id')->on('companies')->onDelete('cascade');

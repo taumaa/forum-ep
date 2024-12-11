@@ -11,6 +11,7 @@ use App\Models\School_path;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TotoController extends Controller
 {
@@ -36,5 +37,60 @@ class TotoController extends Controller
             return Excel::download(new AllStudentsExport($students), $fileName);
         }
         return view('errors.404');
+    }
+
+    /**
+     * Enregistre le logo d'une entreprise
+     */
+    public function uploadLogo (Request $request) {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg', 
+            'name' => 'required|string',
+        ]);
+
+        // Vérifier si un fichier a été téléchargé
+        if ($request->hasFile('image')) {
+            // Récupérer l'image téléchargée
+            $image = $request->file('image');
+
+            // Mise à jour du nom de l'image pour qu'il corresponde à son entreprise
+            $extension = $image->getClientOriginalExtension();
+            $imageName = "logo-" . $request->input('name') . "." . $extension;
+
+            // Enregistrer l'image dans le dossier 'company-logos'
+            $path = $image->storeAs('company-logos', $imageName, 'public');
+
+            // Retourner une réponse ou rediriger
+            return back()->with('success', 'Image téléchargée avec succès !');
+        }
+
+        return back()->with('error', 'Aucune image téléchargée !');
+    }
+
+    /**
+     * Enregistre le CV d'un étudiant
+     */
+    public function uploadCv (Request $request) {
+        $request->validate([
+            'cv' => 'required|mimes:pdf', 
+            'student' => 'required|string',
+        ]);
+
+        // Vérifier si un fichier a été téléchargé
+        if ($request->hasFile('cv')) {
+            // Récupérer le CV téléchargé
+            $cv = $request->file('cv');
+
+            // Mise à jour du nom du CV pour qu'il corresponde à son étudiant
+            $cvName = "cv-" . $request->input('student') . ".pdf";
+
+            // Enregistrer l'cv dans le dossier 'company-logos'
+            $path = $cv->storeAs('cvs', $cvName, 'public');
+
+            // Retourner une réponse ou rediriger
+            return back()->with('success', 'CV téléchargé avec succès !');
+        }
+
+        return back()->with('error', 'Aucun CV téléchargé !');
     }
 }
