@@ -76,15 +76,21 @@ Route::get('/quote-validation', [QuoteController::class, 'goToQuoteValidation'])
 ################### ADMIN ####################
 
 # Page pour administrer le site
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/toto', function () {
+    return view('toto');
 });
 
 # Récupérer les entreprises dans un Excel
-Route::get('/get-all-companies', [AdminController::class, 'getAllCompanies']);
+Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);
 
 # Récupérer les étudiants dans un Excel
-Route::get('/get-all-students', [AdminController::class, 'getAllStudents']);
+Route::get('/get-all-students', [TotoController::class, 'getAllStudents']);
+
+# Enregistre un logo pour une entreprise
+Route::post('/upload-logo', [TotoController::class, 'uploadLogo']);
+
+# Enregistre un CV pour un étudiant
+Route::post('/upload-cv', [TotoController::class, 'uploadCv']);
 
 
 // Groupe avec toutes les routes student
