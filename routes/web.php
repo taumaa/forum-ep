@@ -92,6 +92,9 @@ Route::post('/upload-logo', [TotoController::class, 'uploadLogo']);
 # Enregistre un CV pour un étudiant
 Route::post('/upload-cv', [TotoController::class, 'uploadCv']);
 
+# Télécharger tous les CVs étudiants
+Route::get('/download-all-cvs', [TotoController::class, 'downloadAllCvs']);
+
 
 // Groupe avec toutes les routes student
 Route::middleware(['auth'])->group(function () {
