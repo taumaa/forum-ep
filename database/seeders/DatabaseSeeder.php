@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             School_path::createSchoolPath($path);
         }
 
+        
         // Create forum editions
         $date = '2024-01-01';
         $picture = '/images/forum/2024.png';
@@ -41,13 +42,15 @@ class DatabaseSeeder extends Seeder
         $ending_hour = '12:00';
         $forumEditions = Forum_edition::createForum($date, $picture, $starting_hour, $ending_hour);
 
+        /*
         $logo = '/images/logo.png';
         $ico = '/images/favicon.ico';
         $description = 'Description de la plateforme';
         $image = '/images/home/home.png';
         $video = '/videos/home.mp4';
         $settings = Setting::createSetting($logo, $ico, $description, $image, $video);
-    
+        */
+
         // Create sample companies
         $company1 = Company::create([
             'name' => 'TechCorp Solutions',

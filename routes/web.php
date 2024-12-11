@@ -11,6 +11,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\TotoController;
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Student\StudentHomeController;
+use App\Http\Controllers\Company\CompanyHomeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -73,21 +76,15 @@ Route::get('/quote-validation', [QuoteController::class, 'goToQuoteValidation'])
 ################### ADMIN ####################
 
 # Page pour administrer le site
-Route::get('/toto', function () {
-    return view('toto');
+Route::get('/admin', function () {
+    return view('admin');
 });
 
 # Récupérer les entreprises dans un Excel
-Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);
+Route::get('/get-all-companies', [AdminController::class, 'getAllCompanies']);
 
 # Récupérer les étudiants dans un Excel
-Route::get('/get-all-students', [TotoController::class, 'getAllStudents']);
-
-# Enregistrer un logo pour une entreprise
-Route::post('/upload-logo', [TotoController::class, 'uploadLogo']);
-
-# Enregistrer un cv pour un étudiant
-Route::post('/upload-cv', [TotoController::class, 'uploadCv']);
+Route::get('/get-all-students', [AdminController::class, 'getAllStudents']);
 
 
 // Groupe avec toutes les routes student

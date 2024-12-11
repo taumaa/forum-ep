@@ -20,10 +20,12 @@ class Forum_edition extends Model
      * Récupère toutes les éditions des forums
      */
     public static function getAllYears() {
-        $years = Forum_edition::selectRaw('YEAR(date) as year')
+        
+        $years = Forum_edition::selectRaw('EXTRACT(YEAR FROM date) as year')
             ->distinct() // Évite les doublons
             ->orderBy('year', 'desc') // Trie les années dans l'ordre décroissant
             ->get();
+        
         return $years;
     }
 
