@@ -6,7 +6,7 @@
     <div class="container">
         <div class="">
             <h1 class="mt-10 text-center text-3xl ">
-                Incription pour les étudiants
+                Inscription pour les étudiants
             </h1>
         </div>
 
