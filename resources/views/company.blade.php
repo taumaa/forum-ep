@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="quote-container light-blue justify-center items-center">
+            <div class="container light-blue justify-center items-center flex flex-row">
                 <img src="{{ asset('storage/company-logos/' . $company->logo) }}" class="logos-companies" alt="Logo {{ $company->name }}">
                 <div class="">
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->website }}</p>

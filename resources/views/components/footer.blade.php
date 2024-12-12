@@ -1,5 +1,5 @@
 <footer class="dark-blue">
-    <div class="footer-container py-10 mt-8">
+    <div class="container flex-row py-10 mt-8">
         <div>
             <p class="text-3xl">
                 Vous avez des questions ?

@@ -3,7 +3,8 @@
 @section('title', 'faq') <!-- Définir un titre spécifique -->
 
 @section('content')
-    <div class="container gap-5 my-4 mx-5">
+    <div class="container gap-5 my-4 mx-5 pt-3 pb-7">
+        <h1>Foire aux questions</h1>
         @foreach ($faqs as $faq) 
             <div class="flex flex-col my-1">
                 <details>

@@ -3,8 +3,12 @@
 @section('title', 'devis') <!-- Définir un titre spécifique -->
 
 @section('content')
+    <div class="container">
+        <h1 class="mt-10 text-center text-3xl">Faire une demande de devis</h1>
+    </div>
+
     <form action="/quote-validation">
-        <section class="quote-container flex flex-row gap-16 my-4 mx-5">
+        <section class="container mt-8 mx-5">
             <div class="flex flex-col flex-grow">
                 <div class="form-group mt-2">
                     <label for="Nom_entreprise" class="absolute white mb-2 ml-4 px-3">Nom de l'entreprise :*</label>
@@ -21,9 +25,7 @@
                     <input id="TVA" name="TVA" type="text" autocomplete="" required class="quote-input ">
                 </div>
             </div>
-        </section>
 
-        <section class="container my-4 mx-5">
             <div class="form-group mt-2">
                 <label for="Adresse_de_facturation" class="absolute white mb-2 ml-4 px-3">Adresse de facturation :*</label>
                 <input id="Adresse_de_facturation" name="Adresse_de_facturation" type="text" autocomplete="street-address" required class="quote-input ">
@@ -50,9 +52,7 @@
                 <label for="Nom_du_signataire" class="absolute white mb-2 ml-4 px-3">Nom Prénom du signataire :*</label>
                 <input id="Nom_du_signataire" name="Nom_du_signataire" type="text" autocomplete="family-name" required class="quote-input ">
             </div>
-        </section>
-
-        <section class="container mb-16">
+            
             <div class="mb-8">
                 <fieldset class="flex flex-row">
                     <div class="my-1 mt-2 min-w-80">
@@ -90,6 +90,7 @@
             <input type="submit" value="Envoyer" class="button-color border-2 px-6 py-2">
         </section>   
     </form>
+    
 @endsection
 
 
