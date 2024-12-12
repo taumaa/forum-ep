@@ -8,8 +8,8 @@
         @foreach ($faqs as $faq) 
             <div class="flex flex-col my-1">
                 <details>
-                    <summary class="gray py-1 px-3 text-2xl cursor-pointer">{{ $faq->question }}</summary>
-                    <p class="white mx-9 border-l-2 border-dotted pl-2">{{ $faq->answer }}</p>
+                    <summary class="gray py-4 px-10 text-2xl cursor-pointer">{{ $faq->question }}</summary>
+                    <p class="white pl-4 py-3 mx-9 border-l-2 border-dotted pl-2">{{ $faq->answer }}</p>
                 </details>               
             </div>
         @endforeach
