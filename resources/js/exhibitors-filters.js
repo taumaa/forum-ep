@@ -1,3 +1,6 @@
+import './bootstrap';
+import Alpine from 'alpinejs';
+
 document.addEventListener('DOMContentLoaded', () => {
     // Sélectionner les éléments de filtre
     const pathSelect = document.getElementById('paths');
@@ -85,4 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialiser le filtre
     filterOffres();
+});
+
+
+window.Alpine = Alpine;
+Alpine.start();
+
+
+// Récupérez l'élément du menu
+const filter = document.getElementById("filters-container");
+
+// Ajoutez un gestionnaire d'événements pour le défilement
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) { // Si le défilement dépasse 50px
+    filter.classList.remove("filters-container"); // Retirer la classe par défaut
+    filter.classList.add("filters-fixed"); // Ajouter la classe de défilement
+  } else {
+    filter.classList.remove("filters-fixed"); // Retirer la classe de défilement
+    filter.classList.add("filters-container"); // Ajouter la classe par défaut
+  }
 });
