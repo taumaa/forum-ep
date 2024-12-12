@@ -76,9 +76,9 @@
                 </div>
             </form>
 
-            <p class="mt-10 text-center text-sm text-gray-500">
+            <p class="mt-5 text-center text-sm text-gray-500">
                 Vous avez déjà un compte ?
-                <a href="{{ route('login') }}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                <a href="{{ route('login') }}" class="font-semibold dark-pink-text underline-hover">
                     Connexion
                 </a>
             </p>

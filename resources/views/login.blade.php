@@ -37,9 +37,9 @@
                 </div>
             </form>
 
-            <p class="mt-10 text-center text-sm text-gray-500">
+            <p class="mt-5 text-center text-sm text-gray-500">
                 Pas encore de compte ?
-                <a href="/inscription" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                <a href="/register" class="font-semibold dark-pink-text underline-hover">
                     Inscription
                 </a>
             </p>

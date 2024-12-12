@@ -62,11 +62,6 @@ Route::get('/connexion', function () {
     return view('login');
 });
 
-# Page d'inscription pour les étudiants
-Route::get('/inscription', function () {
-    return view('signin');
-});
-
 # Page de demande de devis
 Route::get('/devis', [QuoteController::class, 'goToQuote']);
 

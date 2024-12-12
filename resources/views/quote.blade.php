@@ -10,7 +10,7 @@
     <form action="/quote-validation">
         <section class="container mt-8 mx-5">
             <div class="flex flex-col flex-grow">
-                <div class="form-group mt-2">
+                <div class="form-group mt-6">
                     <label for="Nom_entreprise" class="absolute white mb-2 ml-4 px-3">Nom de l'entreprise :*</label>
                     <input id="Nom_entreprise" name="Nom_entreprise" type="text" autocomplete="given-name" required class="quote-input ">
                 </div>
@@ -52,7 +52,7 @@
                 <label for="Nom_du_signataire" class="absolute white mb-2 ml-4 px-3">Nom Prénom du signataire :*</label>
                 <input id="Nom_du_signataire" name="Nom_du_signataire" type="text" autocomplete="family-name" required class="quote-input ">
             </div>
-            
+
             <div class="mb-8">
                 <fieldset class="flex flex-row">
                     <div class="my-1 mt-2 min-w-80">
