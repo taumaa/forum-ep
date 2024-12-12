@@ -3,16 +3,35 @@
 @section('title', 'editions precedentes') <!-- Définir un titre spécifique -->
 
 @section('content')
-        <section> 
-            <img src="{{ asset('storage/images/ESIEE-Home-Main-Picture.webp') }}" alt="">
-        </section>
 
-        <section class="white company-list"> 
+        @vite(['resources/js/forum-edition-filters.js' ])
+        
+        <div class="white company-list">
+            <img src="{{ asset('storage/images/ESIEE-Home-Main-Picture.webp') }}" alt="">
             <div class="container">
+                <div id="filters-container" class="filters-container w-screen gray py-3">
+                    <div class="filters flex flex-row gap-5">
+                        <input type="search" id="companies-search" name="companies-search" placeholder="Recherhcer une entreprise..."/>
+                        <select id="paths" name="paths">
+                            <option value="">--Filieres--</option>
+                            @foreach ($all_paths as $path)
+                                <option value="{{ $path->school_path_label }}">{{ $path->school_path_label }}</option>
+                            @endforeach
+                        </select>
+                        <select id="sectors" name="sectors">
+                            <option value="">--Secteurs--</option>
+                            @foreach ($all_sectors as $sector)
+                                <option value="{{ $sector->sector_label }}">{{ $sector->sector_label }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <h1 class="mb-3">Les entreprises ayant participé en {{ $year }}</h1>
                 @if (!$companies->isEmpty())
                     @foreach ($companies as $company)
-                        <div class="company flex flex-row gap-5 my-4 mx-5">
+                        <div class="company flex flex-row gap-5 my-4 mx-5" data-paths="{{ implode(',', $company->school_paths) }}"
+                            data-sectors="{{ $company->sector }}"
+                            data-name="{{ $company->name }}">
                             <div>
                                 <img src="{{ asset('storage/company-logos/' . $company->logo) }}" class="logos-companies" alt="Logo {{ $company->name }}">
                             </div>
@@ -33,7 +52,7 @@
                     <p class="p-1 px-4 min-w-40 mt-10">Aucune entreprise enregistrée</p>
                 @endif
             </div>
-        </section>
+        </div>
    
 
 @endsection

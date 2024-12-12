@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School_path;
+use App\Models\Sector;
 use App\Models\Forum_edition;
 use App\Models\Forum_edition_company;
 use App\Models\Company;
@@ -21,11 +23,15 @@ class ForumEditionController extends Controller
                 return redirect()->to('/exposants');
             } else {
                 $companies = Company::getAllCompaniesByForumEdition($forum_edition->forum_id);
+                $all_paths = School_path::getAllSchoolPaths() ;
+                $all_sectors = Sector::getAllSectors();
             
                 return view('forum_edition', [
                     'forum_edition' => $forum_edition,
                     'year' => $year,
-                    'companies' => $companies
+                    'companies' => $companies,
+                    'all_paths'=> $all_paths,
+                    'all_sectors' => $all_sectors
                 ]);
             }
         }
