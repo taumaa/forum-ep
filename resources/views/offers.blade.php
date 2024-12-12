@@ -6,7 +6,7 @@
     @vite(['resources/js/offers-filters.js'])
     
     <div class="container company gap-5 mx-5">
-        <div id="filters-container" class="filters-container w-screen gray py-3">
+        <div id="filters-container" class="filters-container w-full gray py-3">
             <div class="filters flex flex-row gap-5">
                 <input type="search" id="offers-search" name="q"  placeholder="Rechercher un stage..."/>
                 <select id="paths" name="paths">
