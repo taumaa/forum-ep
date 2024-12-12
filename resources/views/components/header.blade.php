@@ -7,7 +7,7 @@
       <li class="dropdown dropdown-menu mx-4 cursor-pointer"> ÉDITIONS PRÉCÉDENTES
       <ul class=" years absolute">
         @foreach ($years as $year)
-         <li class="year"><a href="{{ url('/editions-precedentes/'.$year->year) }}">{{$year->year}}</a></li>
+         <li class="year underline-hover"><a href="{{ url('/editions-precedentes/'.$year->year) }}">{{$year->year}}</a></li>
         @endforeach
       </ul></li>
       <li class="mx-4 "><a href="{{ url('/devis') }}"> DEMANDE DE DEVIS </a></li>

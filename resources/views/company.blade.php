@@ -44,7 +44,7 @@
                                     <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $offer->min_duration }} - {{ $offer->max_duration }} mois</p>
                                     <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $offer->date }}</p>
                                 </div>
-                                <a href="" class="min-w-40 mr-1 mt-1 pl-11">Retrouver l'offre ici : {{ $offer->offer_description }} </a>
+                                <a href="" class="min-w-40 mr-1 mt-1 pl-11 underline-hover">Retrouver l'offre ici : {{ $offer->offer_description }} </a>
                             </div>
                         @endforeach
                     </div>

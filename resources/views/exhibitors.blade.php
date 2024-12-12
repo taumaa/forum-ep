@@ -6,7 +6,7 @@
 
     @vite(['resources/js/exhibitors-filters.js' ])
 
-        <div class="white"> 
+        <div class="white company-list"> 
             <div class="container gap-5 mx-5">
                 <div id="filters-container" class="filters-container w-screen gray py-3">
                     <div class="filters flex flex-row gap-5">
