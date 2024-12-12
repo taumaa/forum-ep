@@ -32,12 +32,16 @@
     <section class="white"> 
         <div class="container">
             <h1 class="mb-3">Entreprises présentes cette année</h1>
-            @foreach($companies as $company)
-                <div class="flex flex-row gap-5 my-1 mx-5 items-center" >
-                    <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies">
-                    <a class="underline-hover" href="{{ url('/exposants/' . $company->company_id) }}"><p>{{ $company->name }}</p></a>
-                </div>
-            @endforeach
+            @if (!$companies->isEmpty())
+                @foreach($companies as $company)
+                    <div class="flex flex-row gap-5 my-1 mx-5 items-center" >
+                        <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies">
+                        <a class="underline-hover" href="{{ url('/exposants/' . $company->company_id) }}"><p>{{ $company->name }}</p></a>
+                    </div>
+                @endforeach
+            @else
+                <p class="p-1 px-4 min-w-40">Aucune entreprise n'est encore inscrite</p>
+            @endif
             <div id="pratical-informations"class="flex flex-wrap my-3">
                 <a href="{{ url('/devis') }}" class="light-blue p-1 w-44 text-center mx-4 my-3"><p>Faire un devis ></p></a>
                 <a href="{{ url('/exposants') }}" class="light-blue p-1 w-44 text-center mx-4 my-3"><p>Voir plus ></p></a>
