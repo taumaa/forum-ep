@@ -52,6 +52,10 @@ p{
     color : black;
 }
 
+.dark-pink-text {
+    color: #bd1080;
+}
+
 #pratical-informations .dark-pink {  /*applique le rose seulement pour la rubrique infos pratiques de la page d'accueil*/
     background-color :  #bd1080;
     color : white;
@@ -220,8 +224,21 @@ a.gray:hover {
 
 /*########################################### PAGE D'ACCUEIL ###########################################*/
 
-#discover-button {
+.discover {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.discover div {
+    margin-left: 0px;
+}
+
+.discover a {
     padding: .5rem;
+}
+
+.discover img {
+    max-height: 10rem;
 }
 
 section.white {
@@ -236,8 +253,18 @@ section.white {
     width: fit-content;
 }
 
+.company:nth-child(even) .underline-hover:hover {
+    color: #4263a3;
+}
+
 h2.underline-hover:hover {
     text-decoration-thickness: 1.5px;
+}
+
+.white-underline-hover:hover {
+    text-decoration: underline;
+    text-underline-offset: .3rem;
+    color: #FFFFFF;
 }
 
 /*############################# PAGE EDITIONS PRECEDENTES ET EXPOSANTS #############################*/
@@ -349,6 +376,7 @@ select:focus {
 .button-color {
     background-color: #132c85 ;
     color: white;
+    border: none;
 }
 
 .button-color:hover {
