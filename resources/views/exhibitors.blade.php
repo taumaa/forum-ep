@@ -6,25 +6,26 @@
 
     @vite(['resources/js/exhibitors-filters.js' ])
 
-        <section class="white company-list"> 
-            <div class="container">
-                <h1 class="mb-3">Les entreprises qui seront présentes</h1>
-                <div class="filters flex flex-row justify-center gap-5">
-                    <input type="search" id="companies-search" name="companies-search" placeholder="Recherhcer une entreprise..."/>
-                    <select id="paths" name="paths">
-                        <option value="">--Filieres--</option>
-                        @foreach ($all_paths as $path)
-                            <option value="{{ $path->school_path_label }}">{{ $path->school_path_label }}</option>
-                        @endforeach
-                    </select>
-                    <select id="sectors" name="sectors">
-                        <option value="">--Secteurs--</option>
-                        @foreach ($all_sectors as $sector)
-                            <option value="{{ $sector->sector_label }}">{{ $sector->sector_label }}</option>
-                        @endforeach
-                    </select>
+        <div class="white company-list"> 
+            <div class="container gap-5 mx-5">
+                <div id="filters-container" class="filters-container w-screen gray py-3">
+                    <div class="filters flex flex-row gap-5">
+                        <input type="search" id="companies-search" name="companies-search" placeholder="Recherhcer une entreprise..."/>
+                        <select id="paths" name="paths">
+                            <option value="">--Filieres--</option>
+                            @foreach ($all_paths as $path)
+                                <option value="{{ $path->school_path_label }}">{{ $path->school_path_label }}</option>
+                            @endforeach
+                        </select>
+                        <select id="sectors" name="sectors">
+                            <option value="">--Secteurs--</option>
+                            @foreach ($all_sectors as $sector)
+                                <option value="{{ $sector->sector_label }}">{{ $sector->sector_label }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-
+                <h1 class="mb-3">Les entreprises qui seront présentes</h1>
                 @if (!$exhibitors->isEmpty())
                     @foreach ($exhibitors as $company)
                     <div class="company flex flex-row gap-5 my-4 mx-5"
@@ -55,7 +56,7 @@
                     <p class="p-1 px-4 min-w-40 mt-10">Aucune entreprise enregistrée</p>
                 @endif
             </div>
-        </section>
+        </div>
    
 
 @endsection
