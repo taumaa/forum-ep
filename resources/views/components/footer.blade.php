@@ -1,5 +1,5 @@
 <footer class="dark-blue">
-    <div class="footer-container py-8">
+    <div class="footer-container py-10 mt-8">
         <div>
             <p class="text-3xl">
                 Vous avez des questions ?
@@ -11,11 +11,11 @@
         </div>
         <div>
             <div>
-                <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-esiee-footer.svg') }}" alt="" class="logo-esiee-footer"> </a>
+                <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-esiee-footer.svg') }}" alt="Logo de l'ESIEE" class="logo-esiee-footer"> </a>
             </div>
             <div class="flex felx-row">
-                <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-cci-paris-ile-de-france-education.svg') }}" alt="" class="logo-cci-paris-ile-de-france-education"> </a>
-                <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-univ-gustave-eiffel.svg') }}" alt="" class="logo-univ-gustave-eiffel"> </a>
+                <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-cci-paris-ile-de-france-education.svg') }}" alt="Logo de la CTI" class="logo-cci-paris-ile-de-france-education"> </a>
+                <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-univ-gustave-eiffel.svg') }}" alt="Logo de l'université Gustave Eiffel" class="logo-univ-gustave-eiffel"> </a>
             </div>
         </div>
     </div>

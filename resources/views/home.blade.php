@@ -16,10 +16,10 @@
         </div>
     </section>
 
-    <section class="gray"> 
+    <section class="gray py-2"> 
         <div class="container">
             <h1>Infos pratiques</h1>
-            <div id="pratical-informations"class="flex flex-wrap justify-center items-center my-3">
+            <div id="pratical-informations"class="flex flex-wrap justify-center items-center py-5">
                 <p class="dark-pink">{{ $formatted_date }}</p>
                 <p class="dark-pink">{{ $latest_forum->starting_hour }} - {{ $latest_forum->ending_hour }}</p>
                 <p class="dark-pink">{{ $home_informations->building }}</p>
@@ -45,10 +45,10 @@
         </div>
     </section>
 
-    <section class="light-blue"> 
+    <section class="light-blue py-4"> 
         <div class="container">
             <h2>Accéder à toutes les offres : </h2>
-            <a href="{{ url('/offres') }}" class="gray p-1 w-36 text-center mx-5 my-3"> Découvrir > </a>
+            <a href="{{ url('/offres') }}" id="discover-button" class="gray p-1 w-36 text-center mx-5 my-3"> Découvrir > </a>
         </div>
     </section>
 

@@ -4,7 +4,7 @@
   </div>
   <div class="flex flex-grow justify-end items-center">
     <ul class="flex flex-row">
-      <li class="dropdown dropdown-menu mx-4 cursor-pointer"> EDITIONS PRECEDENTES
+      <li class="dropdown dropdown-menu mx-4 cursor-pointer"> ÉDITIONS PRÉCÉDENTES
       <ul class=" years absolute">
         @foreach ($years as $year)
          <li class="year"><a href="{{ url('/editions-precedentes/'.$year->year) }}">{{$year->year}}</a></li>

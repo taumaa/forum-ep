@@ -26,7 +26,7 @@
                 </div>
 
                 <div>
-                    <h2>Nos offres de stages</h2>
+                    <h2 class="mb-5">Nos offres de stages</h2>
                     <div class="company-offer">
                         @foreach ($company->offers as $offer)
                             <div class="gray flex flex-col gap-1 mb-5 p-6" >

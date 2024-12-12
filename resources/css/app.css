@@ -54,14 +54,36 @@ p{
     text-align: center;
 }
 
+#pratical-informations a.dark-pink {
+    padding : 0%;
+}
+
+#pratical-informations .dark-pink p {
+    padding : 4%;
+}
+
 .dark-pink {
     background-color :  #bd1080;
     color : white;
 }
 
+a.dark-pink:hover,
+a.dark-pink p:hover {
+    background-color :  #970d66;
+}
+
+a.light-blue:hover,
+a.light-blue p:hover {
+    background-color :  #38548b;
+}
+
 .gray {
     background-color :  #f0f0f0;
-    color : black;
+    color : black
+}
+
+a.gray:hover {
+    background-color :  #d9d9d9;
 }
 
 .white {
@@ -127,6 +149,7 @@ p{
     z-index: 999;
     background: rgba(255, 255, 255, 0.9);
     border-bottom: 2px solid rgba(204, 204, 204, 0.9);
+    font-weight: 600;
 }
 .nav-fixed div > ul > li {
     padding-top:1rem ;
@@ -147,6 +170,7 @@ p{
     padding-left: 15%;
     padding-right: 15%;
     border-bottom: 2px solid rgba(204, 204, 204, 0.9);
+    font-weight: 600;
 }
 
 .nav-container div > ul > li {
@@ -159,6 +183,7 @@ p{
     font-size: large;
     padding:10px 50px 10px 50px ;
     background-color:#f0f0f0e6;
+    z-index: 1;
 }
 
 .years {
@@ -179,19 +204,37 @@ p{
     padding-right: 15%;
 }
 
+/*########################################### PAGE D'ACCUEIL ###########################################*/
+
+#discover-button {
+    padding: .5rem;
+}
+
+section.white {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 
 /*############################# PAGE EDITIONS PRECEDENTES ET EXPOSANTS #############################*/
 
 .company:nth-child(odd) div div p,
-.company:nth-child(odd) div a p{ /*selectionne les enfants impaires*/
+.company:nth-child(odd) div a p { /*selectionne les enfants impaires*/
     background-color :  #bd1080;
     color : white;
+}
+
+.company:nth-child(odd) div a:hover p { 
+    background-color :  #970d66;
 }
 
 .company:nth-child(even) div div p,
 .company:nth-child(even) div a p {
     background-color : #4263a3; /*selectionne les enfants paires*/
     color : white;
+}
+
+.company:nth-child(even) div a:hover p { 
+    background-color :  #38548b;
 }
 
 /*############################# PAGE DES OFFRES #############################*/
@@ -202,7 +245,7 @@ p{
     flex-direction: row;
 }
 
-/*############################# PAGE D'UNE ENTREPRISE' #############################*/
+/*############################# PAGE D'UNE ENTREPRISE #############################*/
 
 .company-offer div div p{ 
     background-color :  #bd1080;
@@ -232,7 +275,14 @@ p{
     outline: none;
 }
 
-input:not([type="radio"]):not([type="submit"]):focus {
+input[type="radio"]:focus,
+input[type="radio"]:checked {
+    --tw-ring-color: #FFFFFF !important;
+    background-color: #132c85 !important;
+}
+
+input:not([type="radio"]):not([type="submit"]):focus,
+select:focus {
     border: 2px solid #132c85 !important;
     --tw-ring-color: #132c85 !important;
     outline: none;
@@ -251,11 +301,13 @@ input:not([type="radio"]):not([type="submit"]):focus {
 
 .button-color {
     background-color: #132c85 ;
-    border-radius: 0.375rem;
     color: white;
 }
 
-.button-color:focus {
+.button-color:hover {
     background-color: #0c1d5e ;
 }
 
+label.white {
+    border-radius: 50px;
+}
