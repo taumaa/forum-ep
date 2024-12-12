@@ -30,7 +30,7 @@
             </div>
         </div>
  
-        @if ($internship_offers->isEmpty())
+        @if (!$internship_offers->isEmpty())
             <div class="my-12">
             @foreach ($internship_offers as $offer)
             <div class="offer-container company gap-5 gray"
@@ -64,7 +64,7 @@
             </div>
             @endforeach
         @else
-            <p class="p-1 px-4 min-w-40 mt-10">Aucune offre de stage à proposer</p>
+            <p class="p-1 px-4 min-w-40 mt-20">Aucune offre de stage à proposer</p>
         @endif
     </div>
 @endsection
