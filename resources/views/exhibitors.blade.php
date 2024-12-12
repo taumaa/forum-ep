@@ -25,11 +25,11 @@
                         </select>
                     </div>
                 </div>
-                <h1 class="mb-3">Les entreprises qui seront présentes</h1>
+                <h1 class="mb-5 mt-28">Les entreprises qui seront présentes</h1>
                 <div>
                     @if (!$exhibitors->isEmpty())
                         @foreach ($exhibitors as $company)
-                        <div class="company flex flex-row gap-5 my-4 mx-5"
+                        <div class="company flex flex-row gap-5 my-4 gray p-5"
                                 data-paths="{{ implode(',', $company->school_paths) }}"
                                 data-sectors="{{ $company->sector }}"
                                 data-name="{{ $company->name }}">

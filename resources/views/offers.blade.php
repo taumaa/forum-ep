@@ -29,11 +29,12 @@
                 </select>
             </div>
         </div>
+
+        <h1 class="mb-5 mt-28">Les offresde stage disponibles</h1>
  
         @if (!$internship_offers->isEmpty())
-            <div class="my-12">
             @foreach ($internship_offers as $offer)
-            <div class="offer-container company gap-5 gray"
+            <div class="offer-container company gap-5 gray p-5"
                     data-paths="{{ implode(',', $offer->school_path_labels) }}"
                     data-levels="{{ implode(',', $offer->school_level_labels) }}"
                     data-month="{{ $offer->date }}"
