@@ -9,17 +9,16 @@
         <section class="white"> 
             <div class="container">
                 <h1 class="mb-3">Les entreprises qui seront présentes</h1>
-                <div class="flex flex-row">
-                    <input type="search" id="companies-search" name="companies-search" />
-                    <button>Rechercher</button>
-                    <label for="paths" class="mr-1">Filieres</label>
+                <div class="filters flex flex-row justify-center gap-5">
+                    <input type="search" id="companies-search" name="companies-search" placeholder="Recherhcer une entreprise..."/>
                     <select id="paths" name="paths">
+                        <option value="">--Filieres--</option>
                         @foreach ($all_paths as $path)
                             <option value="{{ $path->school_path_label }}">{{ $path->school_path_label }}</option>
                         @endforeach
                     </select>
-                    <label for="sectors" class="mr-1">Secteurs</label>
                     <select id="sectors" name="sectors">
+                        <option value="">--Secteurs--</option>
                         @foreach ($all_sectors as $sector)
                             <option value="{{ $sector->sector_label }}">{{ $sector->sector_label }}</option>
                         @endforeach
