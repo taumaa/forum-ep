@@ -1,12 +1,12 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
 
+
 document.addEventListener('DOMContentLoaded', () => {
     // Sélectionner les éléments de filtre
     const pathSelect = document.getElementById('paths');
     const sectorSelect = document.getElementById('sectors');
     const searchInput = document.getElementById('companies-search');
-    //const scrollElement = document.getElementById('top-page');
 
     // Fonction de filtrage des offres
     function filterOffres() {
@@ -89,23 +89,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialiser le filtre
     filterOffres();
-
-    // if (scrollElement) {
-    //     // Défile vers la section des offres
-    //     scrollElement.scrollIntoView({ behavior: "smooth" }); // Défilement fluide
-    // }
 });
-
 
 
 window.Alpine = Alpine;
 Alpine.start();
+
+
 // Récupérez l'élément du menu
 const filter = document.getElementById("filters-container");
 
 // Ajoutez un gestionnaire d'événements pour le défilement
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) { // Si le défilement dépasse 50px
+  if (window.scrollY > 900) { // Si le défilement dépasse 50px
     filter.classList.remove("filters-container"); // Retirer la classe par défaut
     filter.classList.add("filters-fixed"); // Ajouter la classe de défilement
   } else {
