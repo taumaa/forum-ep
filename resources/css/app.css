@@ -226,6 +226,16 @@ section.white {
     padding-bottom: 2rem;
 }
 
+.underline-hover:hover {
+    text-decoration: underline;
+    text-underline-offset: .3rem;
+    color: #bd1080;
+}
+
+h2.underline-hover:hover {
+    text-decoration-thickness: 1.5px;
+}
+
 /*############################# PAGE EDITIONS PRECEDENTES ET EXPOSANTS #############################*/
 
 .company:nth-child(odd) div div p,
@@ -246,6 +256,14 @@ section.white {
 
 .company:nth-child(even) div a:hover p { 
     background-color :  #38548b;
+}
+
+.company a {
+    width: fit-content;
+}
+
+section.white.company-list {
+    padding-bottom: 0px;
 }
 
 /*############################# PAGE DES OFFRES #############################*/

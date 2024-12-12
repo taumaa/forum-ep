@@ -35,7 +35,7 @@
             @foreach($companies as $company)
                 <div class="flex flex-row gap-5 my-1 mx-5 items-center" >
                     <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies">
-                    <a href="{{ url('/exposants/' . $company->company_id) }}"><p>{{ $company->name }}</p></a>
+                    <a href="{{ url('/exposants/' . $company->company_id) }}"><p class="underline-hover">{{ $company->name }}</p></a>
                 </div>
             @endforeach
             <div id="pratical-informations"class="flex flex-wrap my-3">
@@ -50,6 +50,7 @@
             <h2>Accéder à toutes les offres : </h2>
             <a href="{{ url('/offres') }}" id="discover-button" class="gray p-1 w-36 text-center mx-5 my-3"> Découvrir > </a>
         </div>
+        <img src="{{ asset('storage/images/photo-stages-accueil.jpg') }}" alt="Image d'illustration" class="">
     </section>
 
     <section class="white px-30"> 

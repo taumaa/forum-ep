@@ -6,7 +6,7 @@
 
     @vite(['resources/js/exhibitors-filters.js' ])
 
-        <section class="white"> 
+        <section class="white company-list"> 
             <div class="container">
                 <h1 class="mb-3">Les entreprises qui seront présentes</h1>
                 <div class="filters flex flex-row justify-center gap-5">
