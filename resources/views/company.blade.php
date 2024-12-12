@@ -54,7 +54,7 @@
             <div class="container light-blue justify-center items-center flex flex-row py-5">
                 <img src="{{ asset('storage/company-logos/' . $company->logo) }}" class="logos-companies mr-5" alt="Logo {{ $company->name }}">
                 <div class="">
-                    <a href="{{ $company->website }}"><p class="p-1 px-4 min-w-40 text-center white-underline-hover">{{ $company->website }}</p></a>
+                    <a href="{{ $company->website }}" target="_blank"><p class="p-1 px-4 min-w-40 text-center white-underline-hover">{{ $company->website }}</p></a>
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->location }}</p>
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->email }}</p>
                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->phone }}</p>
