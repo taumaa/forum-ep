@@ -91,6 +91,17 @@ a.gray:hover {
     color : black;
 }
 
+.filters option:not([value=""]):focus,
+.filters select option:not([value=""]),
+.filters select:focus {
+    color: black;
+}
+
+.filters select {
+    color: #6b7280;
+    opacity: 1; 
+}
+  
 /*############################# IMAGES ET LOGOS #############################*/
 
 .home-image{

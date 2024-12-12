@@ -6,25 +6,22 @@
     @vite(['resources/js/offers-filters.js'])
     
     <div class="container company gap-5 my-4 mx-5">
-
-        
-        <div class="flex flex-row">
-            <input type="search" id="offers-search" name="q" />
-            <button>Rechercher</button>
-            <label for="paths" class="mr-1">Filieres</label>
+        <div class="filters flex flex-row justify-center gap-5">
+            <input type="search" id="offers-search" name="q"  placeholder="Rechercher un stage..."/>
             <select id="paths" name="paths">
+            <option value="">--Filieres--</option>
                 @foreach ($all_paths as $path)
                     <option value="{{ $path->school_path_label }}">{{ $path->school_path_label }}</option>
                 @endforeach
             </select>
-            <label for="levels" class="mr-1">Niveaux</label>
             <select id="levels" name="levels">
+            <option value="">--Niveaux--</option>
                 @foreach ($all_levels as $level)
                     <option value="{{ $level->school_level_label }}">{{ $level->school_level_label }}</option>
                 @endforeach
             </select>
-            <label for="months" class="mr-1">Mois de début</label>
             <select id="months" name="months">
+                <option value="">--Début du stage--</option>
                 @foreach ($all_months as $month)
                     <option value="{{ $month }}">{{ $month }}</option>
                 @endforeach
