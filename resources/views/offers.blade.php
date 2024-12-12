@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <h1 class="mb-5 mt-28">Les offresde stage disponibles</h1>
+        <h1 class="mb-5 mt-28">Les offres de stage disponibles</h1>
  
         @if (!$internship_offers->isEmpty())
             @foreach ($internship_offers as $offer)
