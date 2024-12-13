@@ -51,6 +51,7 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('company_id');
             $table->string('name');
+            $table->unsignedInteger('siret');
             $table->string('logo');
             $table->unsignedInteger('sector_id');
             $table->string('description', 3000);

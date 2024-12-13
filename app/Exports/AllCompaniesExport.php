@@ -23,9 +23,8 @@ class AllCompaniesExport implements FromCollection, WithHeadings, WithColumnWidt
         return collect($this->companiesData)->map(function ($company) {
             return [
                 $company->name ?? '',
-                $company->logo ?? '',
+                $company->siret ?? '',
                 $company->sector ?? '',
-                $company->description ?? '',
                 $company->location ?? '',
                 $company->website ?? '',
                 $company->email ?? '',
@@ -41,9 +40,8 @@ class AllCompaniesExport implements FromCollection, WithHeadings, WithColumnWidt
     {
         return [
             'Nom',
-            'Logo', 
+            'Numéro de siret', 
             'Secteur d\'activité',
-            'Description', 
             'Localisation', 
             'Site internet', 
             'Email',

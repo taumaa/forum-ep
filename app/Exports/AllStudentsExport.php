@@ -27,8 +27,7 @@ class AllStudentsExport implements FromCollection, WithHeadings, WithColumnWidth
                 $student->User->email ?? '',
                 $student->schoolLevel->school_level_label ?? '',
                 $student->schoolPath->school_path_label ?? '',
-                $student->abroad ?? '',
-                $student->cv ?? '',
+                $student->abroad ? 'Oui' : '',
             ];
         });
     }
@@ -45,7 +44,6 @@ class AllStudentsExport implements FromCollection, WithHeadings, WithColumnWidth
             'Niveau d\'étude',
             'Filière',
             'À l\'étranger',
-            'CV',
         ];
     }
 
