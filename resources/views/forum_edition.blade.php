@@ -8,7 +8,7 @@
         
         <div class="white company-list">
             <img src="{{ asset('storage/images/ESIEE-Home-Main-Picture.webp') }}" alt="">
-            <div class="container">
+            <div id="companies-list" class="container">
                 <div id="filters-container" class="filters-container w-full gray py-3">
                     <div class="filters flex flex-row gap-5">
                         <input type="search" id="companies-search" name="companies-search" placeholder="Recherhcer une entreprise..."/>

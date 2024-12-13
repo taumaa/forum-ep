@@ -7,7 +7,7 @@
     @vite(['resources/js/exhibitors-filters.js' ])
 
         <div class="white company-list"> 
-            <div class="container gap-5 mx-5">
+            <div id="companies-list" class="container gap-5 mx-5">
                 <div id="filters-container" class="filters-container w-full gray py-3">
                     <div class="filters flex flex-row gap-5">
                         <input type="search" id="companies-search" name="companies-search" onchange="scrollToOffers()" placeholder="Recherhcer une entreprise..."/>
