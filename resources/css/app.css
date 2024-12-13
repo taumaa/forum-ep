@@ -222,6 +222,23 @@ a.gray:hover {
     z-index: 1000 !important;
 }
 
+/*########################################### FOOTER ###########################################*/
+
+footer .bottom {
+    background-color: white;
+    color: #444;
+}
+
+footer .bottom p {
+    font-size: 18px !important;
+    font-weight: 500;
+}
+
+footer .bottom p:hover {
+    text-decoration: underline;
+    text-underline-offset: .3rem;
+}
+
 /*########################################### PAGE D'ACCUEIL ###########################################*/
 
 .discover {
