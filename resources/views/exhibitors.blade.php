@@ -25,7 +25,7 @@
                         </select>
                     </div>
                 </div>
-                <h1 class="mb-5 mt-28">Les entreprises qui seront présentes</h1>
+                <h1 class="mb-5 mt-28">Les entreprises présentes cette année</h1>
                 <div>
                     @if (!$exhibitors->isEmpty())
                         @foreach ($exhibitors as $company)
