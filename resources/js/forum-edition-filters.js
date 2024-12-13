@@ -109,3 +109,37 @@ window.addEventListener("scroll", () => {
     filter.classList.add("filters-container"); // Ajouter la classe par défaut
   }
 });
+
+
+// SCROLL JUSQU'EN HAUT DE LA PAGE QUAND ON FAIT UN NOUVEAU FILTRE
+const search = document.getElementById('companies-search');
+const paths = document.getElementById('paths');
+const sectors = document.getElementById('sectors');
+const targetDiv = document.getElementById('companies-list');
+search.addEventListener('change', () => {
+    if (window.scrollY > 100) { // Si le défilement dépasse 50px
+        const targetPosition = targetDiv.offsetTop;
+        // Faire défiler jusqu'à cette position
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+paths.addEventListener('change', () => {
+    if (window.scrollY > 100) { // Si le défilement dépasse 50px
+        const targetPosition = targetDiv.offsetTop;
+        // Faire défiler jusqu'à cette position
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+sectors.addEventListener('change', () => {
+    if (window.scrollY > 100) { // Si le défilement dépasse 50px
+        const targetPosition = targetDiv.offsetTop;
+        // Faire défiler jusqu'à cette position
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});

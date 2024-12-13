@@ -1,6 +1,8 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
 
+
+// FILTRES
 document.addEventListener('DOMContentLoaded', () => {
     // Sélectionner les éléments de filtre
     const pathSelect = document.getElementById('paths');
@@ -97,14 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
+// PERMET DE FIXED LA BARRRE DES FILTRES
 window.Alpine = Alpine;
 Alpine.start();
-
-
 // Récupérez l'élément du menu
 const filter = document.getElementById("filters-container");
-
 // Ajoutez un gestionnaire d'événements pour le défilement
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) { // Si le défilement dépasse 50px
@@ -114,4 +113,49 @@ window.addEventListener("scroll", () => {
     filter.classList.remove("filters-fixed"); // Retirer la classe de défilement
     filter.classList.add("filters-container"); // Ajouter la classe par défaut
   }
+});
+
+
+
+// SCROLL JUSQU'EN HAUT DE LA PAGE QUAND ON FAIT UN NOUVEAU FILTRE
+const search = document.getElementById('offers-search');
+const paths = document.getElementById('paths');
+const levels = document.getElementById('levels');
+const months = document.getElementById('months');
+const targetDiv = document.getElementById('offers-list');
+search.addEventListener('change', () => {
+    if (window.scrollY > 100) { // Si le défilement dépasse 50px
+        const targetPosition = targetDiv.offsetTop;
+        // Faire défiler jusqu'à cette position
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+paths.addEventListener('change', () => {
+    if (window.scrollY > 100) { // Si le défilement dépasse 50px
+        const targetPosition = targetDiv.offsetTop;
+        // Faire défiler jusqu'à cette position
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+levels.addEventListener('change', () => {
+    if (window.scrollY > 100) { // Si le défilement dépasse 50px
+        const targetPosition = targetDiv.offsetTop;
+        // Faire défiler jusqu'à cette position
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+months.addEventListener('change', () => {
+    if (window.scrollY > 100) { // Si le défilement dépasse 50px
+        const targetPosition = targetDiv.offsetTop;
+        // Faire défiler jusqu'à cette position
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 });
