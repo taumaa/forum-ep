@@ -34,6 +34,10 @@ p{
     flex-direction: row !important;
 }
 
+.flex-column {
+    flex-direction: column !important;
+}
+
 /*############################# CSS GLOBAL POUR MLES COULEURS#############################*/
 
 .light-blue {
@@ -238,7 +242,8 @@ footer .bottom p {
     font-weight: 500;
 }
 
-footer .bottom p:hover {
+footer .bottom p:hover,
+.cv-text-hover:hover {
     text-decoration: underline;
     text-underline-offset: .3rem;
 }

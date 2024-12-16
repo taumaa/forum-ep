@@ -9,7 +9,7 @@
             <div class="flex flex-col my-1">
                 <details>
                     <summary class="gray py-4 px-10 text-2xl cursor-pointer">{{ $faq->question }}</summary>
-                    <p class="white pl-4 py-3 mx-9 border-l-2 border-dotted pl-2">{{ $faq->answer }}</p>
+                    <p class="white pl-4 py-3 mx-9 border-l-2 border-dotted">{{ $faq->answer }}</p>
                 </details>               
             </div>
         @endforeach

@@ -19,7 +19,7 @@ class OfferController extends Controller
     public function getAllInternshipOffers() {
         $internship_offers = Internship_offer::getAllInternshipOffers();
         $all_levels = School_level::getAllSchoolLevels();
-        $all_paths = School_path::getAllSchoolPaths() ;
+        $all_paths = School_path::getAllSchoolPaths();
         $all_months = [
             "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
             "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
