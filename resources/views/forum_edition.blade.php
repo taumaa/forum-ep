@@ -34,8 +34,8 @@
                         <div class="company flex flex-row gap-5 my-4 gray p-5" data-paths="{{ implode(',', $company->school_paths) }}"
                             data-sectors="{{ $company->sector }}"
                             data-name="{{ $company->name }}">
-                            <div>
-                                <img src="{{ asset('storage/company-logos/' . $company->logo) }}" class="logos-companies" alt="Logo {{ $company->name }}">
+                            <div class="logos-companies-div">
+                                <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies object-contain">
                             </div>
                             <div>
                                 <a href="{{ url('/exposants/' . $company->company_id) }}"><h2 class="underline-hover">{{ $company->name }}</h2></a>
