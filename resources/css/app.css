@@ -56,6 +56,10 @@ p{
     color: #bd1080;
 }
 
+.light-blue-text {
+    color: #4263a3;
+}
+
 #pratical-informations .dark-pink {  /*applique le rose seulement pour la rubrique infos pratiques de la page d'accueil*/
     background-color :  #bd1080;
     color : white;
