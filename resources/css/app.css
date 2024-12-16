@@ -31,6 +31,7 @@ p{
 }
 
 .flex-row {
+    display: flex;
     flex-direction: row !important;
 }
 
@@ -127,6 +128,13 @@ a.gray:hover {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.logos-companies-div{
+    display:flex;
+    justify-content: center;
+    width: 10rem;
+    height: 7rem;
 }
 
 .logos-companies{
@@ -320,11 +328,6 @@ section.white.company-list {
 
 /*############################# PAGE DES OFFRES #############################*/
 
-.offer-container,
-.options-container{
-    display: flex;
-    flex-direction: row;
-}
 
 .filters {
     justify-content: left;

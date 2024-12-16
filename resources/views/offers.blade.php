@@ -34,13 +34,13 @@
  
         @if (!$internship_offers->isEmpty())
             @foreach ($internship_offers as $offer)
-            <div class="offer-container company gap-5 gray p-5"
+            <div class="flex-row company gap-5 gray p-5"
                     data-paths="{{ implode(',', $offer->school_path_labels) }}"
                     data-levels="{{ implode(',', $offer->school_level_labels) }}"
                     data-month="{{ $offer->date }}"
                     data-title="{{ $offer->title }}">
-                <div>
-                    <img src="{{ asset('storage/company-logos/' . $offer->company_logo) }}" class="logos-companies" alt="Logo {{ $offer->company_name }}">
+                <div class="logos-companies-div">
+                    <img src="{{ asset('storage/company-logos/' . $offer->company_logo) }}" alt="Logo {{ $offer->company_name }}" class="logos-companies object-contain">
                 </div>
                 <div>
                     <h1>{{ $offer->title }}</h1> 
