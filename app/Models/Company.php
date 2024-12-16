@@ -52,6 +52,7 @@ class Company extends Model
             return (object) [
                 'company_id' => $company->company_id,
                 'name' => $company->name,
+                'siret' => $company->siret,
                 'logo' => $company->logo,
                 'sector' => $company->sector->sector_label,
                 'description' => $company->description,
@@ -82,6 +83,7 @@ class Company extends Model
             return (object) [
                 'company_id' => $company->company_id,
                 'name' => $company->name,
+                'siret' => $company->siret,
                 'logo' => $company->logo,
                 'sector' => $company->sector->sector_label,
                 'description' => $company->description,
@@ -113,6 +115,7 @@ class Company extends Model
             return (object) [
                 'company_id' => $company->company_id,
                 'name' => $company->name,
+                'siret' => $company->siret,
                 'logo' => $company->logo,
                 'sector' => $company->sector->sector_label,
                 'description' => $company->description,
@@ -139,6 +142,7 @@ class Company extends Model
         return (object) [
             'company_id' => $company->company_id,
             'name' => $company->name,
+            'siret' => $company->siret,
             'logo' => $company->logo,
             'sector' => $company->sector->sector_label,
             'description' => $company->description,
@@ -195,10 +199,11 @@ class Company extends Model
     /**
      * Crée une nouvelle entreprise
      */
-    public static function createCompany($name, $logo, $sector_id, $description, $location, $website, $email, $phone) {
+    public static function createCompany($name, $siret, $logo, $sector_id, $description, $location, $website, $email, $phone) {
         $company = new Company();
 
         $company->name = $name;
+        $company->siret = $siret;
         $company->logo = $logo;
         $company->sector_id = $sector_id;
         $company->description = $description;
@@ -215,11 +220,12 @@ class Company extends Model
     /**
      * Modifie une entreprise désignée par son id
      */
-    public static function updateCompanyById($id, $name, $logo, $sector_id, $description, $location, $website, $email, $phone) {
+    public static function updateCompanyById($id, $name, $siret, $logo, $sector_id, $description, $location, $website, $email, $phone) {
         $company = self::find($id);
 
         if ($company) {
             $company->name = $name;
+            $company->siret = $siret;
             $company->logo = $logo;
             $company->sector_id = $sector_id;
             $company->description = $description;

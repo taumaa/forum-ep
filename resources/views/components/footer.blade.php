@@ -19,4 +19,10 @@
             </div>
         </div>
     </div>
+    <div class="flex flex-row justify-center bottom py-7">
+        <a class="px-5" href="" target="_blank"><p>Mentions légales</p></a>
+        <a class="px-5" href="" target="_blank"><p>Protection des données</p></a>
+        <a class="px-5" href="https://www.esiee.fr/plan-site" target="_blank"><p>Plan du site</p></a>
+        <a class="px-5" href="" target="_blank"><p>Gestion des cookies</p></a>
+    </div>
 </footer>
