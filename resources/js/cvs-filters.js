@@ -116,7 +116,6 @@ window.addEventListener("scroll", () => {
 const search = document.getElementById('cvs-search');
 const paths = document.getElementById('paths');
 const levels = document.getElementById('levels');
-const months = document.getElementById('months');
 const targetDiv = document.getElementById('cvs-list');
 search.addEventListener('change', () => {
     if (window.scrollY > 100) { // Si le défilement dépasse 50px
@@ -137,15 +136,6 @@ paths.addEventListener('change', () => {
     }
 });
 levels.addEventListener('change', () => {
-    if (window.scrollY > 100) { // Si le défilement dépasse 50px
-        const targetPosition = targetDiv.offsetTop;
-        // Faire défiler jusqu'à cette position
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-    } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-});
-months.addEventListener('change', () => {
     if (window.scrollY > 100) { // Si le défilement dépasse 50px
         const targetPosition = targetDiv.offsetTop;
         // Faire défiler jusqu'à cette position

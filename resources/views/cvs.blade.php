@@ -31,7 +31,8 @@
             @foreach ($students as $student)
                 <a href="{{ asset('storage/cvs/cv-anne-passelegue.pdf') }}" target="_blank">
                     <div class="flex flex-column flex-wrap cv-text-hover items-center justify-center mx-8 my-5">
-                        <iframe src="{{ asset('storage/cvs/cv-' . strtolower($student->first_name) . '-' . strtolower($student->last_name) . '.pdf#zoom=10') }}" style="pointer-events: none" width="201 " height="283"></iframe>
+                        {{-- <iframe src="{{ asset('storage/cvs/cv-' . strtolower($student->first_name) . '-' . strtolower($student->last_name) . '.pdf#zoom=10') }}" style="pointer-events: none" width="201 " height="283"></iframe> --}}
+                        <iframe src="{{ asset('storage/cvs/cv-' . strtolower($student->first_name) . '-' . strtolower($student->last_name) . '.pdf') }}" style="pointer-events: none; object-fit: contain;" width="201 " height="283"></iframe>
                         <p class="text-center">{{ $student->first_name }} <br> {{ $student->last_name }}</p>
                     </div>
                 </a>
