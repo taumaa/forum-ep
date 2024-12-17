@@ -137,13 +137,23 @@ a.gray:hover {
 .logos-companies-div{
     display:flex;
     justify-content: center;
-    width: 10rem;
-    height: 7rem;
+    width: 200px;
 }
 
 .logos-companies{
-    max-width: 10rem;
-    max-height: 7rem;
+    object-fit: contain;
+}
+
+.logos-home-div{
+    display:flex;
+    justify-content: center;
+    width: 15rem;
+    height: 11rem;
+}
+
+.logos-home{
+    max-width: 13rem;
+    max-height: 11rem;
 }
 
 .nav-container .logo-esiee{
@@ -300,6 +310,7 @@ h2.underline-hover:hover {
     text-underline-offset: .3rem;
     color: #FFFFFF;
 }
+
 
 /*############################# PAGE EDITIONS PRECEDENTES ET EXPOSANTS #############################*/
 

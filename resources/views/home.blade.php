@@ -32,15 +32,15 @@
     <section class="white"> 
         <div class="container">
             <h1 class="mb-3">Entreprises présentes cette année</h1>
-            <div class="flex flex-row">
+            <div class="flex flex-row overflow-hidden">
                 @if (!$companies->isEmpty())
                     @foreach($companies as $company)
-                    <a class="gray p-3 mx-7" href="{{ url('/exposants/' . $company->company_id) }}">
-                        <div>
-                            <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies">
+                    <a class="gray px-3 pt-5 pb-3 mx-7" href="{{ url('/exposants/' . $company->company_id) }}">
+                        <div class="logos-home-div">
+                            <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-home object-contain">
                         </div>
                         <div class="self-end">
-                            <p class="light-blue-text font-medium">{{ $company->name }}</p>
+                            <p class="light-blue-text font-semibold text-2xl text-center pb-3 pt-5">{{ $company->name }}</p>
                         </div>
                     </a>
                     @endforeach
@@ -48,9 +48,9 @@
                     <p class="p-1 px-4 min-w-40">Aucune entreprise n'est encore inscrite</p>
                 @endif
             </div>
-            <div id="pratical-informations"class="flex flex-wrap my-3">
-                <a href="{{ url('/devis') }}" class="light-blue p-1 w-44 text-center mx-4 my-3"><p>Faire un devis ></p></a>
-                <a href="{{ url('/exposants') }}" class="light-blue p-1 w-44 text-center mx-4 my-3"><p>Voir plus ></p></a>
+            <div id="pratical-informations"class="flex flex-wrap my-3 mx-7">
+                <a href="{{ url('/devis') }}" class="light-blue p-1 w-44 text-center mr-4 my-3"><p>Faire un devis ></p></a>
+                <a href="{{ url('/exposants') }}" class="light-blue p-1 w-44 text-center ml-4 my-3"><p>Voir plus ></p></a>
             </div>
         </div>
     </section>

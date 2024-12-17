@@ -35,7 +35,7 @@
                             data-sectors="{{ $company->sector }}"
                             data-name="{{ $company->name }}">
                             <div class="logos-companies-div">
-                                <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies object-contain">
+                                <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies">
                             </div>
                             <div>
                                 <a href="{{ url('/exposants/' . $company->company_id) }}"><h2 class="underline-hover">{{ $company->name }}</h2></a>

@@ -40,7 +40,7 @@
                     data-month="{{ $offer->date }}"
                     data-title="{{ $offer->title }}">
                 <div class="logos-companies-div">
-                    <img src="{{ asset('storage/company-logos/' . $offer->company_logo) }}" alt="Logo {{ $offer->company_name }}" class="logos-companies object-contain">
+                    <img src="{{ asset('storage/company-logos/' . $offer->company_logo) }}" alt="Logo {{ $offer->company_name }}" class="logos-companies">
                 </div>
                 <div>
                     <h1>{{ $offer->title }}</h1> 
