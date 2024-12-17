@@ -14,7 +14,7 @@ use App\Http\Controllers\TotoController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Student\StudentHomeController;
 use App\Http\Controllers\Company\CompanyHomeController;
-
+use App\Http\Controllers\Student\StudentProfileController;
 use Illuminate\Support\Facades\Route;
 
 ################## ACCUEIL ##################
@@ -94,6 +94,8 @@ Route::get('/download-all-cvs', [TotoController::class, 'downloadAllCvs']);
 // Groupe avec toutes les routes student
 Route::middleware(['auth'])->group(function () {
     Route::get('/student', [StudentHomeController::class, 'index'])->name('student.home');
+    Route::get('/student/profile', [StudentProfileController::class, 'show'])->name('student.profile');
+    Route::put('/student/profile', [StudentProfileController::class, 'update'])->name('student.profile.update');
 });
 
 
