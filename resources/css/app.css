@@ -32,11 +32,11 @@ p{
 
 .flex-row {
     display: flex;
-    flex-direction: row !important;
+    flex-direction: row;
 }
 
 .flex-column {
-    flex-direction: column !important;
+    flex-direction: column;
 }
 
 /*############################# CSS GLOBAL POUR MLES COULEURS#############################*/
