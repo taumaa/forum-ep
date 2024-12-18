@@ -135,12 +135,12 @@ a.gray:hover {
 /*############################# IMAGES ET LOGOS #############################*/
 
 .home-image{
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .logos-companies-div{
@@ -276,11 +276,9 @@ footer .bottom p:hover,
 }
 
 /*########################################### PAGE D'ACCUEIL ###########################################*/
-
 .margin{
-    margin: 90vh 0% 0% 10vw;
+    margin : 0% 15% 50px 15%;
 }
-
 .discover {
     padding-left: 15%;
     padding-right: 15%;

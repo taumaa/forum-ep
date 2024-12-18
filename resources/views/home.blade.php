@@ -3,8 +3,8 @@
 @section('title', 'Accueil') <!-- Définir un titre spécifique -->
 
 @section('content')
-    <section> 
-        <div class="absolute flex flex-column gap-3 margin">
+    <section class="relative flex flex-col justify-end"> 
+        <div class="absolute flex flex-column flex-end gap-3 margin">
             <h1 class="text-home-color font-semibold">Forum Esiee Paris</h1>
             <h2 class="text-home-color font-normal">Venez partager avec des professionnels.</h2>
         </div>
