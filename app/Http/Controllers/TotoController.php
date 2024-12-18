@@ -73,7 +73,7 @@ class TotoController extends Controller
     }
 
     /**
-     * Enregistre le CV d'un étudiant /!\ FAIRE PASSER LE NOM ETUDIANT EN BACK
+     * Enregistre le CV d'un étudiant /!\ FAIRE PASSER LE NOM ETUDIANT EN BACK PASKE EN FRONT OSKOUR LA SÉCURITÉ
      */
     public function uploadCv (Request $request) {
         if (true) { // checker si on est connecté en tant qu'étudiant /!\
