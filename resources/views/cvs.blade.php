@@ -28,22 +28,20 @@
 
         <h1>CVs de nos étudiants</h1>
 
-        <div class="flex flex-row flex-wrap my-10">
+        <div id="cv-container" class="flex flex-row flex-wrap my-10">
             @foreach ($students as $student)
                 @php
                     $cvPath = storage_path('app/public/cvs/cv-' . strtolower($student->first_name) . '-' . strtolower($student->last_name) . '.pdf');
                     $cvUrl = file_exists($cvPath) ? asset('storage/cvs/cv-' . strtolower($student->first_name) . '-' . strtolower($student->last_name) . '.pdf') : null;
                 @endphp
-                <a 
                 @if ($cvUrl)
-                    href="{{ $cvUrl }}" target="_blank"
-                @endif
-                class="mx-8 my-5">
+                    <a href="{{ $cvUrl }}" target="_blank" class="cv-block mx-8 my-5" data-name="{{ $student->first_name . ' ' . $student->last_name }}" data-path="{{ $student->schoolPath->school_path_label }}" data-level="{{ $student->schoolLevel->school_level_label }}">
                     <div class="flex flex-column flex-wrap cv-text-hover items-center justify-center">
                         <div id="pdf-container-{{ $student->student_id }}" class="border border-black"></div>
                         <p class="text-center">{{ $student->first_name }} <br> {{ $student->last_name }}</p>
                     </div>
-                </a>
+                    </a>
+                @endif
 
                 
                 <script>
