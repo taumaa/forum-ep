@@ -39,7 +39,7 @@ p{
     flex-direction: column;
 }
 
-/*############################# CSS GLOBAL POUR MLES COULEURS#############################*/
+/*############################# CSS GLOBAL POUR LES COULEURS#############################*/
 
 .light-blue {
     background-color : #4263a3;
@@ -63,6 +63,15 @@ p{
 
 .light-blue-text {
     color: #4263a3;
+}
+
+.text-home-color{
+    background: rgba(0, 0, 0, 0.7);
+    padding-left: 15px;
+    padding-right: 15px;
+    display: inline-block;
+    color: white;
+    width: fit-content;
 }
 
 #pratical-informations .dark-pink {  /*applique le rose seulement pour la rubrique infos pratiques de la page d'accueil*/
@@ -267,6 +276,10 @@ footer .bottom p:hover,
 }
 
 /*########################################### PAGE D'ACCUEIL ###########################################*/
+
+.margin{
+    margin: 90vh 0% 0% 10vw;
+}
 
 .discover {
     padding-left: 15%;

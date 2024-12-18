@@ -4,6 +4,10 @@
 
 @section('content')
     <section> 
+        <div class="absolute flex flex-column gap-3 margin">
+            <h1 class="text-home-color font-semibold">Forum Esiee Paris</h1>
+            <h2 class="text-home-color font-normal">Venez partager avec des professionnels.</h2>
+        </div>
         @if($home_informations && $home_informations->image)
             <img class="home-image" src="{{ asset('storage/images/' . $home_informations->image) }}" alt="Image d'accueil">
         @endif
