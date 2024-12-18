@@ -90,7 +90,7 @@ class TotoController extends Controller
                 // Mise à jour du nom du CV pour qu'il corresponde à son étudiant
                 $cvName = "cv-" . $request->input('student') . ".pdf";
 
-                // Enregistrer l'cv dans le dossier 'company-logos'
+                // Enregistrer le CV dans le dossier 'cvs'
                 $path = $cv->storeAs('cvs', $cvName, 'public');
 
                 // Retourner une réponse ou rediriger
