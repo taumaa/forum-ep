@@ -1,7 +1,6 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
 
-
 // FILTRES
 document.addEventListener('DOMContentLoaded', () => {
     // Sélectionner les éléments de filtre
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const levelSelect = document.getElementById('levels');
     const monthSelect = document.getElementById('months');
     const searchInput = document.getElementById('offers-search');
-
     // Fonction de filtrage des offres
     function filterOffres() {
         // Récupérer les valeurs sélectionnées
@@ -17,30 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const levelValue = levelSelect.value;
         const monthValue = monthSelect.value;
         const searchValue = searchInput.value.toLowerCase();
-
         // Sélectionner toutes les offres
-        const offers = document.querySelectorAll('.offer-container');
+        const offers = document.querySelectorAll('.company');
         const offersContainer = document.querySelector('.container');
-
         // Tableaux pour gérer la priorité
         const prioritizedsearchOffers = [];
         const prioritizedOffers = []; //path & level ok
         const secondprioritizedOffers = []; // path ok
         const otherOffers = []; // level ok
-
+        console.log('coucou')
         // Filtrer chaque offre en fonction des critères
         offers.forEach(offer => {
+            console.log('coucou')
             const paths = offer.getAttribute('data-paths').split(',');
             const levels = offer.getAttribute('data-levels').split(',');
             const month = offer.getAttribute('data-month');
             const title = offer.getAttribute('data-title').toLowerCase(); 
-
             // Vérifier si l'offre correspond aux filtres sélectionnés
             const matchesPath = !pathValue || paths.includes(pathValue);
             const matchesLevel = !levelValue || levels.includes(levelValue);
             const matchesMonth = !monthValue || month.includes(monthValue);
             const matchesSearch = (!searchValue || title.includes(searchValue)) && searchValue.trim() != '';
-
             
             if (matchesPath || matchesLevel || matchesMonth || matchesSearch) {
                 if (matchesSearch){

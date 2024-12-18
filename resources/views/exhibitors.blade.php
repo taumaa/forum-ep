@@ -3,10 +3,6 @@
 @section('title', 'editions precedentes') <!-- Définir un titre spécifique -->
 
 @section('content')
-
-
-@endsection
-
         @vite(['resources/js/exhibitors-filters.js' ])
         
         <div class="white company-list">
@@ -59,6 +55,7 @@
                 @endif
             </div>
         </div>
+@endsection
    
 
 
