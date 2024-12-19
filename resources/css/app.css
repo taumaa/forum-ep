@@ -113,7 +113,8 @@ a.light-blue p:hover {
 }
 
 a.gray:hover,
-.filters-container button:hover {
+.filters-container button:hover,
+.filters-fixed button:hover {
     background-color :  #d9d9d9;
     color: #000000;
 }
@@ -446,7 +447,8 @@ label.white {
 
 /*########################################### PAGE DE CV  ###########################################*/
 
-.filters-container button {
+.filters-container button,
+.filters-fixed button {
     background-color: #FFFFFF;
     color: #6b7280;
     border-color: #6b7280;
@@ -459,6 +461,43 @@ label.white {
 
 summary:hover {
     background-color: #d9d9d9;
+}
+
+/*############################# PAGE DES ADMINS #############################*/
+
+.tab-titles {
+    display: flex;
+}
+
+.tab-title {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border: 1px solid #d9d9d9;
+    margin: 0px 5px 5px 0px;
+}
+
+.tab-title:hover {
+    background-color: #d9d9d9;
+}
+
+.tab-title.active {
+    background-color: #bd1080;
+    color: white;
+}
+
+/* Contenu des onglets */
+.tab-content {
+    display: none; 
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #d9d9d9;
+}
+
+/* Afficher le contenu actif */
+.tab-content.active {
+    display: block;
 }
 
 
