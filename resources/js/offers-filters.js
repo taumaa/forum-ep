@@ -101,13 +101,18 @@ Alpine.start();
 const filter = document.getElementById("filters-container");
 // Ajoutez un gestionnaire d'événements pour le défilement
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) { // Si le défilement dépasse 50px
-    filter.classList.remove("filters-container"); // Retirer la classe par défaut
-    filter.classList.add("filters-fixed"); // Ajouter la classe de défilement
-  } else {
-    filter.classList.remove("filters-fixed"); // Retirer la classe de défilement
-    filter.classList.add("filters-container"); // Ajouter la classe par défaut
-  }
+    if (window.innerWidth > 1130 ){
+        if (window.scrollY > 100) { // Si le défilement dépasse 50px
+            filter.classList.remove("filters-container"); // Retirer la classe par défaut
+            filter.classList.add("filters-fixed"); // Ajouter la classe de défilement
+        } else {
+            filter.classList.remove("filters-fixed"); // Retirer la classe de défilement
+            filter.classList.add("filters-container"); // Ajouter la classe par défaut
+        }
+    }else{
+        filter.classList.remove("filters-fixed"); 
+        filter.classList.add("filters-container");
+    }
 });
 
 
