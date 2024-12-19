@@ -113,7 +113,7 @@ a.light-blue p:hover {
 }
 
 a.gray:hover,
-button:hover {
+.filters-container button:hover {
     background-color :  #d9d9d9;
     color: #000000;
 }
@@ -444,9 +444,9 @@ label.white {
     border-radius: 50px;
 }
 
-/*########################################### PAGE DE FAQ  ###########################################*/
+/*########################################### PAGE DE CV  ###########################################*/
 
-button {
+.filters-container button {
     background-color: #FFFFFF;
     color: #6b7280;
     border-color: #6b7280;

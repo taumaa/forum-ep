@@ -2,7 +2,7 @@
 <html lang="fr">
 
     @include('components.head') <!-- Inclusion du fichier head -->
-    <title>@yield('title', 'Titre par défaut')</title>
+    <title>@yield('admin', 'Administrer le site')</title>
 
 <body class="font-quicksand">
 
@@ -12,5 +12,7 @@
         @yield('content') <!-- Zone où le contenu des pages s'insère -->
     </main>
 </body>
+
+    @include('components.footer') <!-- Inclusion du footer -->
 
 </html>
