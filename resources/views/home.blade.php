@@ -71,7 +71,7 @@
 
     <section class="white px-30"> 
         <div class="container">
-            <video controls>
+            <video class="mt-6" controls>
                 @if($home_informations && $home_informations->video)
                     <source src="{{ asset('storage/images/' . $home_informations->video) }}" type="video/mp4">
                 @endif
