@@ -39,7 +39,7 @@ p{
     flex-direction: column;
 }
 
-/*############################# CSS GLOBAL POUR LES COULEURS#############################*/
+/*############################# CSS GLOBAL POUR LES COULEURS #############################*/
 
 .light-blue {
     background-color : #4263a3;
@@ -112,8 +112,10 @@ a.light-blue p:hover {
     color : black
 }
 
-a.gray:hover {
+a.gray:hover,
+button:hover {
     background-color :  #d9d9d9;
+    color: #000000;
 }
 
 .white {
@@ -279,6 +281,7 @@ footer .bottom p:hover,
 }
 
 /*########################################### PAGE D'ACCUEIL ###########################################*/
+
 .margin{
     margin : 0% 15% 50px 15%;
 }
@@ -439,6 +442,17 @@ select:focus {
 
 label.white {
     border-radius: 50px;
+}
+
+/*########################################### PAGE DE FAQ  ###########################################*/
+
+button {
+    background-color: #FFFFFF;
+    color: #6b7280;
+    border-color: #6b7280;
+    border-width: 1px;
+    padding: .5rem .75rem .5rem .75rem;
+    margin-right: 15%;
 }
 
 /*########################################### PAGE DE FAQ  ###########################################*/

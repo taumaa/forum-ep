@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController; # truc de laravel
 
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\CvController;
 use App\Http\Controllers\ExhibitorController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ForumEditionController;
@@ -11,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\TotoController;
+use App\Http\Controllers\CvController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Student\StudentHomeController;
 use App\Http\Controllers\Company\CompanyHomeController;
@@ -44,6 +44,9 @@ Route::get('/offres', [OfferController::class, 'getAllInternshipOffers']);
 
 # Page listant toutes les CV des étudiants
 Route::get('/cvs', [CvController::class, 'getAllCvs']);
+
+# Télécharger tous les CVs étudiants
+Route::post('/download-all-cvs', [CvController::class, 'downloadAllCvs'])->name('download-all-cvs');
 
 ##################### FAQ #####################
 
@@ -86,9 +89,6 @@ Route::post('/upload-logo', [TotoController::class, 'uploadLogo']);
 
 # Enregistre un CV pour un étudiant
 Route::post('/upload-cv', [TotoController::class, 'uploadCv']);
-
-# Télécharger tous les CVs étudiants
-Route::get('/download-all-cvs', [TotoController::class, 'downloadAllCvs']);
 
 
 // Groupe avec toutes les routes student

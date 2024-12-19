@@ -102,38 +102,4 @@ class TotoController extends Controller
         return view('errors.404');
     }
 
-    /**
-     * Télécharger tous les CVs étudiants dans un zip
-     */
-    public function downloadAllCvs () {
-        if (true) { // checker si on est connecté en tant qu'admin /!\
-            $folderPath = storage_path('app/public/cvs'); // Dossier où se trouvent les PDFs
-            $zipFileName = 'cvs_etudiants_esiee.zip'; // Nom du fichier ZIP
-            $zipFilePath = storage_path($zipFileName); // Chemin pour enregistrer temporairement le fichier ZIP
-
-            // Vérifier si le dossier existe
-            if (!File::exists($folderPath)) {
-                return response()->json(['error' => 'Folder does not exist.'], 404);
-            }
-
-            // Créer un fichier ZIP
-            $zip = new ZipArchive;
-            if ($zip->open($zipFilePath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
-                // Ajouter tous les fichiers PDF au ZIP
-                $files = File::files($folderPath);
-                foreach ($files as $file) {
-                    if ($file->getExtension() === 'pdf') {
-                        $zip->addFile($file->getRealPath(), $file->getFilename());
-                    }
-                }
-                $zip->close();
-            } else {
-                return response()->json(['error' => 'Failed to create ZIP file.'], 500);
-            }
-
-            // Retourner le fichier ZIP pour téléchargement
-            return response()->download($zipFilePath)->deleteFileAfterSend(true);
-        }
-        return view('errors.404');
-    }
 }
