@@ -8,7 +8,7 @@
 
     <section class="container">
 
-        <div id="filters-container" class="filters-container w-full gray py-3">
+        <div id="filters-container" class="filters-container w-full gray py-3 flex justify-between">
             <div class="filters flex flex-row gap-5">
                 <input type="search" id="cvs-search" name="q" class="w-[15rem]" placeholder="Rechercher un étudiant..."/>
                 <select id="paths" name="paths">
@@ -24,6 +24,7 @@
                     @endforeach
                 </select>
             </div>
+            <button id="download-cvs" name="download-cvs">Télécharger ma sélection</button>
         </div>
 
         <h1>CVs de nos étudiants</h1>
@@ -35,14 +36,12 @@
                     $cvUrl = file_exists($cvPath) ? asset('storage/cvs/cv-' . strtolower($student->first_name) . '-' . strtolower($student->last_name) . '.pdf') : null;
                 @endphp
                 @if ($cvUrl)
-                    <a href="{{ $cvUrl }}" target="_blank" class="cv-block mx-8 my-5" data-name="{{ $student->first_name . ' ' . $student->last_name }}" data-path="{{ $student->schoolPath->school_path_label }}" data-level="{{ $student->schoolLevel->school_level_label }}">
+                    <a href="{{ $cvUrl }}" target="_blank" class="cv cv-block mx-8 my-5" data-name="{{ $student->first_name . ' ' . $student->last_name }}" data-path="{{ $student->schoolPath->school_path_label }}" data-level="{{ $student->schoolLevel->school_level_label }}" data-pdf="{{ $student->first_name . '-' . $student->last_name }}">
                     <div class="flex flex-column flex-wrap cv-text-hover items-center justify-center">
                         <div id="pdf-container-{{ $student->student_id }}" class="border border-black"></div>
                         <p class="text-center">{{ $student->first_name }} <br> {{ $student->last_name }}</p>
                     </div>
                     </a>
-                @endif
-
                 
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
@@ -55,14 +54,10 @@
                                 if (response.ok) {
                                     // Si le fichier existe, on charge le PDF avec PDF.js
                                     loadPDF(studentUrl, '{{ $student->student_id }}');
-                                } else {
-                                    // Si le fichier n'existe pas, on affiche une image par défaut
-                                    displayDefaultImage('{{ $student->student_id }}');
                                 }
                             })
                             .catch(error => {
                                 console.error('Erreur lors de la vérification du fichier PDF: ', error);
-                                displayDefaultImage('{{ $student->student_id }}');
                             });
                     });
 
@@ -92,18 +87,56 @@
                             console.error('Erreur lors du chargement du PDF: ', error);
                         });
                     }
-
-                    function displayDefaultImage(studentId) {
-                        const container = document.getElementById('pdf-container-' + studentId);
-                        if (container) {
-                            const img = document.createElement('img');
-                            img.src = "{{ asset('storage/images/default-cv-image.png') }}"; // Image par défaut
-                            img.alt = "CV non disponible";
-                            container.appendChild(img);
-                        }
-                    }
                 </script>
+                @endif
             @endforeach
         </div>
     </section>
+
+<script>
+    const button = document.getElementById("download-cvs");
+
+    button.addEventListener("click", function () {
+
+        const students = document.querySelectorAll('.cv');
+
+        let names = []
+        console.log(students)
+
+        // On récupère les noms des étudiants qui sont affichés après filtrage
+        students.forEach (student => {
+            if (student.style.display != 'none') {
+                names.push('cv-' + student.getAttribute('data-pdf').toLowerCase() + '.pdf');
+            }
+        })
+
+        fetch("{{ route('download-all-cvs') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({ names }) // Envoyer la liste de noms
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erreur lors du téléchargement");
+                }
+                return response.blob(); // Récupérer la réponse en tant que fichier binaire (blob)
+            })
+            .then(blob => {
+                // Créer un lien de téléchargement pour le fichier ZIP
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "cvs_etudiants_esiee.zip"; // Nom du fichier à télécharger
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            })
+            .catch(error => console.error("Erreur:", error));
+    });
+</script>
+
 @endsection
+
