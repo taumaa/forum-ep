@@ -1,0 +1,115 @@
+
+@media screen and (max-width: 900px){
+
+/*#############################  GENERALE  #############################*/
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2{
+        font-size: 1.5rem;
+    }
+    
+    h3{
+        font-size: 1.2rem;
+    }
+    
+    p{
+        font-size: 1rem;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+/*#############################  NAV  #############################*/    
+    #nav{
+        display:none;
+    }
+
+    #nav-responsive{
+        display:block;
+    }
+
+    .burger-menu-close {
+        display: none;
+    }
+    
+    .burger-menu-open {
+        display: flex;
+        flex-direction: column ;
+    }
+
+/*#############################  HOME  #############################*/
+    .margin{
+        margin : 0% 2% 1% 2%;
+    }
+    #pratical-informations{
+        display: flex;
+        flex-direction: column;
+    }
+    #pratical-informations .dark-pink {  /*applique le rose seulement pour la rubrique infos pratiques de la page d'accueil*/
+        background-color :  #bd1080;
+        color : white;
+        margin : 1.5% 2% 1.5% 2%;
+        padding : 2%;
+        width : 50%;
+        height: 5%;
+        text-align: center;
+    } 
+    #companies-logo,
+    #forum-img{
+        display: none;
+        width: 0;
+        height: 0;
+    }
+    #companies-home{
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+    }
+    #companies-block{
+        background-color: white;
+        padding: 0;
+        margin: 0;
+    }
+    #companies-name{
+        background-color: white;
+        color: black;
+        font-weight: 400;
+        padding: 0;
+        margin: 0;
+    }
+    #button-companies{
+        display: flex;
+        flex-direction: row;
+    }
+    #button-companies .light-blue{  /*applique le rose seulement pour la rubrique infos pratiques de la page d'accueil*/
+        background-color :  #38548b;
+        color : white;
+        margin: 5% 1% 0 1%;
+        padding : 2%;
+        width : 46%;
+        height: 5%;
+        text-align: center;
+    } 
+    #button-discover{
+        background-color : white;
+        color : black;
+        margin: 2% 1% 2% 1%;
+        padding : 2%;
+        width : 46%;
+        height: 5%;
+        text-align: center;
+    }
+/*#############################  FOOTER  #############################*/
+    .bottom{
+        display: flex;
+        flex-direction: column;
+    }
+    .bottom p{
+        text-align: center;
+    }
+}

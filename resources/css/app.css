@@ -194,6 +194,9 @@ a.gray:hover {
 
 /*########################################### NAV ###########################################*/
 
+#nav-responsive{
+    display:none;
+}
 /*##### nav fixed #####*/
 .nav-fixed{
     display: flex;
@@ -443,3 +446,22 @@ label.white {
 summary:hover {
     background-color: #d9d9d9;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
