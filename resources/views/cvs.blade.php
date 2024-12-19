@@ -27,7 +27,7 @@
             <button id="download-cvs" name="download-cvs">Télécharger ma sélection</button>
         </div>
 
-        <h1>CVs de nos étudiants</h1>
+        <h1 id="title-cvs">CVs de nos étudiants</h1>
 
         <div id="cv-container" class="flex flex-row flex-wrap my-10">
             @foreach ($students as $student)
