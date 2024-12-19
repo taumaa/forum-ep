@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <h1 class="mb-5 mt-28">Les offres de stage disponibles</h1>
+        <h1 id="title-offer" class="mb-5 mt-28">Les offres de stage disponibles</h1>
  
         @if (!$internship_offers->isEmpty())
             @foreach ($internship_offers as $offer)
@@ -39,7 +39,7 @@
                     data-levels="{{ implode(',', $offer->school_level_labels) }}"
                     data-month="{{ $offer->date }}"
                     data-title="{{ $offer->title }}">
-                <div class="logos-companies-div">
+                <div id="offer-img" class="logos-companies-div">
                     <img src="{{ asset('storage/company-logos/' . $offer->company_logo) }}" alt="Logo {{ $offer->company_name }}" class="logos-companies">
                 </div>
                 <div>
@@ -48,10 +48,10 @@
                         <a href="{{ url('/exposants/' . $offer->company_id) }}"><h2 class="underline-hover">{{ $offer->company_name }}</h2></a>
                         <div class="flex flex-row flex-wrap mb-1 mt-4" >
                             @foreach ($offer->school_path_labels as $path)
-                                <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $path }}</p>
+                                <p id="offer-path" class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $path }}</p>
                             @endforeach
                             @foreach ($offer->school_level_labels as $level)
-                                <p class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $level }}</p>
+                                <p id="offer-level" class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $level }}</p>
                             @endforeach
                         </div>
                         <div class="flex flex-row flex-wrap my-1">

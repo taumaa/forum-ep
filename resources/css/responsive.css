@@ -60,7 +60,9 @@
         text-align: center;
     } 
     #companies-logo,
-    #forum-img{
+    #forum-img,
+    #logo-exhibitors,
+    #offer-img{
         display: none;
         width: 0;
         height: 0;
@@ -104,6 +106,47 @@
         height: 5%;
         text-align: center;
     }
+/*#############################  EXHIBITORS / OFFERS / FILTRES  #############################*/
+.company:nth-child(odd) div div p,
+.company:nth-child(odd) div a p { /*selectionne les enfants impaires*/
+    background-color :  #bd1080;
+    color : #f0f0f0;
+    font-weight: 500;
+    min-width: 0;
+    padding: 5px 10px 5px 10px;
+}
+.company:nth-child(even) div div p,
+.company:nth-child(even) div a p {
+    background-color : #4263a3; /*selectionne les enfants paires*/
+    color : #f0f0f0;
+    font-weight: 500;
+    min-width: 0;
+    padding: 5px 10px 5px 10px;
+}
+.filters {
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.filters-container{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    border-bottom: 2px solid rgba(204, 204, 204, 0.9);
+}
+.filters-fixed{
+    position: absolute;
+    top: 12.5rem;
+    left: 0;
+    z-index: 1;
+    border-bottom: 2px solid rgba(204, 204, 204, 0.9);
+}
+#title-offer{
+    margin: 280px 0 0 0;
+}
+#title-exhibitors{
+    margin: 220px 0 0 0;
+}
 /*#############################  FOOTER  #############################*/
     .bottom{
         display: flex;
