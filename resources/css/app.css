@@ -196,6 +196,9 @@ button:hover {
 
 /*########################################### NAV ###########################################*/
 
+#nav-responsive{
+    display:none;
+}
 /*##### nav fixed #####*/
 .nav-fixed{
     display: flex;
@@ -457,3 +460,22 @@ button {
 summary:hover {
     background-color: #d9d9d9;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
