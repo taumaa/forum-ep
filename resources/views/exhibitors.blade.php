@@ -25,24 +25,24 @@
                     </div>
                 </div>
 
-                <h1 class="mb-5 mt-28">Les entreprises presentent cette année</h1>
+                <h1 id="title-exhibitors" class="mb-5 mt-28">Les entreprises presentent cette année</h1>
 
                 @if (!$exhibitors->isEmpty())
                     @foreach ($exhibitors as $company)
                         <div class="company flex flex-row gap-5 my-4 gray p-5" data-paths="{{ implode(',', $company->school_paths) }}"
                             data-sectors="{{ $company->sector }}"
                             data-name="{{ $company->name }}">
-                            <div class="logos-companies-div">
+                            <div id="logo-exhibitors" class="logos-companies-div">
                                 <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies">
                             </div>
                             <div>
                                 <a href="{{ url('/exposants/' . $company->company_id) }}"><h2 class="underline-hover">{{ $company->name }}</h2></a>
-                                <div class="flex flex-row gap-5 mb-1 mt-4" >
-                                    <p class="p-1 px-4 min-w-40 text-center">{{ $company->sector }}</p>
+                                <div class="flex flex-row flex-wrap" >
+                                    <p id="sectors-exhibitors" class="p-1 px-4 min-w-40 text-center">{{ $company->sector }}</p>
                                 </div>
-                                <div class="flex flex-row gap-5 my-1">
+                                <div class="flex flex-row flex-wrap my-1">
                                     @foreach ($company->school_paths as $path)
-                                        <p class="p-1 px-4 min-w-40 text-center">{{ $path }}</p>
+                                        <p id="path-exhibitors" class="p-1 px-4 min-w-40 mr-1 mt-1 text-center">{{ $path }}</p>
                                     @endforeach
                                 </div>
                                 <p class="pt-4 max-w-5xl line-clamp-3"> {{ $company->description }} </p>
