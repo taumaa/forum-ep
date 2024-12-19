@@ -21,7 +21,7 @@ class TotoController extends Controller
      * Récupère la liste des entreprises dans un excel
      */
     public function getAllCompanies () {
-        if (true) { // checker si on est connecté en tant qu'admin
+        if (true) { // checker si on est connecté en tant qu'admin /!\
             $companies = Company::getAllCompanies();
             $fileName = 'Liste_entreprises.xlsx';
             return Excel::download(new AllCompaniesExport($companies), $fileName);
@@ -33,7 +33,7 @@ class TotoController extends Controller
      * Récupère la liste des étudiants dans un excel
      */
     public function getAllStudents () {
-        if (true) { // checker si on est connecté en tant qu'admin
+        if (true) { // checker si on est connecté en tant qu'admin /!\
             $students = Student::getAllStudents();
             $fileName = 'Liste_etudiants.xlsx';
             return Excel::download(new AllStudentsExport($students), $fileName);
@@ -45,7 +45,7 @@ class TotoController extends Controller
      * Enregistre le logo d'une entreprise /!\ FAIRE PASSER LE NOM ENTREPRISE EN BACK
      */
     public function uploadLogo (Request $request) {
-        if (true) { // checker si on est connecté en tant qu'entreprise
+        if (true) { // checker si on est connecté en tant qu'entreprise /!\
             $request->validate([
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg', 
                 'name' => 'required|string',
@@ -73,10 +73,10 @@ class TotoController extends Controller
     }
 
     /**
-     * Enregistre le CV d'un étudiant /!\ FAIRE PASSER LE NOM ETUDIANT EN BACK
+     * Enregistre le CV d'un étudiant /!\ FAIRE PASSER LE NOM ETUDIANT EN BACK PASKE EN FRONT OSKOUR LA SÉCURITÉ
      */
     public function uploadCv (Request $request) {
-        if (true) { // checker si on est connecté en tant qu'étudiant
+        if (true) { // checker si on est connecté en tant qu'étudiant /!\
             $request->validate([
                 'cv' => 'required|mimes:pdf', 
                 'student' => 'required|string',
@@ -90,7 +90,7 @@ class TotoController extends Controller
                 // Mise à jour du nom du CV pour qu'il corresponde à son étudiant
                 $cvName = "cv-" . $request->input('student') . ".pdf";
 
-                // Enregistrer l'cv dans le dossier 'company-logos'
+                // Enregistrer le CV dans le dossier 'cvs'
                 $path = $cv->storeAs('cvs', $cvName, 'public');
 
                 // Retourner une réponse ou rediriger
@@ -106,7 +106,7 @@ class TotoController extends Controller
      * Télécharger tous les CVs étudiants dans un zip
      */
     public function downloadAllCvs () {
-        if (true) { // checker si on est connecté en tant qu'admin
+        if (true) { // checker si on est connecté en tant qu'admin /!\
             $folderPath = storage_path('app/public/cvs'); // Dossier où se trouvent les PDFs
             $zipFileName = 'cvs_etudiants_esiee.zip'; // Nom du fichier ZIP
             $zipFilePath = storage_path($zipFileName); // Chemin pour enregistrer temporairement le fichier ZIP

@@ -12,62 +12,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fonction de filtrage des offres
     function filterOffres() {
         // Récupérer les valeurs sélectionnées
-        const pathValue = pathSelect.value;
-        const levelValue = levelSelect.value;
+        const pathValue = pathSelect.value.toLowerCase();
+        const levelValue = levelSelect.value.toLowerCase();
         const searchValue = searchInput.value.toLowerCase();
 
         // Sélectionner toutes les offres
-        const cvs = document.querySelectorAll('.cv-container');
-        const cvsContainer = document.querySelector('.container');
+        const cvsContainer = document.getElementById('cv-container');
+        const cvs = document.querySelectorAll('.cv-block');
 
-        // Tableaux pour gérer la priorité
-        const prioritizedsearchcvs = [];
-        const prioritizedcvs = []; //path & level ok
-        const secondprioritizedcvs = []; // path ok
-        const othercvs = []; // level ok
+        // Tableau contenant les cvs à afficher
+        const cvList = [];
 
         // Filtrer chaque offre en fonction des critères
         cvs.forEach(cv => {
-            const paths = cv.getAttribute('data-paths').split(',');
-            const levels = cv.getAttribute('data-levels').split(',');
-            const title = cv.getAttribute('data-title').toLowerCase(); 
+            const paths = cv.getAttribute('data-path').toLowerCase();
+            const levels = cv.getAttribute('data-level').toLowerCase();
+            const studentName = cv.getAttribute('data-name').toLowerCase(); 
 
             // Vérifier si l'offre correspond aux filtres sélectionnés
             const matchesPath = !pathValue || paths.includes(pathValue);
-            const matchesLevel = !levelValue || levels.includes(levelValue);
-            const matchesSearch = (!searchValue || title.includes(searchValue)) && searchValue.trim() != '';
-
+            const matchesLevel = !levelValue || levels == levelValue;
+            const matchesSearch = !searchValue || studentName.includes(searchValue);
             
-            if (matchesPath || matchesLevel || matchesSearch) {
+            if (matchesPath && matchesLevel && matchesSearch) {
                 if (matchesSearch){
-                    prioritizedsearchcvs.push(cv);
-                }else if (matchesPath && matchesLevel){
-                    prioritizedcvs.push(cv);
-                }else if (matchesPath){
-                    secondprioritizedcvs.push(cv);
-                }else {
-                    othercvs.push(cv);
+                    cvList.push(cv);
                 }
                 // Afficher d'abord les offres prioritaires, puis les autres
-                prioritizedsearchcvs.forEach(cv => {
-                    cv.style.display = 'flex';
-                    if (cvsContainer.contains(cv)) {
-                        cvsContainer.appendChild(cv);
-                    };
-                });
-                prioritizedcvs.forEach(cv => {
-                    cv.style.display = 'flex';
-                    if (cvsContainer.contains(cv)) {
-                        cvsContainer.appendChild(cv);
-                    };
-                });
-                secondprioritizedcvs.forEach(cv => {
-                    cv.style.display = 'flex';
-                    if (cvsContainer.contains(cv)) {
-                        cvsContainer.appendChild(cv);
-                    };
-                });
-                othercvs.forEach(cv => {
+                cvList.forEach(cv => {
                     cv.style.display = 'flex';
                     if (cvsContainer.contains(cv)) {
                         cvsContainer.appendChild(cv);
