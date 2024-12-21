@@ -78,6 +78,13 @@ Route::get('/toto', function () {
     return view('toto');
 });
 
+# Backoffice
+Route::get('/creer-edition', [AdminHomeController::class, 'createEdition']);
+Route::post('/creer-edition', [AdminHomeController::class, 'createEdition']);
+Route::get('/editer-edition/{year}', [AdminHomeController::class, 'editEdition']);
+Route::post('/editer-edition/{year}', [AdminHomeController::class, 'editEdition']);
+Route::get('/supprimer-edition/{year}', [AdminHomeController::class, 'deleteEdition']);
+
 # Récupérer les entreprises dans un Excel
 Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);
 

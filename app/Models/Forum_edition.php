@@ -70,10 +70,10 @@ class Forum_edition extends Model
     }
 
     /**
-     * Modifie une édition de forum désignée par son id
+     * Modifie une édition de forum désignée par son année
      */
-    public static function updateForumById($id, $date, $picture, $starting_hour, $ending_hour) {
-        $forum = self::find($id);
+    public static function updateForumByYear($date, $picture, $starting_hour, $ending_hour) {
+        $forum = self::whereYear('date', $date)->first();
 
         if ($forum) {
             $forum->date = $date;
@@ -87,10 +87,10 @@ class Forum_edition extends Model
     }
 
     /**
-     * Supprime une édition de forum désignée par son id
+     * Supprime une édition de forum désignée par son année
      */
-    public static function deleteForumById($id) {
-        $forum = self::find($id);
+    public static function deleteForumByYear($year) {
+        $forum = self::whereYear('date', $year)->first();
 
         if ($forum) {
             $success = $forum->delete();

@@ -500,7 +500,19 @@ summary:hover {
     display: block;
 }
 
+.tab-content h2 {
+    padding-bottom: .75rem;
+}
 
+.tab-content img {
+    height: 32px;
+    margin: 0px 9px 8px 0px;
+}
+
+.tab-content #img-plus {
+    height: 35px;
+    margin : 8px 0px 0px 8px;
+}
 
 
 

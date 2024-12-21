@@ -20,8 +20,18 @@
 
             <!-- Contenu des onglets -->
             <div class="tab-content" id="content1">
-                <h2>Contenu de l'Onglet 1</h2>
-                <p>Voici le contenu pour l'onglet 1.</p>
+                <div class="flex">
+                    <h2>Éditions de forum</h2>
+                    <a href="{{ url('/creer-edition') }}"><img id="img-plus" src="{{ asset('storage/images/plus.png') }}"></a>
+                </div>
+
+                @foreach ($years as $year)
+                    <div class="flex">
+                        <a href="{{ url('/editer-edition/' . $year->year) }}"><img src="{{ asset('storage/images/edit.png') }}"></a>
+                        <a href="{{ url('/supprimer-edition/' . $year->year) }}"><img src="{{ asset('storage/images/delete.png') }}"></a>
+                        <p>Édition {{ $year->year }}</p>
+                    </div>
+                @endforeach
             </div>
 
             <div class="tab-content" id="content2">
