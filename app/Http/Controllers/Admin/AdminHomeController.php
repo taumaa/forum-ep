@@ -24,12 +24,16 @@ class AdminHomeController extends Controller
 
         $user = Auth::user();
         $editions = Forum_edition::getAllYears();
+        $school_paths = School_path::getAllSchoolPaths();
+        $school_levels = School_level::getAllSchoolLevels();
         return view('admin.home', 
             ['user' => $user,
-            'editions' => $editions]);
+            'editions' => $editions,
+            'school_paths' => $school_paths,
+            'school_levels' => $school_levels]);
     }
 
-    /**************************************** Édition de forum ****************************************/
+    /**************************************** Éditions de forum ****************************************/
 
     /**
      * Créer une nouvelle édition de forum
@@ -73,6 +77,90 @@ class AdminHomeController extends Controller
      */
     public function deleteEdition($year) {
         Forum_edition::deleteForumByYear($year);
+        return redirect()->route('admin.home');
+    }
+
+    /**************************************** Filières ****************************************/
+
+    /**
+     * Créer une nouvelle filière
+     */
+    public function createSchoolPath(Request $request) {
+        if ($request->isMethod('get')) {
+            return view('admin.admin-school_path');
+        }
+
+        if ($request->isMethod('post')) {
+            $label = $request->input('label'); 
+            $isCreated = School_path::createSchoolPath($label);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Editer une filière
+     */
+    public function editSchoolPath(Request $request, $id) {
+        if ($request->isMethod('get')) {
+            $school_path = School_path::getSchoolPathById($id);
+            return view('admin.admin-school_path', ['school_path' => $school_path]);
+        }
+
+        if ($request->isMethod('post')) {
+            $id = $request->input('id'); 
+            $label = $request->input('label'); 
+            $isCreated = School_path::updateSchoolPathById($id, $label);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Supprimer une filière
+     */
+    public function deleteSchoolPath($id) {
+        School_path::deleteSchoolPathById($id);
+        return redirect()->route('admin.home');
+    }
+
+    /**************************************** Niveaux d'étude ****************************************/
+
+    /**
+     * Créer un nouveau niveau d'étude
+     */
+    public function createSchoolLevel(Request $request) {
+        if ($request->isMethod('get')) {
+            return view('admin.admin-school_level');
+        }
+
+        if ($request->isMethod('post')) {
+            $label = $request->input('label'); 
+            $isCreated = School_level::createSchoolLevel($label);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Editer un niveau d'étude
+     */
+    public function editSchoolLevel(Request $request, $id) {
+        if ($request->isMethod('get')) {
+            $school_level = School_level::getSchoolLevelById($id);
+            return view('admin.admin-school_level', ['school_level' => $school_level]);
+        }
+
+        if ($request->isMethod('post')) {
+            $id = $request->input('id'); 
+            $label = $request->input('label'); 
+            $isCreated = School_level::updateSchoolLevelById($id, $label);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Supprimer un niveau d'étude
+     */
+    public function deleteSchoolLevel($id) {
+        School_level::deleteSchoolLevelById($id);
         return redirect()->route('admin.home');
     }
 }

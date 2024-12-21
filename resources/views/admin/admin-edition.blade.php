@@ -49,13 +49,11 @@
                     <input type="time" id="end-time" name="end-time">
                 </div>
 
-                <input type="submit" value="Enregistrer" class="button-color border-2 px-6 py-2 ml-7 mt-10">
+                <input type="submit" value="Créer" class="button-color border-2 px-6 py-2 ml-7 mt-10">
             <form>
 
         @endif
         
     </div>
-
-    @vite(['resources/js/admin.js'])
 
 @endsection

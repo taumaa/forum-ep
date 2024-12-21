@@ -35,13 +35,33 @@
             </div>
 
             <div class="tab-content" id="content2">
-                <h2>Contenu de l'Onglet 2</h2>
-                <p>Voici le contenu pour l'onglet 2.</p>
+                <div class="flex">
+                    <h2>Filières</h2>
+                    <a href="{{ url('/creer-filiere') }}"><img id="img-plus" src="{{ asset('storage/images/plus.png') }}"></a>
+                </div>
+
+                @foreach ($school_paths as $school_path)                    
+                    <div class="flex">
+                        <a href="{{ url('/editer-filiere/' . $school_path->school_path_id) }}"><img src="{{ asset('storage/images/edit.png') }}"></a>
+                        <a href="{{ url('/supprimer-filiere/' . $school_path->school_path_id) }}"><img src="{{ asset('storage/images/delete.png') }}"></a>
+                        <p>Filière {{ $school_path->school_path_label }}</p>
+                    </div>
+                @endforeach
             </div>
             
             <div class="tab-content" id="content3">
-                <h2>Contenu de l'Onglet 3</h2>
-                <p>Voici le contenu pour l'onglet 3.</p>
+                <div class="flex">
+                    <h2>Niveaux d'étude</h2>
+                    <a href="{{ url('/creer-niveau') }}"><img id="img-plus" src="{{ asset('storage/images/plus.png') }}"></a>
+                </div>
+
+                @foreach ($school_levels as $school_level)                    
+                    <div class="flex">
+                        <a href="{{ url('/editer-niveau/' . $school_level->school_level_id) }}"><img src="{{ asset('storage/images/edit.png') }}"></a>
+                        <a href="{{ url('/supprimer-niveau/' . $school_level->school_level_id) }}"><img src="{{ asset('storage/images/delete.png') }}"></a>
+                        <p>Niveau {{ $school_level->school_level_label }}</p>
+                    </div>
+                @endforeach
             </div>
 
             <div class="tab-content" id="content4">

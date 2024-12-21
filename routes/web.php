@@ -78,12 +78,24 @@ Route::get('/toto', function () {
     return view('toto');
 });
 
-# Backoffice
+# Backoffice éditions de forum
 Route::get('/creer-edition', [AdminHomeController::class, 'createEdition']);
 Route::post('/creer-edition', [AdminHomeController::class, 'createEdition']);
 Route::get('/editer-edition/{year}', [AdminHomeController::class, 'editEdition']);
 Route::post('/editer-edition/{year}', [AdminHomeController::class, 'editEdition']);
 Route::get('/supprimer-edition/{year}', [AdminHomeController::class, 'deleteEdition']);
+# Backoffice filières
+Route::get('/creer-filiere', [AdminHomeController::class, 'createSchoolPath']);
+Route::post('/creer-filiere', [AdminHomeController::class, 'createSchoolPath']);
+Route::get('/editer-filiere/{id}', [AdminHomeController::class, 'editSchoolPath']);
+Route::post('/editer-filiere/{id}', [AdminHomeController::class, 'editSchoolPath']);
+Route::get('/supprimer-filiere/{id}', [AdminHomeController::class, 'deleteSchoolPath']);
+# Backoffice niveaux d'érude
+Route::get('/creer-niveau', [AdminHomeController::class, 'createSchoolLevel']);
+Route::post('/creer-niveau', [AdminHomeController::class, 'createSchoolLevel']);
+Route::get('/editer-niveau/{id}', [AdminHomeController::class, 'editSchoolLevel']);
+Route::post('/editer-niveau/{id}', [AdminHomeController::class, 'editSchoolLevel']);
+Route::get('/supprimer-niveau/{id}', [AdminHomeController::class, 'deleteSchoolLevel']);
 
 # Récupérer les entreprises dans un Excel
 Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);
