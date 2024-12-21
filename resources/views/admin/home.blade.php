@@ -80,8 +80,18 @@
             </div>
 
             <div class="tab-content" id="content5">
-                <h2>Contenu de l'Onglet 5</h2>
-                <p>Voici le contenu pour l'onglet 5.</p>
+                <div class="flex">
+                    <h2>Options de stands (demande de devis)</h2>
+                    <a href="{{ url('/creer-option') }}"><img id="img-plus" src="{{ asset('storage/images/plus.png') }}"></a>
+                </div>
+
+                @foreach ($options as $option)                    
+                    <div class="flex">
+                        <a href="{{ url('/editer-option/' . $option->option_id) }}"><img src="{{ asset('storage/images/edit.png') }}"></a>
+                        <a href="{{ url('/supprimer-option/' . $option->option_id) }}"><img src="{{ asset('storage/images/delete.png') }}"></a>
+                        <p>{{ $option->option_label }}</p>
+                    </div>
+                @endforeach
             </div>
 
             <div class="tab-content" id="content6">

@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Setting;
 use App\Models\Forum_edition;
 use App\Models\Faq;
+use App\Models\Option;
 use App\Models\School_level;
 use App\Models\School_path;
 
@@ -27,12 +28,14 @@ class AdminHomeController extends Controller
         $school_paths = School_path::getAllSchoolPaths();
         $school_levels = School_level::getAllSchoolLevels();
         $sectors = Sector::getAllSectors();
+        $options = Option::getAllOptions();
         return view('admin.home', 
             ['user' => $user,
             'editions' => $editions,
             'school_paths' => $school_paths,
             'school_levels' => $school_levels,
-            'sectors' => $sectors]);
+            'sectors' => $sectors,
+            'options' => $options]);
     }
 
     /**************************************** Éditions de forum ****************************************/
@@ -205,6 +208,48 @@ class AdminHomeController extends Controller
      */
     public function deleteSector($id) {
         Sector::deleteSectorById($id);
+        return redirect()->route('admin.home');
+    }
+
+    /**************************************** Options de stand ****************************************/
+
+    /**
+     * Créer une nouvelle option de stand
+     */
+    public function createOption(Request $request) {
+        if ($request->isMethod('get')) {
+            return view('admin.admin-option');
+        }
+
+        if ($request->isMethod('post')) {
+            $label = $request->input('label'); 
+            $isCreated = Option::createOption($label);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Editer une option de stand
+     */
+    public function editOption(Request $request, $id) {
+        if ($request->isMethod('get')) {
+            $option = Option::getOptionById($id);
+            return view('admin.admin-option', ['option' => $option]);
+        }
+
+        if ($request->isMethod('post')) {
+            $id = $request->input('id'); 
+            $label = $request->input('label'); 
+            $isCreated = Option::updateOptionById($id, $label);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Supprimer une option de stand
+     */
+    public function deleteOption($id) {
+        Option::deleteOptionById($id);
         return redirect()->route('admin.home');
     }
 }

@@ -102,6 +102,12 @@ Route::post('/creer-secteur', [AdminHomeController::class, 'createSector']);
 Route::get('/editer-secteur/{id}', [AdminHomeController::class, 'editSector']);
 Route::post('/editer-secteur/{id}', [AdminHomeController::class, 'editSector']);
 Route::get('/supprimer-secteur/{id}', [AdminHomeController::class, 'deleteSector']);
+# Backoffice options de stand
+Route::get('/creer-option', [AdminHomeController::class, 'createOption']);
+Route::post('/creer-option', [AdminHomeController::class, 'createOption']);
+Route::get('/editer-option/{id}', [AdminHomeController::class, 'editOption']);
+Route::post('/editer-option/{id}', [AdminHomeController::class, 'editOption']);
+Route::get('/supprimer-option/{id}', [AdminHomeController::class, 'deleteOption']);
 
 # Récupérer les entreprises dans un Excel
 Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);
