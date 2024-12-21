@@ -391,6 +391,11 @@ section.white.company-list {
     color : white;
 }
 
+#logo-company-detail {
+    max-height: 12rem;
+    max-width: 12rem;
+}
+
 /*############################# PAGE DES DEVIS #############################*/
 
 .quote-input,
@@ -522,10 +527,16 @@ summary:hover {
     margin: 1rem 2rem;
 }
 
-.admin-faq textarea {
+.admin-faq textarea,
+.admin-settings textarea {
     height: 10rem;
     margin-bottom: 0rem;
 }
 
+.admin-settings textarea,
+.admin-settings input[type="text"] {
+    width: 90%;
+    margin: .5rem 2rem 0rem 2rem;
+}
 
 

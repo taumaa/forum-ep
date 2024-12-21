@@ -114,6 +114,8 @@ Route::post('/creer-faq', [AdminHomeController::class, 'createFaq']);
 Route::get('/editer-faq/{id}', [AdminHomeController::class, 'editFaq']);
 Route::post('/editer-faq/{id}', [AdminHomeController::class, 'editFaq']);
 Route::get('/supprimer-faq/{id}', [AdminHomeController::class, 'deleteFaq']);
+# Backoffice paramètres globaux
+Route::post('/editer-parametres', [AdminHomeController::class, 'editSettings']);
 
 # Récupérer les entreprises dans un Excel
 Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);

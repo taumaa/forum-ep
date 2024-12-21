@@ -110,8 +110,23 @@
             </div>
 
             <div class="tab-content" id="content7">
-                <h2>Contenu de l'Onglet 7</h2>
-                <p>Voici le contenu pour l'onglet 7.</p>
+                <h2>Modifier les paramètres généraux</h2>
+
+                <form method="POST" action="/editer-parametres" class="admin-settings">
+                    @csrf
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="description" class="mb-2 ml-4 px-3">Texte de présentation du forum :</label>
+                        <textarea id="description" name="description">{{ $settings->description }}</textarea>
+                    </div>
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="building" class="mb-2 ml-4 px-3">Lieu du forum :</label>
+                        <input type="text" id="building" name="building" value="{{ $settings->building }}">
+                    </div>
+
+                    <input type="submit" value="Enregistrer" class="button-color border-2 px-6 py-2 ml-7 mt-10">
+                <form>
             </div>
 
             <div class="tab-content" id="content8">

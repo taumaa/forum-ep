@@ -30,6 +30,7 @@ class AdminHomeController extends Controller
         $sectors = Sector::getAllSectors();
         $options = Option::getAllOptions();
         $faqs = Faq::getAllFaqs();
+        $settings = Setting::getAllSettings();
         return view('admin.home', 
             ['user' => $user,
             'editions' => $editions,
@@ -37,7 +38,8 @@ class AdminHomeController extends Controller
             'school_levels' => $school_levels,
             'sectors' => $sectors,
             'options' => $options,
-            'faqs' => $faqs]);
+            'faqs' => $faqs,
+            'settings' => $settings]);
     }
 
     /**************************************** Éditions de forum ****************************************/
@@ -296,6 +298,22 @@ class AdminHomeController extends Controller
      */
     public function deleteFaq($id) {
         Faq::deleteFaqById($id);
+        return redirect()->route('admin.home');
+    }
+
+    /**************************************** Paramètres globaux ****************************************/
+
+    /**
+     * Editer les paramètres globaux du site
+     */
+    public function editSettings(Request $request) {
+        $description = $request->input('description'); 
+        $building = $request->input('building'); 
+        $logo = 'logo1.png';
+        $ico = 'ico1.png';
+        $image = 'ESIEE-Home-Main-Picture.webp';
+        $video = 'video1.mp';
+        $isCreated = Setting::updateSettingById(1, $logo, $ico, $description, $image, $video, $building);
         return redirect()->route('admin.home');
     }
 }
