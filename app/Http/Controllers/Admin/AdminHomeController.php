@@ -26,11 +26,13 @@ class AdminHomeController extends Controller
         $editions = Forum_edition::getAllYears();
         $school_paths = School_path::getAllSchoolPaths();
         $school_levels = School_level::getAllSchoolLevels();
+        $sectors = Sector::getAllSectors();
         return view('admin.home', 
             ['user' => $user,
             'editions' => $editions,
             'school_paths' => $school_paths,
-            'school_levels' => $school_levels]);
+            'school_levels' => $school_levels,
+            'sectors' => $sectors]);
     }
 
     /**************************************** Éditions de forum ****************************************/
@@ -161,6 +163,48 @@ class AdminHomeController extends Controller
      */
     public function deleteSchoolLevel($id) {
         School_level::deleteSchoolLevelById($id);
+        return redirect()->route('admin.home');
+    }
+
+    /**************************************** Secteurs d'activité ****************************************/
+
+    /**
+     * Créer un nouveau secteur d'activité
+     */
+    public function createSector(Request $request) {
+        if ($request->isMethod('get')) {
+            return view('admin.admin-sector');
+        }
+
+        if ($request->isMethod('post')) {
+            $label = $request->input('label'); 
+            $isCreated = Sector::createSector($label);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Editer un secteur d'activité
+     */
+    public function editSector(Request $request, $id) {
+        if ($request->isMethod('get')) {
+            $sector = Sector::getSectorById($id);
+            return view('admin.admin-sector', ['sector' => $sector]);
+        }
+
+        if ($request->isMethod('post')) {
+            $id = $request->input('id'); 
+            $label = $request->input('label'); 
+            $isCreated = Sector::updateSectorById($id, $label);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Supprimer un secteur d'activité
+     */
+    public function deleteSector($id) {
+        Sector::deleteSectorById($id);
         return redirect()->route('admin.home');
     }
 }

@@ -96,6 +96,12 @@ Route::post('/creer-niveau', [AdminHomeController::class, 'createSchoolLevel']);
 Route::get('/editer-niveau/{id}', [AdminHomeController::class, 'editSchoolLevel']);
 Route::post('/editer-niveau/{id}', [AdminHomeController::class, 'editSchoolLevel']);
 Route::get('/supprimer-niveau/{id}', [AdminHomeController::class, 'deleteSchoolLevel']);
+# Backoffice secteurs d'activité
+Route::get('/creer-secteur', [AdminHomeController::class, 'createSector']);
+Route::post('/creer-secteur', [AdminHomeController::class, 'createSector']);
+Route::get('/editer-secteur/{id}', [AdminHomeController::class, 'editSector']);
+Route::post('/editer-secteur/{id}', [AdminHomeController::class, 'editSector']);
+Route::get('/supprimer-secteur/{id}', [AdminHomeController::class, 'deleteSector']);
 
 # Récupérer les entreprises dans un Excel
 Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);

@@ -65,8 +65,18 @@
             </div>
 
             <div class="tab-content" id="content4">
-                <h2>Contenu de l'Onglet 4</h2>
-                <p>Voici le contenu pour l'onglet 4.</p>
+                <div class="flex">
+                    <h2>Secteurs d'activité</h2>
+                    <a href="{{ url('/creer-secteur') }}"><img id="img-plus" src="{{ asset('storage/images/plus.png') }}"></a>
+                </div>
+
+                @foreach ($sectors as $sector)                    
+                    <div class="flex">
+                        <a href="{{ url('/editer-secteur/' . $sector->sector_id) }}"><img src="{{ asset('storage/images/edit.png') }}"></a>
+                        <a href="{{ url('/supprimer-secteur/' . $sector->sector_id) }}"><img src="{{ asset('storage/images/delete.png') }}"></a>
+                        <p>{{ $sector->sector_label }}</p>
+                    </div>
+                @endforeach
             </div>
 
             <div class="tab-content" id="content5">
