@@ -116,12 +116,12 @@ Route::post('/editer-faq/{id}', [AdminHomeController::class, 'editFaq']);
 Route::get('/supprimer-faq/{id}', [AdminHomeController::class, 'deleteFaq']);
 # Backoffice paramètres globaux
 Route::post('/editer-parametres', [AdminHomeController::class, 'editSettings']);
-
+# Backoffice administrateurs du site
+Route::post('/add-admin', [AdminHomeController::class, 'addAdmin']);
 # Récupérer les entreprises dans un Excel
-Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);
-
+Route::get('/get-all-companies', [AdminHomeController::class, 'getAllCompanies']);
 # Récupérer les étudiants dans un Excel
-Route::get('/get-all-students', [TotoController::class, 'getAllStudents']);
+Route::get('/get-all-students', [AdminHomeController::class, 'getAllStudents']);
 
 # Enregistre un logo pour une entreprise
 Route::post('/upload-logo', [TotoController::class, 'uploadLogo']);

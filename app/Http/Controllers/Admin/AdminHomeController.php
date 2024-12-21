@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AllCompaniesExport;
+use App\Exports\AllStudentsExport;
+use App\Models\Student;
 use App\Models\Sector;
 use App\Models\Company;
 use App\Models\Setting;
@@ -10,11 +14,14 @@ use App\Models\Faq;
 use App\Models\Option;
 use App\Models\School_level;
 use App\Models\School_path;
+use App\Models\User;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Student;
 
 class AdminHomeController extends Controller
 {
@@ -315,5 +322,45 @@ class AdminHomeController extends Controller
         $video = 'video1.mp';
         $isCreated = Setting::updateSettingById(1, $logo, $ico, $description, $image, $video, $building);
         return redirect()->route('admin.home');
+    }
+
+    /**************************************** Administrateurs ****************************************/
+
+    /**
+     * Ajouter un administrateur
+     */
+    public function addAdmin(Request $request) {
+        $user = User::create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'type' => User::TYPE_ADMIN,
+        ]);
+        return redirect()->route('admin.home');
+    }
+
+    /**************************************** Extraction Excel ****************************************/
+
+    /**
+     * Récupère la liste des entreprises dans un excel
+     */
+    public function getAllCompanies () {
+        if (true) { // checker si on est connecté en tant qu'admin /!\
+            $companies = Company::getAllCompanies();
+            $fileName = 'Liste_entreprises.xlsx';
+            return Excel::download(new AllCompaniesExport($companies), $fileName);
+        }
+        return view('errors.404');
+    }
+
+    /**
+     * Récupère la liste des étudiants dans un excel
+     */
+    public function getAllStudents () {
+        if (true) { // checker si on est connecté en tant qu'admin /!\
+            $students = Student::getAllStudents();
+            $fileName = 'Liste_etudiants.xlsx';
+            return Excel::download(new AllStudentsExport($students), $fileName);
+        }
+        return view('errors.404');
     }
 }

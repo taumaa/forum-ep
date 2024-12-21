@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container my-8">
+    <div class="container mt-8 mb-16">
         <h1>Administration du site</h1>
 
         <div class="mt-8">
@@ -16,6 +16,7 @@
                 <li class="tab-title" id="tab6" >FAQ</li>
                 <li class="tab-title" id="tab7" >Paramètres globaux</li>
                 <li class="tab-title" id="tab8" >Administrateurs</li>
+                <li class="tab-title" id="tab9" >Extraction Excel</li>
             </ul>
 
             <!-- Contenu des onglets -->
@@ -126,12 +127,41 @@
                     </div>
 
                     <input type="submit" value="Enregistrer" class="button-color border-2 px-6 py-2 ml-7 mt-10">
-                <form>
+                </form>
             </div>
 
             <div class="tab-content" id="content8">
-                <h2>Contenu de l'Onglet 8</h2>
-                <p>Voici le contenu pour l'onglet 8.</p>
+                <h2>Ajouter un administrateur</h2>
+
+                <form method="POST" action="/add-admin" class="admin-settings">
+                    @csrf
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="email" class="mb-2 ml-4 px-3">Identifiant :</label>
+                        <input type="text" id="email" name="email">
+                    </div>
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="password" class="mb-2 ml-4 px-3">Mot de passe :</label>
+                        <input type="password" id="password" name="password">
+                    </div>
+
+                    <input type="submit" value="Enregistrer" class="button-color border-2 px-6 py-2 ml-7 mt-10">
+                </form>
+            </div>
+
+            <div class="tab-content" id="content9">
+                <h2>Extraire des données sur Excel</h2>
+
+                <div class="flex underline-hover">
+                    <a href="{{ url('/get-all-companies') }}"><img src="{{ asset('storage/images/download.png') }}"></a>
+                    <a href="{{ url('/get-all-companies') }}"><p>Télécharger la liste des entreprises</p></a>
+                </div>
+
+                <div class="flex underline-hover">
+                    <a href="{{ url('/get-all-companies') }}"><img src="{{ asset('storage/images/download.png') }}"></a>
+                    <a href="{{ url('/get-all-students') }}"><p>Télécharger la liste des étudiants</p></a>
+                </div>
             </div>
         </div>
 
