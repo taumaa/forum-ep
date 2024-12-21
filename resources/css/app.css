@@ -414,14 +414,16 @@ input[type="radio"]:checked {
 }
 
 input:not([type="radio"]):not([type="submit"]):focus,
-select:focus {
+select:focus,
+textarea:focus {
     border: 2px solid #132c85 !important;
     --tw-ring-color: #132c85 !important;
     outline: none;
     background-color: white;
 }
 
-.form-group:has(input:focus) label{
+.form-group:has(input:focus) label,
+.form-group:has(textarea:focus) label {
     color: #132c85 ;
     font-weight: 500;
 }
@@ -514,19 +516,16 @@ summary:hover {
     margin : 8px 0px 0px 8px;
 }
 
+.admin-faq input[type="text"],
+.admin-faq textarea {
+    width: 100%;
+    margin: 1rem 2rem;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.admin-faq textarea {
+    height: 10rem;
+    margin-bottom: 0rem;
+}
 
 
 

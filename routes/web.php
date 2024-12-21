@@ -108,6 +108,12 @@ Route::post('/creer-option', [AdminHomeController::class, 'createOption']);
 Route::get('/editer-option/{id}', [AdminHomeController::class, 'editOption']);
 Route::post('/editer-option/{id}', [AdminHomeController::class, 'editOption']);
 Route::get('/supprimer-option/{id}', [AdminHomeController::class, 'deleteOption']);
+# Backoffice foire aux questions
+Route::get('/creer-faq', [AdminHomeController::class, 'createFaq']);
+Route::post('/creer-faq', [AdminHomeController::class, 'createFaq']);
+Route::get('/editer-faq/{id}', [AdminHomeController::class, 'editFaq']);
+Route::post('/editer-faq/{id}', [AdminHomeController::class, 'editFaq']);
+Route::get('/supprimer-faq/{id}', [AdminHomeController::class, 'deleteFaq']);
 
 # Récupérer les entreprises dans un Excel
 Route::get('/get-all-companies', [TotoController::class, 'getAllCompanies']);

@@ -95,8 +95,18 @@
             </div>
 
             <div class="tab-content" id="content6">
-                <h2>Contenu de l'Onglet 6</h2>
-                <p>Voici le contenu pour l'onglet 6.</p>
+                <div class="flex">
+                    <h2>Foire aux questions</h2>
+                    <a href="{{ url('/creer-faq') }}"><img id="img-plus" src="{{ asset('storage/images/plus.png') }}"></a>
+                </div>
+
+                @foreach ($faqs as $faq)                    
+                    <div class="flex">
+                        <a href="{{ url('/editer-faq/' . $faq->faq_id) }}"><img src="{{ asset('storage/images/edit.png') }}"></a>
+                        <a href="{{ url('/supprimer-faq/' . $faq->faq_id) }}"><img src="{{ asset('storage/images/delete.png') }}"></a>
+                        <p>{{ $faq->question }}</p>
+                    </div>
+                @endforeach
             </div>
 
             <div class="tab-content" id="content7">

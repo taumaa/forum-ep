@@ -29,13 +29,15 @@ class AdminHomeController extends Controller
         $school_levels = School_level::getAllSchoolLevels();
         $sectors = Sector::getAllSectors();
         $options = Option::getAllOptions();
+        $faqs = Faq::getAllFaqs();
         return view('admin.home', 
             ['user' => $user,
             'editions' => $editions,
             'school_paths' => $school_paths,
             'school_levels' => $school_levels,
             'sectors' => $sectors,
-            'options' => $options]);
+            'options' => $options,
+            'faqs' => $faqs]);
     }
 
     /**************************************** Éditions de forum ****************************************/
@@ -250,6 +252,50 @@ class AdminHomeController extends Controller
      */
     public function deleteOption($id) {
         Option::deleteOptionById($id);
+        return redirect()->route('admin.home');
+    }
+
+    /**************************************** Foire aux questions ****************************************/
+
+    /**
+     * Créer une nouvelle FAQ
+     */
+    public function createFaq(Request $request) {
+        if ($request->isMethod('get')) {
+            return view('admin.admin-faq');
+        }
+
+        if ($request->isMethod('post')) {
+            $question = $request->input('question'); 
+            $answer = $request->input('answer');
+            $isCreated = Faq::createFaq($question, $answer);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Editer une FAQ
+     */
+    public function editFaq(Request $request, $id) {
+        if ($request->isMethod('get')) {
+            $faq = Faq::getFaqById($id);
+            return view('admin.admin-faq', ['faq' => $faq]);
+        }
+
+        if ($request->isMethod('post')) {
+            $id = $request->input('id'); 
+            $question = $request->input('question'); 
+            $answer = $request->input('answer'); 
+            $isCreated = Faq::updateFaqById($id, $question, $answer);
+            return redirect()->route('admin.home');
+        }
+    }
+
+    /**
+     * Supprimer une FAQ
+     */
+    public function deleteFaq($id) {
+        Faq::deleteFaqById($id);
         return redirect()->route('admin.home');
     }
 }

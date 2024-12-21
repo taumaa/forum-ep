@@ -9,7 +9,7 @@
             <div id="companies-list" class="container">
                 <div id="filters-container" class="filters-container w-full gray py-3">
                     <div class="filters flex flex-row gap-5">
-                        <input type="search" id="companies-search" name="companies-search" placeholder="Recherhcer une entreprise..."/>
+                        <input type="search" id="companies-search" name="companies-search" placeholder="Rechercher une entreprise..."/>
                         <select id="paths" name="paths">
                             <option value="">--Filieres--</option>
                             @foreach ($all_paths as $path)
