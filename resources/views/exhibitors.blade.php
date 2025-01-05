@@ -36,7 +36,7 @@
                                 <img src="{{ asset('storage/company-logos/' . $company->logo) }}" alt="Logo {{ $company->name }}" class="logos-companies">
                             </div>
                             <div>
-                                <a href="{{ url('/exposants/' . $company->company_id) }}"><h2 class="underline-hover">{{ $company->name }}</h2></a>
+                                <a href="{{ url('/exposants/' . $company->company_id) }}"><h2 class="underline-hover mb-2">{{ $company->name }}</h2></a>
                                 <div class="flex flex-row flex-wrap" >
                                     <p id="sectors-exhibitors" class="p-1 px-4 min-w-40 text-center">{{ $company->sector }}</p>
                                 </div>

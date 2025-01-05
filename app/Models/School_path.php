@@ -34,7 +34,7 @@ class School_path extends Model
      * Récupère toutes les filières
      */
     public static function getAllSchoolPaths() {
-        $school_paths = School_path::all();
+        $school_paths = School_path::all()->sortBy('school_path_label');
         return $school_paths;
     }
 

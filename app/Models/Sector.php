@@ -17,7 +17,7 @@ class Sector extends Model
      * Récupère tous les secteurs d'activité
      */
     public static function getAllSectors() {
-        $all_sectors = Sector::all();
+        $all_sectors = Sector::all()->sortBy('sector_label');
         return $all_sectors;
     }
 

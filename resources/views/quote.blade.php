@@ -86,7 +86,7 @@
             </div>
         </section>
 
-        <section class="flex justify-center items-center">
+        <section class="flex justify-center items-center mt-5">
             <input type="submit" value="Envoyer" class="button-color border-2 px-6 py-2">
         </section>   
     </form>

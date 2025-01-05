@@ -31,7 +31,7 @@ class School_level extends Model
      * Récupère tous les niveaux scolaires
      */
     public static function getAllSchoolLevels() {
-        $school_levels = School_level::all();
+        $school_levels = School_level::all()->sortBy('school_level_label');
         return $school_levels;
     }
 

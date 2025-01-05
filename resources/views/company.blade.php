@@ -14,9 +14,9 @@
                         <div class="flex flex-row gap-5 mb-1 mt-4" >
                             <p class="p-1 px-4 min-w-40 text-center">{{ $company->sector }}</p>
                         </div>
-                        <div class="flex flex-row gap-5 my-1">
+                        <div class="flex flex-row flex-wrap my-1">
                             @foreach ($company->school_paths as $path)
-                                <p class="p-1 px-4 min-w-40 text-center">{{ $path }}</p>
+                                <p class="p-1 px-4 mr-1 mb-1 min-w-40 text-center">{{ $path }}</p>
                             @endforeach
                         </div>
                         <p class="pt-4">
