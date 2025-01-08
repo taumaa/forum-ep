@@ -9,7 +9,7 @@
     <section class="container">
 
         <div id="filters-container" class="filters-container w-full gray py-3 flex justify-between">
-            <div class="filters flex flex-row gap-5">
+            <div class="filters flex flex-row gap-5 cv-filters">
                 <input type="search" id="cvs-search" name="q" class="w-[15rem]" placeholder="Rechercher un étudiant..."/>
                 <select id="paths" name="paths">
                 <option value="">--Filieres--</option>

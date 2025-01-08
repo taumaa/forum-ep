@@ -11,7 +11,7 @@
             <div id="companies-list" class="container">
                 <div id="filters-container" class="filters-container w-full gray py-3">
                     <div class="filters flex flex-row gap-5">
-                        <input type="search" id="companies-search" name="companies-search" placeholder="Recherhcer une entreprise..."/>
+                        <input type="search" id="companies-search" name="companies-search" placeholder="Rechercher une entreprise..."/>
                         <select id="paths" name="paths">
                             <option value="">--Filieres--</option>
                             @foreach ($all_paths as $path)
@@ -39,12 +39,12 @@
                             </div>
                             <div>
                                 <a href="{{ url('/exposants/' . $company->company_id) }}"><h2 class="underline-hover">{{ $company->name }}</h2></a>
-                                <div class="flex flex-row gap-5 mb-1 mt-4" >
+                                <div class="flex flex-row gap-5 mb-1 mt-4 mb-2" >
                                     <p class="p-1 px-4 min-w-40 text-center">{{ $company->sector }}</p>
                                 </div>
-                                <div class="flex flex-row gap-5 my-1">
+                                <div class="flex flex-row flex-wrap my-1">
                                     @foreach ($company->school_paths as $path)
-                                        <p class="p-1 px-4 min-w-40 text-center">{{ $path }}</p>
+                                        <p class="p-1 px-4 min-w-40 mb-1 mr-1 text-center">{{ $path }}</p>
                                     @endforeach
                                 </div>
                             </div>

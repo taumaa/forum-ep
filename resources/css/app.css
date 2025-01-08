@@ -365,9 +365,8 @@ section.white.company-list {
 
 .filters {
     justify-content: left;
-    padding-right: 15%;
+    padding-right: 8%;
     padding-left: 15%;
-
 }
 
 .filters-container{
@@ -384,6 +383,18 @@ section.white.company-list {
     z-index: 1;
     border-bottom: 2px solid rgba(204, 204, 204, 0.9);
 }
+
+.filters input,
+.filters select {
+    max-height: 3rem;
+    width: 16rem;
+}
+
+.cv-filters input,
+.cv-filters select {
+    width: 14rem;
+}
+
 /*############################# PAGE D'UNE ENTREPRISE #############################*/
 
 .company-offer div div p{ 

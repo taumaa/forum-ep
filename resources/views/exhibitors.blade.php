@@ -25,7 +25,7 @@
                     </div>
                 </div>
 
-                <h1 id="title-exhibitors" class="mb-5 mt-28">Les entreprises presentent cette année</h1>
+                <h1 id="title-exhibitors" class="mb-5 mt-28">Les entreprises présentes cette année</h1>
 
                 @if (!$exhibitors->isEmpty())
                     @foreach ($exhibitors as $company)
