@@ -13,8 +13,6 @@
       </li>
       <li class="mx-4 "><a href="{{ url('/devis') }}"> DEMANDE DE DEVIS </a></li>
       <li class="mx-4"><a href="{{ url('/exposants') }}"> EXPOSANTS </a></li>
-      <li class="mx-4"><a href="{{ url('/offres') }}"> OFFRES </a></li>
-      <li class="mx-4"><a href="{{ url('/cvs') }}"> CVS </a></li>
       <li class="mx-4"><a href="{{ url('/faq') }}"> FAQ </a></li>
     </ul>
     <div>
@@ -43,8 +41,6 @@
       <li class="mx-4"> ÉDITIONS PRÉCÉDENTES</li>
       <li class="mx-4"><a href="{{ url('/devis') }}"> DEMANDE DE DEVIS </a></li>
       <li class="mx-4"><a href="{{ url('/exposants') }}"> EXPOSANTS </a></li>
-      <li class="mx-4"><a href="{{ url('/offres') }}"> OFFRES </a></li>
-      <li class="mx-4"><a href="{{ url('/cvs') }}"> CVS </a></li>
       <li class="mx-4"><a href="{{ url('/faq') }}"> FAQ </a></li>
     </ul>
   </div>
