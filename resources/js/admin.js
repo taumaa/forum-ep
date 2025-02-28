@@ -40,6 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialisation par défaut
-    switchTab('tab1');
+    switchTab('tab0');
 });
 

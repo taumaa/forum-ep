@@ -78,6 +78,9 @@ Route::get('/toto', function () {
     return view('toto');
 });
 
+# Backoffice demandes de devis
+Route::get('/valider-devis/{id}', [AdminHomeController::class, 'validateQuote']);
+Route::get('/supprimer-devis/{id}', [AdminHomeController::class, 'deleteQuote']);
 # Backoffice éditions de forum
 Route::get('/creer-edition', [AdminHomeController::class, 'createEdition']);
 Route::post('/creer-edition', [AdminHomeController::class, 'createEdition']);

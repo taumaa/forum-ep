@@ -26,6 +26,7 @@ return new class extends Migration
         Schema::dropIfExists('faqs');
         Schema::dropIfExists('sectors');
         Schema::dropIfExists('options');
+        Schema::dropIfExists('quote');
 
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('setting_id');
@@ -151,6 +152,12 @@ return new class extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->increments('option_id');
             $table->string('option_label');
+        });
+
+        Schema::create('quote', function (Blueprint $table) {
+            $table->increments('quote_id');
+            $table->string('quote_name');
+            $table->boolean('is_validated');
         });
 
         

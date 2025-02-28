@@ -15,6 +15,7 @@ use App\Models\Option;
 use App\Models\School_level;
 use App\Models\School_path;
 use App\Models\User;
+use App\Models\Quote;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class AdminHomeController extends Controller
         $options = Option::getAllOptions();
         $faqs = Faq::getAllFaqs();
         $settings = Setting::getAllSettings();
+        $quotes = Quote::getUnvalidatedQuotes();
         return view('admin.home', 
             ['user' => $user,
             'editions' => $editions,
@@ -46,7 +48,8 @@ class AdminHomeController extends Controller
             'sectors' => $sectors,
             'options' => $options,
             'faqs' => $faqs,
-            'settings' => $settings]);
+            'settings' => $settings,
+            'quotes' => $quotes]);
     }
 
     /**************************************** Éditions de forum ****************************************/
@@ -362,5 +365,36 @@ class AdminHomeController extends Controller
             return Excel::download(new AllStudentsExport($students), $fileName);
         }
         return view('errors.404');
+    }
+
+    /**************************************** Demandes de devis ****************************************/
+    /**
+     * Récupère les nouvelles demandes de devis
+     */
+    // public function getUnvalidatedQuotes () {
+    //     if (true) { // checker si on est connecté en tant qu'admin /!\
+    //         $quotes = Quote::getUnvalidatedQuotes();
+    //     }
+    //     return redirect()->route('admin.home');
+    // }
+
+    /**
+     * Valide une demande de devis
+     */
+    public function validateQuote ($id) {
+        if (true) { // checker si on est connecté en tant qu'admin /!\
+            $quote = Quote::validateQuoteById($id);
+        }
+        return redirect()->route('admin.home');
+    }
+
+    /**
+     * Supprime une demande de devis
+     */
+    public function deleteQuote ($id) {
+        if (true) { // checker si on est connecté en tant qu'admin /!\
+            $quote = Quote::deleteQuoteById($id);
+        }
+        return redirect()->route('admin.home');
     }
 }

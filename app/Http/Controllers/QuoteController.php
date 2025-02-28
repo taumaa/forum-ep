@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Option;
+use App\Models\Quote;
 use App\Exports\QuoteFormExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -34,6 +35,13 @@ class QuoteController extends Controller
 
             // Utiliser Laravel Excel pour exporter les données
             Excel::store(new QuoteFormExport($formData), 'quotes/' . $fileName, 'public'); 
+
+            // Enregistre la demande de devis en base de données
+            Quote::create([
+                'quote_id' => 0,
+                'quote_name' => $fileName,
+                'is_validated' => false,
+            ]);
 
             // Retourne la vue indiquant que l'opération est réussie
             return view('quote_validation');

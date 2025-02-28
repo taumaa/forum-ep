@@ -8,7 +8,8 @@
         <div class="mt-8">
             <!-- Onglets -->
             <ul class="tab-titles flex-wrap">
-                <li class="tab-title active" id="tab1" >Éditions de forum</li>
+                <li class="tab-title active" id="tab0" >Devis</li>
+                <li class="tab-title" id="tab1" >Éditions de forum</li>
                 <li class="tab-title" id="tab2" >Filières</li>
                 <li class="tab-title" id="tab3" >Niveaux d'étude</li>
                 <li class="tab-title" id="tab4" >Secteurs d'activité</li>
@@ -20,6 +21,21 @@
             </ul>
 
             <!-- Contenu des onglets -->
+            <div class="tab-content" id="content0">
+                <h2>Demandes de devis</h2>
+
+                @if ($quotes->isEmpty())
+                    <p>Aucune demande de devis en attente</p>
+                @endif
+                @foreach ($quotes as $quote)
+                    <div class="flex">
+                        <a href="{{ url('/valider-devis/' . $quote->quote_id) }}"><img src="{{ asset('storage/images/approve.png') }}"></a>
+                        <a href="{{ url('/supprimer-devis/' . $quote->quote_id) }}"><img src="{{ asset('storage/images/reject.png') }}"></a>
+                        <a class="underline-hover" href="{{ asset('storage/quotes/' . $quote->quote_name) }}"><p>{{ $quote->quote_name }}</p></a>
+                    </div>
+                @endforeach
+            </div>
+
             <div class="tab-content" id="content1">
                 <div class="flex">
                     <h2>Éditions de forum</h2>
