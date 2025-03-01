@@ -22,7 +22,7 @@
 
             <!-- Contenu des onglets -->
             <div class="tab-content" id="content0">
-                <h2>Demandes de devis</h2>
+                <h2>Demandes de devis en attente</h2>
 
                 @if ($quotes->isEmpty())
                     <p>Aucune demande de devis en attente</p>
@@ -129,7 +129,7 @@
             <div class="tab-content" id="content7">
                 <h2>Modifier les paramètres généraux</h2>
 
-                <form method="POST" action="/editer-parametres" class="admin-settings">
+                <form method="POST" action="/editer-parametres" class="admin-settings" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group mt-6 flex flex-column">
@@ -140,6 +140,36 @@
                     <div class="form-group mt-6 flex flex-column">
                         <label for="building" class="mb-2 ml-4 px-3">Lieu du forum :</label>
                         <input type="text" id="building" name="building" value="{{ $settings->building }}">
+                    </div>
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="contact" class="mb-2 ml-4 px-3">Contacts :</label>
+                        <input type="text" id="contact" name="contact" value="{{ $settings->contact }}">
+                    </div>
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="logo" class="mb-2 ml-4 px-3">Logo header :</label>
+                        <input type="file" id="logo" name="logo" accept=".png, .jpg, .jpeg, .svg, .webp, .avif" class="w-full">
+                    </div>
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="logo-footer" class="mb-2 ml-4 px-3">Logo footer :</label>
+                        <input type="file" id="logo-footer" name="logo-footer" accept=".png, .jpg, .jpeg, .svg, .webp, .avif" class="w-full">
+                    </div>
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="home_image" class="mb-2 ml-4 px-3">Image de la page d'accueil :</label>
+                        <input type="file" id="home_image" name="home_image" accept=".png, .jpg, .jpeg, .svg, .webp, .avif" class="w-full">
+                    </div>
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="favicon" class="mb-2 ml-4 px-3">Icône du site :</label>
+                        <input type="file" id="favicon" name="favicon" accept=".ico, .png, .jpg, .jpeg, .svg" class="w-full">
+                    </div>
+
+                    <div class="form-group mt-6 flex flex-column">
+                        <label for="video" class="mb-2 ml-4 px-3">Vidéo de la page d'accueil :</label>
+                        <input type="file" id="video" name="video" accept=".mp4, .mov, .wav" class="w-full">
                     </div>
 
                     <input type="submit" value="Enregistrer" class="button-color border-2 px-6 py-2 ml-7 mt-10">

@@ -31,11 +31,13 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('setting_id');
             $table->string('logo');
+            $table->string('logo_footer');
             $table->string('ico');
             $table->string('description', 3000);
             $table->string('image');
             $table->string('video');
             $table->string('building');
+            $table->string('contact');
         });
 
         Schema::create('faqs', function (Blueprint $table) {

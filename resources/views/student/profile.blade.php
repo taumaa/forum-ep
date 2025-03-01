@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="relative">
-                    <label for="abroad" class="absolute -top-2.5 left-4 bg-white px-2 text-sm text-gray-600">Intéressé par l'international</label>
+                    <label for="abroad" class="absolute -top-2.5 left-4 bg-white px-2 text-sm text-gray-600">Actuellement à l'étranger</label>
                     <select id="abroad" name="abroad" 
                             class="w-full border rounded-md px-4 py-3 bg-white shadow-sm focus:ring-pink-500 focus:border-pink-500">
                         <option value="0" {{ !$student->abroad ? 'selected' : '' }}>Non</option>

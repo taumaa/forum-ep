@@ -1,6 +1,6 @@
 <nav id="nav" class="nav-container">
   <div class="flex-none">
-    <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-esiee.svg') }}" alt="Logo de l'ESIEE" class="logo-esiee pt-4"> </a>
+    <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/' . $setting->logo) }}" alt="Logo de l'ESIEE" class="logo-esiee pt-4"> </a>
   </div>
   <div class="flex flex-grow justify-end items-center">
     <ul class="flex flex-row">
@@ -25,7 +25,7 @@
 <nav id="nav-responsive" class="flex flex-col">
   <div class="flex flex-row px-5">
     <div class="flex-none">
-      <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/logo-esiee.svg') }}" alt="Logo de l'ESIEE" class="w-28 pt-4 pb-2"></a>
+      <a href="{{ url('/') }}"> <img src="{{ asset('storage/images/' . $setting->logo) }}" alt="Logo de l'ESIEE" class="w-28 pt-4 pb-2"></a>
     </div>
     <div class="flex flex-grow justify-end items-center gap-5">
       <div>

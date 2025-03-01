@@ -11,34 +11,37 @@ class Setting extends Model
 
     protected $fillable = [
         'logo',
+        'logo_footer',
         'ico',
         'description',
         'image',
         'video',
         'building',
+        'contact',
     ];
 
     /**
      * Récupère toutes les informations de la page d'accueil
      */
     public static function getAllSettings() {
-        $setting = Setting::first();
-        return $setting;
+        return Setting::first();
     }
 
     /**
      * Modifie les informations de la page d'accueil
      */
-    public static function updateSettingById($id, $logo, $ico, $description, $image, $video, $building) {
+    public static function updateSettingById($id, $logo, $logo_footer, $ico, $description, $image, $video, $building, $contact) {
         $setting = self::find($id);
     
         if ($setting) {
             $setting->logo = $logo;
+            $setting->logo_footer = $logo_footer;
             $setting->ico = $ico;
             $setting->description = $description;
             $setting->image = $image;
             $setting->video = $video;
             $setting->building = $building;
+            $setting->contact = $contact;
     
             $success = $setting->save();
             return response()->json(['success' => $success, 'setting' => $setting]);

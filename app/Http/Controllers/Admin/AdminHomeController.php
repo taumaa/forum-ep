@@ -317,13 +317,58 @@ class AdminHomeController extends Controller
      * Editer les paramètres globaux du site
      */
     public function editSettings(Request $request) {
+        $setting = Setting::getAllSettings();
+
         $description = $request->input('description'); 
         $building = $request->input('building'); 
-        $logo = 'logo1.png';
-        $ico = 'ico1.png';
-        $image = 'ESIEE-Home-Main-Picture.webp';
-        $video = 'video1.mp';
-        $isCreated = Setting::updateSettingById(1, $logo, $ico, $description, $image, $video, $building);
+        $contact = $request->input('contact');
+
+        if ($request->hasFile('logo')) {
+            unlink(public_path('storage\images\\' . $setting->logo));
+            $logo = $request->file('logo');
+            $logo->move(public_path('storage/images'), $logo->getClientOriginalName());
+            $logo = $logo->getClientOriginalName();
+        } else {
+            $logo = $setting->logo;
+        }
+        
+        if ($request->hasFile('logo_footer')) {
+            unlink(public_path('storage\images\\' . $setting->logo_footer));
+            $logo_footer = $request->file('logo_footer');
+            $logo_footer->move(public_path('storage/images'), $logo_footer->getClientOriginalName());
+            $logo_footer = $logo_footer->getClientOriginalName();
+        } else {
+            $logo_footer = $setting->logo_footer;
+        }
+        
+        if($request->hasFile('home_image')) {
+            unlink(public_path('storage\images\\' . $setting->image));
+            $image = $request->file('home_image');
+            $image->move(public_path('storage/images'), $image->getClientOriginalName());
+            $image = $image->getClientOriginalName();
+        } else {
+            $image = $setting->image;
+        }
+
+        if($request->hasFile('favicon')) {
+            unlink(public_path('storage\images\\' . $setting->ico));
+            $ico = $request->file('favicon');
+            $ico->move(public_path('storage/images'), $ico->getClientOriginalName());
+            $ico = $ico->getClientOriginalName();
+        } else {
+            $ico = $setting->ico;
+        } 
+
+        if($request->hasFile('video')) {
+            unlink(public_path('storage\images\\' . $setting->video));
+            $video = $request->file('video');
+            $video->move(public_path('storage/images'), $video->getClientOriginalName());
+            $video = $video->getClientOriginalName();
+        } else {
+            $video = $setting->video;
+        } 
+        
+        $isCreated = Setting::updateSettingById(1, $logo, $logo_footer, $ico, $description, $image, $video, $building, $contact);
         return redirect()->route('admin.home');
     }
 
@@ -368,15 +413,6 @@ class AdminHomeController extends Controller
     }
 
     /**************************************** Demandes de devis ****************************************/
-    /**
-     * Récupère les nouvelles demandes de devis
-     */
-    // public function getUnvalidatedQuotes () {
-    //     if (true) { // checker si on est connecté en tant qu'admin /!\
-    //         $quotes = Quote::getUnvalidatedQuotes();
-    //     }
-    //     return redirect()->route('admin.home');
-    // }
 
     /**
      * Valide une demande de devis

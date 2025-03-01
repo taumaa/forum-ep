@@ -449,6 +449,15 @@ textarea:focus {
     font-weight: 500;
 }
 
+.admin-settings input[type="file"]:focus {
+    border: none !important;
+    --tw-ring-color: none !important;
+    outline: none;
+    background-color: #f0f0f0 !important;
+    color: #132c85;
+    font-weight: 500;
+}
+
 .button-color {
     background-color: #132c85 ;
     color: white;
@@ -546,7 +555,8 @@ summary:hover {
 
 .admin-settings textarea,
 .admin-settings input[type="text"],
-.admin-settings input[type="password"] {
+.admin-settings input[type="password"],
+.admin-settings input[type="file"] {
     width: 90%;
     margin: .5rem 2rem 0rem 2rem;
 }
