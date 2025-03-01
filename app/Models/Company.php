@@ -106,7 +106,7 @@ class Company extends Model
     public static function getAllCompaniesByForumEdition($forum_id) {
         $companies = Company::with(['internshipOffers.schoolPaths', 'sector'])
         ->whereHas('forumEditions', function ($query) use ($forum_id) {
-            $query->where('forum_edition_companies.forum_id', $forum_id);
+            $query->where('forum_edition_company.forum_id', $forum_id);
         })
         ->get();
     

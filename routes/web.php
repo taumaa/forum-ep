@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Student\StudentHomeController;
 use App\Http\Controllers\Company\CompanyHomeController;
 use App\Http\Controllers\Student\StudentProfileController;
+use App\Http\Controllers\Company\CompanyProfileController;
 use Illuminate\Support\Facades\Route;
 
 ################## ACCUEIL ##################
@@ -149,6 +150,8 @@ Route::middleware(['auth'])->group(function () {
 // Groupe avec toutes les routes admin.
 Route::middleware(['auth'])->group(function () {
     Route::get('/company', [CompanyHomeController::class, 'index'])->name('company.home');
+    Route::get('/company/profile', [CompanyProfileController::class, 'show'])->name('company.profile');
+    Route::put('/company/profile', [CompanyProfileController::class, 'update'])->name('company.profile.update');
 });
 
 
