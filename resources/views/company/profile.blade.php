@@ -35,8 +35,7 @@
 
                 <div class="relative">
                     <label for="description" class="absolute -top-2.5 left-4 bg-white px-2 text-sm text-gray-600">Description de l'entreprise</label>
-                    <input type="text" id="description" name="description" value="{{ $company->description }}" 
-                           class="w-full border rounded-md px-4 py-3 bg-white shadow-sm focus:ring-pink-500 focus:border-pink-500">
+                    <textarea id="description" name="description" class="h-48 w-full border rounded-md px-4 py-3 bg-white shadow-sm focus:ring-pink-500 focus:border-pink-500">{{ $company->description }}</textarea>
                 </div>
 
                 <div class="relative">
@@ -75,13 +74,6 @@
                     <label for="logo" class="absolute -top-2.5 left-4 bg-white px-2 text-sm text-gray-600">Logo</label>
                     <div class="border rounded-md px-4 py-3 bg-white shadow-sm">
                         <input type="file" id="logo" name="logo" accept=".svg, .png, .jpg, .jpeg" class="w-full">
-                        {{-- @if($company->cv)
-                            <div class="mt-2">
-                                <a href="{{ asset($company->cv) }}" class="text-pink-600 hover:underline" target="_blank">
-                                    Voir le CV actuel
-                                </a>
-                            </div> 
-                        @endif --}}
                     </div>
                 </div>
 

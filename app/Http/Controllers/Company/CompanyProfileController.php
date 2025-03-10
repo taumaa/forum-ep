@@ -54,15 +54,22 @@ class companyProfileController extends Controller
         $company->phone = $request->phone;
 
         // Handle logo upload if provided
-        if ($request->hasFile('company-logo')) {
+        if ($request->hasFile('logo')) {
             // Delete old logo if exists
             if ($company->logo) {
-                Storage::delete($company->logo);
+                unlink(public_path('storage\company-logos\\' . $company->logo));
             }
 
-            // Store new CV
-            $ogoPath = $request->file('company-logo')->store('company-logos', 'public');
-            $company->logo = $ogoPath;
+            // Store new logo
+            $logo = $request->file('logo');
+            $logoName = pathinfo($logo->getClientOriginalName(), PATHINFO_FILENAME);
+            $logoExtension = $logo->getClientOriginalExtension();
+            $logoPath = $logo->storeAs(
+                'company-logos',
+                $logoName . '_' . time() . '.' . $logoExtension,
+                'public'
+            );
+            $company->logo = $logoName . '_' . time() . '.' . $logoExtension;
         }
 
         $company->save();
