@@ -76,7 +76,7 @@
                         <input type="file" id="cv" name="cv" accept=".pdf" class="w-full">
                         @if($student->cv)
                             <div class="mt-2">
-                                <a href="{{ asset($student->cv) }}" class="text-pink-600 hover:underline" target="_blank">
+                                <a href="{{ asset('storage/cvs/' . $student->cv) }}" class="text-pink-600 hover:underline" target="_blank">
                                     Voir le CV actuel
                                 </a>
                             </div>

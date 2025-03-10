@@ -52,12 +52,19 @@ class StudentProfileController extends Controller
         if ($request->hasFile('cv')) {
             // Delete old CV if exists
             if ($student->cv) {
-                Storage::delete($student->cv);
+                unlink(public_path('storage\cvs\\' . $student->cv));
             }
 
             // Store new CV
-            $cvPath = $request->file('cv')->store('cvs', 'public');
-            $student->cv = $cvPath;
+            $cv = $request->file('cv');
+            $cvName = $student->first_name . '_' . $student->last_name . '_' . time();
+            $cvExtension = $cv->getClientOriginalExtension();
+            $cvPath = $cv->storeAs(
+                'cvs',
+                $cvName . '.' . $cvExtension,
+                'public'
+            );
+            $student->cv = $cvName . '.' . $cvExtension;
         }
 
         $student->save();
