@@ -11,6 +11,8 @@
     <main>
         @yield('content') <!-- Zone où le contenu des pages s'insère -->
     </main>
+
+    @include('components.footer') <!-- Inclusion du footer -->
 </body>
 
 </html>
